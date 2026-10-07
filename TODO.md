@@ -1,7 +1,7 @@
 # TODO: Kawi-TTS
 
 **Last updated:** 2026-10-07
-**Current phase:** Phase 7 — Acoustic Backend Research & Data Strategy
+**Current phase:** Phase 8 — Post-Acceptance / Release Prep
 
 This file tracks all prioritized tasks for the Kawi-TTS project.
 Tasks are grouped by phase. Within each phase, tasks are ordered by priority.
@@ -128,18 +128,15 @@ decision has been made.
 - [x] P6-004: Lexical/Etymological Metadata Feasibility Audit. Concluded metadata classifier is blocked by data.
 - [ ] P6-005: [BLOCKED] Etymological Metadata Implementation. Requires provenance-tagged lexicon.
 
-## Phase 7: Zero-Budget Reassessment & Engine Hardening (ACTIVE)
+## Phase 7: Zero-Budget Reassessment & Engine Hardening (COMPLETED)
 
 - [x] P7-001: [DEFERRED/BLOCKED] Data Acquisition & Corpus Design (Superseded by P7-003 constraint).
 - [x] P7-002A: Existing Audio Source Audit (Concluded Path C required, which is now blocked).
-- [ ] P7-002: [BLOCKED] Pilot Corpus Recording. Deferred by zero-budget constraint.
+- [x] P7-002: [BLOCKED] Pilot Corpus Recording. Deferred by zero-budget constraint.
 - [x] P7-003: Zero-Budget Scope Reassessment & Frankenstein Stop. Redefined project to $0 core deliverable.
-
-**Revised Zero-Cost Roadmap:**
 - [x] P7-B: Linguistic and pronunciation-engine hardening (normalization, G2P rules, ambiguity handling, test coverage).
-- [x] P7-C: Baseline Acoustic & Evaluation infrastructure (ACTIVE) (eSpeak backend control, deterministic synthesis, automated tests).
-- [ ] P7-D: Research tooling (bibliography management, evidence-status tracking).
-- [ ] P7-E: [OPTIONAL/FROZEN] Neural Reopening Criteria.
+- [x] P7-C: Evaluation & Diagnostics Infrastructure (Trace CLI, Coverage, Regression Corpus).
+- [x] P7-D: Core Engine Acceptance Evaluation. Gate = ACCEPT.
 
 ## Phase 4: V1 (COMPLETED)
 
