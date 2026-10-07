@@ -118,7 +118,13 @@ decision has been made.
 
 - [x] P5-001: Post-V1 Evidence & Feasibility Audit.
 - [x] P5-002: Evidence-Based Acoustic Profile Policy. Formally defined Profile A vs Profile B, and authorized evidence-backed acoustic mergers (aspirates, sibilants) for Profile A while keeping canonical representation distinct.
-- [ ] P5-003: Profile Architecture Design & Vowel Length Strategy. Design the software layer separating Profile A and Profile B, and determine etymological/metrical vowel length handling.
+- [x] P5-003: Profile Architecture Design & Vowel Length Strategy. Design the software layer separating Profile A and Profile B, and determine etymological/metrical vowel length handling.
+
+## Phase 6: V2 Profile Implementation (PENDING)
+
+- [ ] P6-001: Implement `ProfileStrategy` abstraction. Extract V1 legacy acoustic mappings into `ProfileBStrategy`.
+- [ ] P6-002: Implement `ProfileAStrategy` applying historical mergers with `ProfiledToken` citations.
+- [ ] P6-003: Integrate Strategy Layer into `AcousticMapper` ensuring V1 test suite passes with `profile="B"`.
 
 ## Phase 4: V1 (COMPLETED)
 

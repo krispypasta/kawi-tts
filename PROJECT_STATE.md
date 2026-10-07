@@ -1,7 +1,7 @@
 # Project State: Kawi-TTS
 
 **Last updated:** 2026-10-07
-**Current phase:** Phase 5 — Post-V1 Research (Active)
+**Current phase:** Phase 6 — V2 Profile Implementation (Pending)
 **Repository branch:** main
 
 This file is the authoritative summary of the project's current state.
@@ -9,44 +9,29 @@ Update it at the start and end of every significant work session.
 
 ---
 
-## Current Phase: Phase 5 — Post-V1 Research
+## Current Phase: Phase 6 — V2 Profile Implementation
+ 
+ ### What Phase 5 accomplished
+ 
+ P5-001 through P5-003 established the conceptual layer architecture for V2. The V1 acoustic baseline effectively produces Profile B (Scholarly Reading). Policy is now set to support evidence-backed acoustic mergers for Profile A in V2 via a `ProfileStrategy` abstraction layer without modifying the canonical lossless representation.
 
-### What Phase 4 means
+### Phase 6 Entry Criteria
+Phase 5 is complete:
+- P5-001 and P5-002: Acoustic Profile Policy defined.
+- P5-003: Conceptual software architecture and Vowel Length Strategy defined.
 
-With Phase 3 complete (Normalization, Tokenization, Lossless G2P, Acoustic Mapping, and Synthesis Pipeline implemented and validated on 26 authentic Old Javanese source citations across 13 linguistic categories), Phase 4 focuses on:
-- End-to-end integration testing and user-facing CLI/API.
-- Comprehensive G2P evaluation against larger lexicons (e.g. OJW).
-- Traceable documentation connecting every synthesized utterance to research log entries.
-- Production of the final V1 release artifact.
-
-### Phase 4 entry criteria (completed)
-
-Phase 3 is 100% complete:
-- Normalization (P3-002) tested and verified.
-- G2P (P3-003A/B/C) tested and verified.
-- Tokenization & Text Structure (P3-004) tested and verified.
-- Acoustic Backend Interface & Mapper (P3-005/P3-006) tested and verified.
-- Evidence-based validation (P3-007) verified on 26 source-cited lexical items. 66 automated tests pass.
-
-### Phase 5 Underway
-P5-001 and P5-002 have established that the V1 acoustic baseline effectively produces Profile B (Scholarly Reading). Policy is now set to support evidence-backed acoustic mergers for Profile A in V2 without modifying the canonical representation.
-
-### V1 Checkpoint Reached (2026-10-07)
-The V1 Evaluation (P4-006) has been completed. The system satisfies all engineering and epistemic constraints defined in `PROJECT_SPEC.md`. V1 release readiness is formally approved.
-
-
-### What is blocked until Phase 4 is complete
-
-- Final V1 Release tag and public documentation.
+### Phase 6 Pending
+Implement the Strategy layer (`ProfileBStrategy` for V1 backwards compatibility, `ProfileAStrategy` for historical mergers) and integrate it into the `AcousticMapper`.
 
 ---
 
 ## Completed Milestones
 
-### Phase 5 — Post-V1 Research (In Progress)
-
-- Completed P5-001: Post-V1 Evidence & Feasibility Audit. Identified the conflation between orthographic reading and historical speech.
-- Completed P5-002: Evidence-Based Acoustic Profile Policy (`docs/P5_002_ACOUSTIC_PROFILE_POLICY.md`). Formalized the separation of Canonical Representation from Acoustic Realization. Authorized Profile A to merge aspirates and sibilants based on historical evidence. Appended mismatch warnings to V1 docs.
+### Phase 5 — Post-V1 Research (Completed)
+ 
+ - Completed P5-001: Post-V1 Evidence & Feasibility Audit. Identified the conflation between orthographic reading and historical speech.
+ - Completed P5-002: Evidence-Based Acoustic Profile Policy (`docs/P5_002_ACOUSTIC_PROFILE_POLICY.md`). Formalized the separation of Canonical Representation from Acoustic Realization. Authorized Profile A to merge aspirates and sibilants based on historical evidence. Appended mismatch warnings to V1 docs.
+ - Completed P5-003: Profile Architecture Design & Vowel Length Strategy (`docs/P5_003_PROFILE_ARCHITECTURE.md`). Designed software layer separating Profile A and Profile B. Determined etymological/metrical vowel length handling.
 
 ### Phase 4 — V1 Integration & Evaluation (Completed)
 
