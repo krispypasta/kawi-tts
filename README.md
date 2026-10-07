@@ -1,142 +1,131 @@
 # Kawi-TTS
 
-A research-first Text-to-Speech (TTS) system for Old Javanese (*Basa Kawi*).
+An open-source deterministic pronunciation and reconstruction engine for Old Javanese (Kawi).
 
----
+Kawi-TTS is **not** a natural neural TTS system, it does **not** claim to generate historically authentic speech, and it is **not** a linguistic oracle. It is a strictly deterministic pipeline that implements a documented linguistic reconstruction policy and provides reproducible acoustic output through a selected backend.
 
-## 1. Project Overview & Motivation
+## What It Does
 
-Old Javanese (*Basa Kawi*) is an Austronesian classical language with an extensive literary and epigraphic heritage spanning more than six centuries (c. 800–1500 CE). Kawi-TTS is an academic and cultural engineering initiative aimed at making Old Javanese texts and inscriptions accessible through speech technology, while strictly prioritizing linguistic defensibility over synthetic voice naturalness.
+Kawi-TTS transforms Old Javanese text into phonetic representations and synthesizes them into audio. The pipeline is strictly deterministic:
 
-### V1 Target: Profile A — Reconstructed Historical Spoken Old Javanese
+`Text → Normalization → G2P / Tokenization → Canonical Representation → Profile A / Profile B → Acoustic Mapping → eSpeak-ng → WAV`
 
-The primary objective for V1 is:
-**Profile A: Reconstructed Historical Spoken Old Javanese**.
+The engine resolves linguistic features through two distinct profiles:
+* **Profile A (Reconstructed Spoken):** Represents the historical spoken target. It is explicitly evidence-scoped, includes documented spoken mergers and adaptations, and strictly preserves unresolved items as unresolved where evidence is lacking.
+* **Profile B (Scholarly/Orthographic):** A scholarly reading profile that artificially preserves the intended distinctions of the scholarly orthographic representation (such as unmerged Sanskrit distinctions).
 
-### Epistemic Policy & Boundaries
-- **No known surviving recordings from the historical period are currently available to establish historical pronunciation directly.**
-- The pronunciation synthesized by Kawi-TTS is an **evidence-grounded historical reconstruction**, NOT a claim of historically proven certainty.
-- The project distinguishes attested comparative evidence from scholarly reconstruction and practical engineering assumptions.
-- Uncertain linguistic distinctions (e.g., Sanskrit aspirates, historical vowel duration, and sibilant realizations) are **preserved losslessly in internal representations** rather than prematurely merged or discarded.
-- No claim of production-quality speech or historical perfection is made.
+## Important Epistemic Limitation
 
----
+**The generated audio is NOT claimed to reproduce exactly how historical Old Javanese speakers sounded.**
 
-## 2. Current Architecture & Pipeline
+The software simply operationalizes the project's documented linguistic reconstruction and backend policy. Users must clearly distinguish between:
+1. **Evidence-backed linguistic rules** (e.g., historical spoken mergers)
+2. **Provisional reconstructions** (e.g., adaptation of Sanskrit vocalic liquids to native Javanese phonotactics)
+3. **Engineering policy** (e.g., deferring vowel duration resolution)
+4. **Backend approximations** (e.g., dropping retroflex distinctions due to eSpeak limitations)
 
-Kawi-TTS implements a decoupled, five-stage modular pipeline:
+## Current Status
 
-```
-Kawi Text (raw input)
-   ↓
-1. Unicode & Orthographic Normalization (src/normalization/normalizer.py)
-   Canonical NFC composition, typographic cleanup (ŋ → ṅ, ě → ĕ), elision normalization.
-   ↓
-2. Text Structure & Tokenization (src/normalization/tokenizer.py)
-   Deterministic segmentation into words, punctuation, line breaks, and explicit boundary markers.
-   Flags unresolved structural sequences (e.g. unsegmented ASCII 'ngh') without guessing.
-   ↓
-3. Lossless Grapheme-to-Phoneme Engine (src/g2p/engine.py)
-   Greedy parsing of normalized orthography into an immutable internal phonological representation.
-   Maintains all vowel length, aspirate, sibilant, retroflex, and vocalic liquid distinctions.
-   ↓
-4. Explicit Acoustic Mapper (src/acoustic/mapper.py)
-   Maps internal phonemes to backend-specific representations (eSpeak-ng IPA).
-   Labels and audits provisional adaptations (PROVISIONAL_ACOUSTIC_MAPPING).
-   ↓
-5. Acoustic Synthesis Backend (src/acoustic/espeak_backend.py)
-   eSpeak-ng phoneme synthesis interface with full dry-run/mock execution and WAV output.
-   ↓
-Audio Output (WAV)
-```
+* **Core:** The deterministic core is accepted and historically frozen.
+* **Tests:** The current test suite passes 97/97. The 100-form regression corpus passes fully.
+* **Backend:** eSpeak-ng is the current acoustic backend. The `id` (Indonesian) voice is utilized with explicit backend-scoped approximations where native eSpeak support is lacking.
+* **Infrastructure:** Neural TTS is explicitly deferred. The project remains strictly zero-budget compatible. No cloud service or proprietary data is required for core operation.
+* **Distribution:** The package is not yet published to PyPI.
 
----
+## Quick Start
 
-## 3. Project Status & Roadmap
-
-The project follows a strict phase-gate progression:
-
-* **[x] Phase 0 — Project Foundation:** Architecture specifications, governance policies, and engineering decision log established.
-* **[x] Phase 1 — Linguistic Research:** Core phoneme inventory, vowel length, pepet, retroflexes, aspirates, and oral recitation traditions audited (RES-001 through RES-016). Formal decision DEC-006 adopted.
-* **[x] Phase 2 — Data Audit:** Old Javanese Wordnet (OJW), GRETIL corpora, and Modern Javanese speech datasets (OpenSLR 41, MMS) audited for compatibility and licensing (RES-017 through RES-021).
-* **[x] Phase 3 — Prototype Pipeline:**
-  * Normalization (`src/normalization/normalizer.py`) implemented and tested.
-  * Tokenizer (`src/normalization/tokenizer.py`) implemented and tested.
-  * Lossless G2P engine (`src/g2p/engine.py`) implemented and audited.
-  * Acoustic Mapper & eSpeak-ng backend interface (`src/acoustic/`) implemented.
-  * Comprehensive validation audit (`docs/P3_007_VALIDATION.md`) executed on 26 authentic Old Javanese source citations across 13 linguistic categories.
-* **[x] Phase 4 — V1 Integration & Evaluation (COMPLETED):**
-  * End-to-end integration and user-facing CLI/API.
-  * High-throughput G2P evaluation against the full OJW lexicon.
-  * Public release documentation and source traceability.
-
----
-
-## 4. Current Acoustic Backend & Environment Note
-
-- **Current Prototype Backend:** Formant synthesis interface via **eSpeak-ng** using IPA input notation.
-- **Host Installation Status:** `espeak-ng` (v1.52.0) is installed. The pipeline targets the `jv` (Javanese) voice but successfully falls back to `id` (Indonesian) to generate end-to-end audio. Dry-run mode is also supported for headless environments.
-- **Real Audio Generation:** To synthesize audible sound, install `espeak-ng` locally (e.g., `winget install eSpeak-ng.eSpeak-ng` on Windows or `sudo apt-get install espeak-ng` on Ubuntu/Debian). The backend automatically discovers the executable in PATH without code modifications.
-- **Neural TTS Status:** No neural model has been trained or fine-tuned. Cross-lingual neural transfer is planned for subsequent milestones.
-
----
-
-## 5. Repository Structure
-
-```text
-Project-TTS-Kawi/
-├── README.md                           # This document
-├── LICENSE                             # MIT License
-├── .gitignore                          # Python / build / artifact exclusions
-├── PROJECT_STATE.md                    # Authoritative live project state
-├── TODO.md                             # Phase-tracked actionable task list
-├── AGENTS.md                           # Core guidance for AI contributors
-│
-├── docs/
-│   ├── PROJECT_SPEC.md                 # Project vision, principles, and scope
-│   ├── ARCHITECTURE.md                 # System architecture specification
-│   ├── RESEARCH_LOG.md                 # Linguistic findings (RES-001 to RES-021)
-│   ├── DECISIONS.md                    # Engineering decision log (DEC-001 to DEC-006)
-│   ├── AGENT_ROLES.md                  # Three AI work mode definitions
-│   ├── P3_003A_G2P_SPEC.md             # Profile A G2P specification
-│   ├── P3_005_ACOUSTIC_BACKEND_SURVEY.md# Acoustic backend survey & decision gate
-│   ├── P3_006_ACOUSTIC_MAPPER.md       # Acoustic mapper and eSpeak backend spec
-│   └── P3_007_VALIDATION.md            # Evidence-based validation report
-│
-├── src/
-│   ├── normalization/                  # Normalization & tokenization
-│   │   ├── normalizer.py               # Lossless Unicode NFC canonicalizer
-│   │   └── tokenizer.py                # Deterministic text-structure layer
-│   ├── g2p/                            # Grapheme-to-Phoneme engine
-│   │   └── engine.py                   # Lossless greedy G2P mapper
-│   ├── acoustic/                       # Acoustic mapping & synthesis backend
-│   │   ├── mapper.py                   # G2P → eSpeak IPA acoustic mapper
-│   │   ├── espeak_backend.py           # eSpeak-ng execution wrapper & mock
-│   │   └── pipeline.py                 # End-to-end synthesize() API
-│   └── tts/                            # High-level synthesis exports
-│
-├── tests/                              # Comprehensive test suite (66 tests)
-│   ├── test_scaffold.py                # Package import sanity tests
-│   ├── test_normalization.py           # Unicode & diacritic composition tests
-│   ├── test_tokenizer.py               # Tokenization & boundary tests
-│   ├── test_g2p.py                     # Lossless G2P engine tests
-│   ├── test_acoustic_mapper.py         # Acoustic mapping & immutability tests
-│   ├── test_synthesis_pipeline.py      # Dry-run & pipeline execution tests
-│   └── test_validation.py              # Source-cited evidence validation tests
-│
-└── data/                               # Data directories (raw, processed, manifests)
-```
-
----
-
-## 6. Testing & Verification
-
-Run the entire test suite:
+You can run the engine locally without any cloud dependencies.
 
 ```bash
-python -m unittest discover tests
+# 1. Clone the repository
+git clone https://github.com/krispypasta/kawi-tts.git
+cd kawi-tts
+
+# 2. Create and activate a Python virtual environment
+python -m venv venv
+# On Windows: venv\Scripts\activate
+# On Linux/macOS: source venv/bin/activate
+
+# 3. Install the package locally in editable mode
+pip install -e .
+
+# 4. Verify installation by running tests
+python -m unittest discover -s tests -p "test_*.py"
+
+# 5. Use the trace diagnostics CLI
+kawi-trace "sĕkar"
+
+# 6. Generate demo audio (requires eSpeak-ng installed on your system)
+python run_audio_demo.py
 ```
 
-Current test status: **66 tests passing (100% pass rate)**.
+## eSpeak Dependency
 
+The deterministic linguistic processing (Normalization, G2P, Profiling) operates entirely independent of eSpeak. However, actual WAV synthesis requires `espeak-ng` to be installed on your system path.
 
+If eSpeak-ng is missing, the pipeline produces an actionable error. The package will **not** silently pretend that dummy audio is real synthesis. Current acoustic mapping supports the eSpeak `id` voice, utilizing explicit `BACKEND_APPROXIMATION` rules to bypass unsupported IPA characters safely.
+
+## Examples
+
+* `sĕkar` — Standard Javanese lexical item. Both profiles map identically to Javanese schwa and native consonants.
+* `BHAṬĀRA` — Sanskrit loan.
+  * *Profile B* preserves the aspirated `bʱ`, retroflex `ṭ`, and duration `aː`.
+  * *Profile A* merges the aspirate to `b`, maps the retroflex to `ṭ`, and leaves duration unresolved.
+  * *Acoustic Mapper* then approximates retroflex `ṭ` to dental `t` for eSpeak compatibility.
+* `śānti` — Sanskrit loan.
+  * *Profile B* preserves palatal sibilant `ś`.
+  * *Profile A* merges it to native `s`.
+* `kṝta` — Sanskrit loan with a long vocalic liquid.
+  * *Profile B* preserves canonical long `r̩ː`.
+  * *Profile A* adapts it to native phonotactics as a short Javanese schwa base (`rə`), deliberately discarding non-native duration as per reconstruction policy.
+
+## Trace / Diagnostics
+
+The `kawi-trace` CLI utility exposes the exact transformation of every string. It traces:
+`Input → Normalized → Canonical → Profile Target → Backend Target`
+
+Backend approximations (e.g., eSpeak's inability to pronounce retroflex consonants) are visibly distinguished in the terminal output from intentional linguistic targets.
+
+## Project Structure
+
+```text
+kawi_tts/        # Core engine (normalization, g2p, acoustic mappers)
+docs/            # Project documentation, policies, and research logs
+tests/           # Test suite and regression corpora
+artifacts/       # Generated WAVs and manifest outputs
+pyproject.toml   # Project build configuration
+```
+
+## Open-Source & Contributing
+
+Kawi-TTS is an open-source research tool.
+* **Evidence Before Code:** Research and evidence must precede any linguistic rule changes. Contributors must not invent pronunciation rules.
+* **Changes:** Modifying linguistic policy requires cited evidence and corresponding regression coverage.
+* **Boundaries:** Backend approximations must remain strictly backend-scoped (within the `AcousticMapper`). The canonical representation must remain protected.
+
+Please see the `docs/` folder for architectural decisions and governance.
+
+## Kawi Learn Relationship
+
+**Kawi Learn** is considered a future, external educational application that may consume Kawi-TTS.
+* **Kawi-TTS:** A strict pronunciation and reconstruction engine.
+* **Kawi Learn:** A future end-user application.
+
+Kawi-TTS must remain entirely independent of Kawi Learn. Kawi Learn does not currently exist as a finished product.
+
+## Future / Deferred Work
+
+The following items are explicitly deferred to protect the zero-budget constraint:
+* Neural TTS models
+* Custom recorded speech corpora
+* New acoustic backends requiring unavailable computational resources
+
+These will only be reopened if specific, resource-compatible packaging requirements are met.
+
+## Research & Citation
+
+Linguistic decisions, open questions, and principal references are maintained in `docs/RESEARCH_LOG.md` and the adjacent policy documents (e.g., `docs/P5_002_ACOUSTIC_PROFILE_POLICY.md`). All linguistic claims within the codebase are tied to these cited policy rules.
+
+## License
+
+Kawi-TTS is licensed under the MIT License. See the `LICENSE` file for details.
