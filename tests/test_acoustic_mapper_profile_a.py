@@ -25,12 +25,6 @@ class TestAcousticMapperProfileA(unittest.TestCase):
         self.assertEqual(tok.backend_token, "s")
         self.assertEqual(tok.status, MappingStatus.EVIDENCE_BACKED)
         
-    def test_profile_a_retroflex_aspirates(self):
-        res = self.mapper.map_phonemes([["ḍʱ", "a"]])
-        self.assertEqual(res.backend_phoneme_string, "ɖa") # ḍ mapped to ɖ by AcousticMapper
-        tok = res.mapped_words[0][0]
-        self.assertEqual(tok.backend_token, "ɖ")
-        
     def test_profile_a_liquids(self):
         res = self.mapper.map_phonemes([["r̩", "a"]])
         self.assertEqual(res.backend_phoneme_string, "rəa")

@@ -47,11 +47,11 @@ To prevent the "lossless G2P" fallacy from polluting acoustic output, the system
 *   **Profile B Acoustic Interpretation:** Preserved as syllabic (`[r̩]`, `[l̩]`).
 *   **Confidence:** Moderate.
 
-### D. Vowel Length / Macrons (`ā`, `ī`, `ū`)
+### D. Vowel Length / Macrons (`ā`, `ī`, `ū`, `əː`)
 *   **Canonical Representation:** Preserved distinctly.
-*   **Evidence Status:** UNRESOLVED / PROFILE-DEPENDENT. Sources (Van der Molen) note length in Sanskrit loans was neglected, while native macrons may have indicated a distinction.
-*   **Profile A Acoustic Interpretation:** Unresolved. Pending further research into etymological handling (separating loans from native stress/duration). Do not create a universal long-vowel rule yet.
-*   **Profile B Acoustic Interpretation:** Distinct duration (`[aː]`).
+*   **Evidence Status:** UNRESOLVED / PROFILE-DEPENDENT. Sources (Van der Molen) note length in Sanskrit loans was neglected, while native macrons may have indicated a distinction. The symbol `əː` (`ö`) is an orthographic/transliteration feature for specific Indic script signs; its acoustic duration is not established.
+*   **Profile A Acoustic Interpretation:** Unresolved. Pending further research into etymological handling (separating loans from native stress/duration). No Profile A duration claim is being made for `əː`. Do not create a universal long-vowel rule yet.
+*   **Profile B Acoustic Interpretation:** Distinct duration (`[aː]`, `[əː]`).
 *   **Confidence:** Low.
 
 ### E. Dental vs. Retroflex (`t`/`ṭ`, `d`/`ḍ`)

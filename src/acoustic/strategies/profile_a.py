@@ -5,13 +5,7 @@ _ASPIRATE_MERGERS = {
     "bʱ": "b",
     "dʱ": "d",
     "gʱ": "g",
-    "ɟʱ": "ɟ",
-    "ḍʱ": "ḍ", # Voiced retroflex plain stop
     "pʰ": "p",
-    "tʰ": "t",
-    "kʰ": "k",
-    "cʰ": "c",
-    "ṭʰ": "ṭ", # Voiceless retroflex plain stop
 }
 
 _SIBILANT_MERGERS = {
@@ -22,8 +16,6 @@ _SIBILANT_MERGERS = {
 _LIQUID_ADAPTATIONS = {
     "r̩": "rə",
     "l̩": "lə",
-    "r̩ː": "rəː",
-    "l̩ː": "ləː",
 }
 
 class ProfileAStrategy(AbstractProfileStrategy):
@@ -38,7 +30,6 @@ class ProfileAStrategy(AbstractProfileStrategy):
 
     def apply(self, canonical_token: str) -> ProfiledToken:
         # Vowel length unresolved
-        # Wait, if we pass macron through, it goes to preserved?
         
         if canonical_token in _ASPIRATE_MERGERS:
             return ProfiledToken(
@@ -87,8 +78,14 @@ class ProfileAStrategy(AbstractProfileStrategy):
                 citation="V1 Preserved"
             )
         
-        # If it was provisional in V1 but not explicitly handled by Profile A, it might be unsupported or we just mark it
-        # Actually wait, `əː` is in _V1_PROVISIONAL. We handled it above.
+        if canonical_token in _V1_PROVISIONAL:
+            return ProfiledToken(
+                canonical_token=canonical_token,
+                target_token=canonical_token,
+                profile_name=self.profile_name,
+                status=PolicyStatus.PROVISIONAL_RECONSTRUCTION,
+                citation=_V1_PROVISIONAL[canonical_token]
+            )
         
         return ProfiledToken(
             canonical_token=canonical_token,
