@@ -1,3 +1,9 @@
+> **[P5-002 POLICY AMENDMENT]**
+> This document reflects the V1.0.0 historical baseline. 
+> Under the finalized P5-002 Acoustic Profile Policy, the acoustic mappings described here (such as rendering distinct aspirates `[bʰ]` and sibilants `[ʃ]/[ʂ]`) have been formally reclassified as **Profile B (Scholarly/Orthographic Reading)** rather than Profile A. 
+> Historical evidence confirms that spoken Old Javanese (Profile A) merged these sounds. 
+> V1 remains frozen as an orthographically lossless baseline, but its acoustic output does not represent true Profile A speech. V2 will introduce an explicit `ProfileStrategy` to implement these mergers acoustically while preserving canonical distinctions. See `docs/P5_002_ACOUSTIC_PROFILE_POLICY.md` for details.
+
 # Project Specification: Kawi-TTS
 
 **Status:** ACTIVE — Phase 0 complete, entering Phase 1 (Linguistic Research)

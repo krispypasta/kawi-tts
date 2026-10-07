@@ -1,7 +1,7 @@
 # Project State: Kawi-TTS
 
 **Last updated:** 2026-10-07
-**Current phase:** Phase 4 — V1 (Integration & Evaluation) - COMPLETED
+**Current phase:** Phase 5 — Post-V1 Research (Active)
 **Repository branch:** main
 
 This file is the authoritative summary of the project's current state.
@@ -9,7 +9,7 @@ Update it at the start and end of every significant work session.
 
 ---
 
-## Current Phase: Phase 4 — V1 Integration & Evaluation
+## Current Phase: Phase 5 — Post-V1 Research
 
 ### What Phase 4 means
 
@@ -28,6 +28,9 @@ Phase 3 is 100% complete:
 - Acoustic Backend Interface & Mapper (P3-005/P3-006) tested and verified.
 - Evidence-based validation (P3-007) verified on 26 source-cited lexical items. 66 automated tests pass.
 
+### Phase 5 Underway
+P5-001 and P5-002 have established that the V1 acoustic baseline effectively produces Profile B (Scholarly Reading). Policy is now set to support evidence-backed acoustic mergers for Profile A in V2 without modifying the canonical representation.
+
 ### V1 Checkpoint Reached (2026-10-07)
 The V1 Evaluation (P4-006) has been completed. The system satisfies all engineering and epistemic constraints defined in `PROJECT_SPEC.md`. V1 release readiness is formally approved.
 
@@ -40,7 +43,12 @@ The V1 Evaluation (P4-006) has been completed. The system satisfies all engineer
 
 ## Completed Milestones
 
-### Phase 4 — V1 Integration & Evaluation (In Progress)
+### Phase 5 — Post-V1 Research (In Progress)
+
+- Completed P5-001: Post-V1 Evidence & Feasibility Audit. Identified the conflation between orthographic reading and historical speech.
+- Completed P5-002: Evidence-Based Acoustic Profile Policy (`docs/P5_002_ACOUSTIC_PROFILE_POLICY.md`). Formalized the separation of Canonical Representation from Acoustic Realization. Authorized Profile A to merge aspirates and sibilants based on historical evidence. Appended mismatch warnings to V1 docs.
+
+### Phase 4 — V1 Integration & Evaluation (Completed)
 
 - Completed P4-005: Real eSpeak Integration (`docs/P4_005_ESPEAK_INTEGRATION.md`). Verified executable pipeline, `id` fallback voice selection, and successful generation of representative Kawi matrix without information collapse. 80 automated tests pass.
 - Completed P4-006F: Fixed G2P greedy digraph conflict for unhyphenated `sanghyang`. Introduced explicit disambiguation in `src/g2p/engine.py` to prevent false mapping of the ASCII `ngh` sequence to a Sanskrit aspirate (`gʱ`), ensuring canonical tokenization while preserving legitimate Sanskrit `gh` parsing. 85 tests pass.

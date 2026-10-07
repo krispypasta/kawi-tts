@@ -1,7 +1,7 @@
 # TODO: Kawi-TTS
 
 **Last updated:** 2026-10-07
-**Current phase:** Phase 4 — V1 (Integration & Evaluation)
+**Current phase:** Phase 5 — Post-V1 Research
 
 This file tracks all prioritized tasks for the Kawi-TTS project.
 Tasks are grouped by phase. Within each phase, tasks are ordered by priority.
@@ -114,7 +114,13 @@ decision has been made.
 
 ---
 
-## Phase 4: V1 (ACTIVE)
+## Phase 5: Post-V1 Research & Architecture (ACTIVE)
+
+- [x] P5-001: Post-V1 Evidence & Feasibility Audit.
+- [x] P5-002: Evidence-Based Acoustic Profile Policy. Formally defined Profile A vs Profile B, and authorized evidence-backed acoustic mergers (aspirates, sibilants) for Profile A while keeping canonical representation distinct.
+- [ ] P5-003: Profile Architecture Design & Vowel Length Strategy. Design the software layer separating Profile A and Profile B, and determine etymological/metrical vowel length handling.
+
+## Phase 4: V1 (COMPLETED)
 
 V1 deliverable: romanized Old Javanese text in, audio + phoneme sequence + source
 citations out. Pronunciation must be traceable to cited research log entries.
