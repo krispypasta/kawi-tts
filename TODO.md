@@ -1,7 +1,7 @@
 # TODO: Kawi-TTS
 
 **Last updated:** 2026-10-07
-**Current phase:** Phase 6 — V2 Profile Implementation
+**Current phase:** Phase 7 — Acoustic Backend Research & Data Strategy
 
 This file tracks all prioritized tasks for the Kawi-TTS project.
 Tasks are grouped by phase. Within each phase, tasks are ordered by priority.
@@ -120,11 +120,20 @@ decision has been made.
 - [x] P5-002: Evidence-Based Acoustic Profile Policy. Formally defined Profile A vs Profile B, and authorized evidence-backed acoustic mergers (aspirates, sibilants) for Profile A while keeping canonical representation distinct.
 - [x] P5-003: Profile Architecture Design & Vowel Length Strategy. Design the software layer separating Profile A and Profile B, and determine etymological/metrical vowel length handling.
 
-## Phase 6: V2 Profile Implementation (ACTIVE)
+## Phase 6: V2 Profile Implementation (COMPLETED)
 
 - [x] P6-001: Implement `ProfileStrategy` abstraction. Extract V1 legacy acoustic mappings into `ProfileBStrategy`.
 - [x] P6-002: Implement `ProfileAStrategy` applying historical mergers with `ProfiledToken` citations.
 - [x] P6-003: Vowel Length Strategy (Research & Policy Document). Establish etymological constraints and fallback mechanism.
+- [x] P6-004: Lexical/Etymological Metadata Feasibility Audit. Concluded metadata classifier is blocked by data.
+- [ ] P6-005: [BLOCKED] Etymological Metadata Implementation. Requires provenance-tagged lexicon.
+
+## Phase 7: Acoustic Backend Research & Data Strategy (ACTIVE)
+
+- [x] P7-001: Data Acquisition & Corpus Design. Design the minimal custom corpus to train/evaluate a future Kawi-TTS neural backend.
+- [ ] P7-002: Pilot Corpus Recording. Record and annotate 50 sentences prioritizing dental/retroflex contrast.
+- [ ] P7-003: Pilot Neural Experiment. Train Piper/VITS on pilot data and evaluate /ṭ/ synthesis.
+- [ ] P7-004: Scale-up Decision. Go/No-go for 1-2 hour corpus recording based on P7-003.
 
 ## Phase 4: V1 (COMPLETED)
 

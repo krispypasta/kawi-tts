@@ -1,7 +1,7 @@
 # Project State: Kawi-TTS
 
 **Last updated:** 2026-10-07
-**Current phase:** Phase 6 — V2 Profile Implementation (Active)
+**Current phase:** Phase 7 — Acoustic Backend Research & Data Strategy (Active)
 **Repository branch:** main
 
 This file is the authoritative summary of the project's current state.
@@ -9,25 +9,28 @@ Update it at the start and end of every significant work session.
 
 ---
 
-## Current Phase: Phase 6 — V2 Profile Implementation
- 
- ### What Phase 5 accomplished
- 
- P5-001 through P5-003 established the conceptual layer architecture for V2. The V1 acoustic baseline effectively produces Profile B (Scholarly Reading). Policy is now set to support evidence-backed acoustic mergers for Profile A in V2 via a `ProfileStrategy` abstraction layer without modifying the canonical lossless representation.
+## Current Phase: Phase 7 — Acoustic Backend Research & Data Strategy
 
-### Phase 6 Entry Criteria
-Phase 5 is complete:
-- P5-001 and P5-002: Acoustic Profile Policy defined.
-- P5-003: Conceptual software architecture and Vowel Length Strategy defined.
+### What Phase 6 accomplished
+P6-001 through P6-004 implemented the Profile Strategy layer, isolating canonical representation from acoustic profile rules (Profile A vs B). P6-003R secured the vowel-length unresolved fallback. P6-004 evaluated the feasibility of an etymological metadata classifier, concluding it is currently BLOCKED by insufficient dataset provenance.
 
-### Phase 6 Active
-P6-001 is complete: Implemented `ProfileStrategy` abstraction.
-P6-002 is complete: Validated Profile A vs Profile B behavior, and applied P5-002A minimal correction to align aspirate mergers strictly with evidence.
-P6-003 is complete (Reconciled via P6-003R): Authored Vowel Length Strategy (`docs/P6_003_VOWEL_LENGTH_STRATEGY.md`). Profile A explicitly drops the `ː` duration marker as an engineering fallback to prevent the backend from silently synthesizing an unsupported historical long vowel, while tagging it `UNRESOLVED`.
+### Phase 7 Entry Criteria
+Phase 6 implementation is stable and all tests pass (94/94). The project requires a path toward a better acoustic backend (e.g., Piper/VITS) without sacrificing explicit Profile A control.
+
+### Phase 7 Active
+- Completed P7-001: Data Acquisition & Corpus Design (`docs/P7_001_CORPUS_DESIGN.md`). Designed a minimal, targeted corpus strategy specifically to teach a neural model the Profile A `/ṭ/` vs `/t/` retroflex contrast.
+- Pending P7-002: Pilot Corpus Recording.
 
 ---
 
 ## Completed Milestones
+
+### Phase 6 — V2 Profile Implementation (Completed)
+
+- Completed P6-001: Implemented `ProfileStrategy` abstraction layer.
+- Completed P6-002: Validated Profile A vs Profile B execution matrix. Applied P5-002A correction to strictly align aspirate rules with historical evidence.
+- Completed P6-003R: Established Vowel Length Strategy. Explicitly stripped duration markers in Profile A as an engineering fallback to preserve `UNRESOLVED` status acoustically.
+- Completed P6-004: Lexical Metadata Feasibility Audit. Concluded etymological classification is impossible with current Wordnet data, formally blocking P6-005.
 
 ### Phase 5 — Post-V1 Research (Completed)
  
@@ -96,7 +99,7 @@ Key corrections made during Phase 0:
 
 ## Blocked / Waiting
  
-Nothing is currently blocked. Phase 4 (V1 Integration & Evaluation) is underway (P4-001 through P4-005 completed, P4-006 next).
+P6-005: Etymological Metadata Implementation is explicitly BLOCKED until an etymologically tagged dictionary dataset is obtained or created.
 
 ---
 
@@ -117,7 +120,7 @@ See docs/AGENT_ROLES.md for full definitions.
 - Engineer/Builder: implements approved findings; writes to src/ and tests/
 - Manager/Reviewer: maintains project state; coordinates roles; updates PROJECT_STATE.md and TODO.md
 
-Current active mode: Manager/Reviewer (Phase 0 through P4-005 Milestone Checkpoint complete; P4-006 next)
+Current active mode: Manager/Reviewer (Phase 7 Active)
 
 ---
 
