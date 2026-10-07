@@ -13,7 +13,7 @@ class TestAcousticMapper(unittest.TestCase):
     """Test suite for internal G2P to backend acoustic phoneme mapping."""
 
     def setUp(self):
-        self.mapper = AcousticMapper(profile="A")
+        self.mapper = AcousticMapper(profile="B")
 
     def test_native_vowels_and_consonants_preserved(self):
         """Native vowels and consonants must be mapped with status PRESERVED."""

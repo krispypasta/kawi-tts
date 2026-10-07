@@ -26,7 +26,7 @@ class TestEndToEndV1Integration(unittest.TestCase):
     def test_end_to_end_contract_flow(self):
         """Verifies that all 5 stages execute in sequence and expose intermediate representations."""
         raw_text = "  Śrī\u00a0bhaṭāra  śānti! || \n"
-        res = synthesize(raw_text, profile="A", dry_run=True)
+        res = synthesize(raw_text, profile="B", dry_run=True)
 
         self.assertIsInstance(res, PipelineResult)
 
@@ -74,8 +74,8 @@ class TestEndToEndV1Integration(unittest.TestCase):
         ]
 
         for loan, collapsed in test_pairs:
-            res_loan = synthesize(loan, profile="A", dry_run=True)
-            res_col = synthesize(collapsed, profile="A", dry_run=True)
+            res_loan = synthesize(loan, profile="B", dry_run=True)
+            res_col = synthesize(collapsed, profile="B", dry_run=True)
 
             # Internal G2P representations MUST be strictly distinct
             self.assertNotEqual(
@@ -92,18 +92,18 @@ class TestEndToEndV1Integration(unittest.TestCase):
 
     def test_specific_phonemic_inequalities(self):
         """Explicitly assert non-equivalence of individual phoneme tokens."""
-        res_long = synthesize("ā ī ū", profile="A", dry_run=True)
-        res_short = synthesize("a i u", profile="A", dry_run=True)
+        res_long = synthesize("ā ī ū", profile="B", dry_run=True)
+        res_short = synthesize("a i u", profile="B", dry_run=True)
 
         self.assertNotEqual(res_long.g2p_phonemes[0], res_short.g2p_phonemes[0])  # aː ≠ a
         self.assertNotEqual(res_long.g2p_phonemes[1], res_short.g2p_phonemes[1])  # iː ≠ i
         self.assertNotEqual(res_long.g2p_phonemes[2], res_short.g2p_phonemes[2])  # uː ≠ u
 
-        res_sibilants = synthesize("s ś ṣ", profile="A", dry_run=True)
+        res_sibilants = synthesize("s ś ṣ", profile="B", dry_run=True)
         self.assertNotEqual(res_sibilants.g2p_phonemes[0], res_sibilants.g2p_phonemes[1])  # s ≠ ś
         self.assertNotEqual(res_sibilants.g2p_phonemes[1], res_sibilants.g2p_phonemes[2])  # ś ≠ ṣ
 
-        res_stops = synthesize("t ṭ d ḍ n ṇ", profile="A", dry_run=True)
+        res_stops = synthesize("t ṭ d ḍ n ṇ", profile="B", dry_run=True)
         self.assertNotEqual(res_stops.g2p_phonemes[0], res_stops.g2p_phonemes[1])  # t ≠ ṭ
         self.assertNotEqual(res_stops.g2p_phonemes[2], res_stops.g2p_phonemes[3])  # d ≠ ḍ
         self.assertNotEqual(res_stops.g2p_phonemes[4], res_stops.g2p_phonemes[5])  # n ≠ ṇ
@@ -129,7 +129,7 @@ class TestEndToEndV1Integration(unittest.TestCase):
         ]
 
         for text, expected_ipa, expected_provisional_count in corpus_samples:
-            res = synthesize(text, profile="A", dry_run=True)
+            res = synthesize(text, profile="B", dry_run=True)
             self.assertEqual(
                 res.acoustic_mapping.backend_phoneme_string,
                 expected_ipa,
@@ -144,19 +144,19 @@ class TestEndToEndV1Integration(unittest.TestCase):
     def test_ascii_ambiguity_sanghyang_contrast(self):
         """Verifies integration behavior for ASCII sanghyang vs sang-hyang vs saṅhyaṅ."""
         # 1. Un-hyphenated ASCII: token flagged UNRESOLVED
-        res_raw = synthesize("sanghyang", profile="A", dry_run=True)
+        res_raw = synthesize("sanghyang", profile="B", dry_run=True)
         self.assertEqual(res_raw.tokens[0].token_type, TokenType.UNRESOLVED)
         self.assertTrue(res_raw.tokens[0].has_ambiguity)
         self.assertIn("ngh", res_raw.tokens[0].ambiguity_reason or "")
 
         # 2. Hyphenated: splits boundary, no false aspirate
-        res_hyphen = synthesize("sang-hyang", profile="A", dry_run=True)
+        res_hyphen = synthesize("sang-hyang", profile="B", dry_run=True)
         self.assertEqual(res_hyphen.words, ["sang", "hyang"])
         self.assertEqual(res_hyphen.acoustic_mapping.backend_phoneme_string, "sang hjang")
         self.assertNotIn("gʱ", res_hyphen.acoustic_mapping.backend_phoneme_string)
 
         # 3. Canonical: saṅhyaṅ
-        res_canon = synthesize("saṅhyaṅ", profile="A", dry_run=True)
+        res_canon = synthesize("saṅhyaṅ", profile="B", dry_run=True)
         self.assertEqual(res_canon.words, ["saṅhyaṅ"])
         self.assertEqual(res_canon.acoustic_mapping.backend_phoneme_string, "saŋhjaŋ")
         self.assertFalse(res_canon.tokens[0].has_ambiguity)
@@ -164,7 +164,7 @@ class TestEndToEndV1Integration(unittest.TestCase):
     def test_error_handling_empty_and_whitespace(self):
         """Pipeline handles empty and whitespace-only inputs gracefully without crashing."""
         for empty_val in ["", "   ", "\t\t", "\n\r\n"]:
-            res = synthesize(empty_val, profile="A", dry_run=True)
+            res = synthesize(empty_val, profile="B", dry_run=True)
             self.assertEqual(res.words, [])
             self.assertEqual(res.g2p_phonemes, [])
             self.assertEqual(res.acoustic_mapping.backend_phoneme_string, "")
@@ -172,18 +172,18 @@ class TestEndToEndV1Integration(unittest.TestCase):
 
     def test_error_handling_punctuation_and_numbers(self):
         """Punctuation-only and number-only inputs produce structured non-lexical tokens."""
-        res_punct = synthesize(", . ! ? ||", profile="A", dry_run=True)
+        res_punct = synthesize(", . ! ? ||", profile="B", dry_run=True)
         self.assertEqual(res_punct.words, [])
         self.assertEqual(res_punct.g2p_phonemes, [])
         self.assertEqual(res_punct.acoustic_mapping.backend_phoneme_string, "")
 
-        res_num = synthesize("183.2", profile="A", dry_run=True)
+        res_num = synthesize("183.2", profile="B", dry_run=True)
         self.assertEqual(res_num.words, [])
         self.assertEqual(res_num.g2p_phonemes, [])
 
     def test_unsupported_characters_reported_explicitly(self):
         """Unsupported characters within words are reported in unsupported_tokens, not silenced."""
-        res = synthesize("kawi-x-123", profile="A", dry_run=True)
+        res = synthesize("kawi-x-123", profile="B", dry_run=True)
         unsupported = res.acoustic_mapping.unsupported_tokens
         self.assertEqual(len(unsupported), 1)
         self.assertEqual(unsupported[0].internal_token, "x")
@@ -194,7 +194,7 @@ class TestEndToEndV1Integration(unittest.TestCase):
     def test_espeak_unavailable_error_on_real_execution(self, mock_which):
         """Non-dry-run synthesis raises ESpeakNotFoundError with actionable message."""
         with self.assertRaises(ESpeakNotFoundError) as ctx:
-            synthesize("om", profile="A", output_path="dummy.wav", dry_run=False)
+            synthesize("om", profile="B", output_path="dummy.wav", dry_run=False)
         self.assertIn("eSpeak-ng executable not found in system PATH", str(ctx.exception))
 
     def test_dummy_wav_generation_workflow(self):
@@ -203,7 +203,7 @@ class TestEndToEndV1Integration(unittest.TestCase):
             out_file = os.path.join(tmpdir, "integration_out.wav")
             res = synthesize(
                 "om awighnam astu",
-                profile="A",
+                profile="B",
                 output_path=out_file,
                 dry_run=True,
                 create_dummy_wav=True,

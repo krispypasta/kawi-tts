@@ -1,7 +1,7 @@
 # Project State: Kawi-TTS
 
 **Last updated:** 2026-10-07
-**Current phase:** Phase 6 — V2 Profile Implementation (Pending)
+**Current phase:** Phase 6 — V2 Profile Implementation (Active)
 **Repository branch:** main
 
 This file is the authoritative summary of the project's current state.
@@ -20,8 +20,8 @@ Phase 5 is complete:
 - P5-001 and P5-002: Acoustic Profile Policy defined.
 - P5-003: Conceptual software architecture and Vowel Length Strategy defined.
 
-### Phase 6 Pending
-Implement the Strategy layer (`ProfileBStrategy` for V1 backwards compatibility, `ProfileAStrategy` for historical mergers) and integrate it into the `AcousticMapper`.
+### Phase 6 Active
+P6-001 is complete: Implemented `ProfileStrategy` abstraction, strictly separating canonical representation from acoustic mapping. Extracted V1 legacy mapping into `ProfileBStrategy` to anchor backwards compatibility. Implemented historical mergers for `ProfileAStrategy` according to P5-002 policy. `AcousticMapper` refactored to delegate linguistic interpretation to strategies. All 94 tests passing.
 
 ---
 

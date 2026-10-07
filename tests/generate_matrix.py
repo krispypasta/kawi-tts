@@ -42,7 +42,7 @@ for i, word in enumerate(test_matrix):
     out_path = artifacts_dir / f"test_{i}.wav"
     res = synthesize(
         word,
-        profile="A",
+        profile="B",
         output_path=str(out_path),
         voice=voice,
         dry_run=False,

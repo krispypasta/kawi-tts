@@ -59,7 +59,7 @@ class TestSynthesisPipeline(unittest.TestCase):
     def test_end_to_end_synthesis_pipeline_structure(self):
         """Full pipeline must execute all 5 stages in order and preserve all data."""
         text = "om awighnam astu"
-        res = synthesize(text, profile="A", dry_run=True)
+        res = synthesize(text, profile="B", dry_run=True)
 
         self.assertIsInstance(res, PipelineResult)
         self.assertEqual(res.input_text, text)
@@ -88,7 +88,7 @@ class TestSynthesisPipeline(unittest.TestCase):
     def test_explicit_boundary_preservation(self):
         """Pipeline must preserve explicit boundaries (sang-hyang) without false aspirates."""
         text = "sang-hyang"
-        res = synthesize(text, dry_run=True)
+        res = synthesize(text, profile="B", dry_run=True)
 
         self.assertEqual(res.words, ["sang", "hyang"])
         self.assertEqual(res.g2p_phonemes[0], ["s", "a", "n", "g"])
@@ -100,7 +100,7 @@ class TestSynthesisPipeline(unittest.TestCase):
     def test_sanskrit_loans_with_aspirates_and_long_vowels(self):
         """Pipeline must handle complex Sanskrit loans (bhaṭāra, śānti) cleanly."""
         text = "bhaṭāra śānti"
-        res = synthesize(text, dry_run=True)
+        res = synthesize(text, profile="B", dry_run=True)
 
         self.assertEqual(res.words, ["bhaṭāra", "śānti"])
         # G2P output
