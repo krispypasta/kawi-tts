@@ -1,7 +1,7 @@
 # TODO: Kawi-TTS
 
 **Last updated:** 2026-10-07
-**Current phase:** Phase 8 — Post-Acceptance / Release Prep
+**Current phase:** CHECKPOINT — Deterministic Core Frozen
 
 This file tracks all prioritized tasks for the Kawi-TTS project.
 Tasks are grouped by phase. Within each phase, tasks are ordered by priority.
@@ -127,6 +127,10 @@ decision has been made.
 - [x] P6-003: Vowel Length Strategy (Research & Policy Document). Establish etymological constraints and fallback mechanism.
 - [x] P6-004: Lexical/Etymological Metadata Feasibility Audit. Concluded metadata classifier is blocked by data.
 - [ ] P6-005: [BLOCKED] Etymological Metadata Implementation. Requires provenance-tagged lexicon.
+
+## CHECKPOINT — Deterministic Core Frozen
+
+The deterministic core has been formally accepted and frozen. No further engineering milestones or phases are currently authorized or scheduled.
 
 ## Phase 7: Zero-Budget Reassessment & Engine Hardening (COMPLETED)
 

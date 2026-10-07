@@ -1,7 +1,7 @@
 # Project State: Kawi-TTS
 
 **Last updated:** 2026-10-07
-**Current phase:** Phase 7 — Zero-Budget Reassessment & Engine Hardening (Active)
+**Current phase:** CHECKPOINT — Deterministic Core Frozen
 **Repository branch:** main
 
 This file is the authoritative summary of the project's current state.
@@ -9,7 +9,7 @@ Update it at the start and end of every significant work session.
 
 ---
 
-## Current Phase: Phase 7 — Zero-Budget Reassessment & Engine Hardening
+## Current Phase: CHECKPOINT — Deterministic Core Frozen
 
 ### What Phase 6 accomplished
 P6-001 through P6-004 implemented the Profile Strategy layer, isolating canonical representation from acoustic profile rules (Profile A vs B). P6-003R secured the vowel-length unresolved fallback. P6-004 evaluated the feasibility of an etymological metadata classifier, concluding it is currently BLOCKED by insufficient dataset provenance.
@@ -17,12 +17,16 @@ P6-001 through P6-004 implemented the Profile Strategy layer, isolating canonica
 ### Phase 7 Entry Criteria
 Phase 6 implementation is stable and all tests pass (94/94). The project requires a path toward a better acoustic backend (e.g., Piper/VITS) without sacrificing explicit Profile A control.
 
-### Phase 7 Active (Scope Reset)
+### Core Frozen Status
 - **FRANKENSTEIN STOP APPLIED**: The project operates on a strictly $0 budget. Neural TTS and paid expert corpora are now DEFERRED / OPTIONAL. 
 - Completed P7-001 & P7-002A: Corpus design and existing audio audits proved a paid/commissioned expert speaker is required. 
-- Completed P7-003: Zero-Budget Scope Reassessment (`docs/P7_003_ZERO_BUDGET_SCOPE_REASSESSMENT.md`). Reoriented project to focus on the core "Kawi Pronunciation & Reconstruction Engine" leveraging local, zero-cost eSpeak synthesis.
+Phase 7 is officially closed. The deterministic core is ACCEPTED and currently FROZEN. No further engineering milestones are scheduled.
+
+### Phase 7 — Zero-Budget Reassessment & Engine Hardening (Completed)
+- Completed P7-003: Zero-Budget Scope Reassessment.
 - Completed P7-B: Linguistic and pronunciation-engine hardening.
-- Pending P7-C: Evaluation & Diagnostics Infrastructure (Active).
+- Completed P7-C: Evaluation & Diagnostics Infrastructure.
+- Completed P7-D: Core Engine Acceptance Evaluation (`docs/P7_D_CORE_ENGINE_ACCEPTANCE_EVALUATION.md`).
 
 ---
 
@@ -124,7 +128,7 @@ See docs/AGENT_ROLES.md for full definitions.
 - Engineer/Builder: implements approved findings; writes to src/ and tests/
 - Manager/Reviewer: maintains project state; coordinates roles; updates PROJECT_STATE.md and TODO.md
 
-Current active mode: Manager/Reviewer (Phase 7 Active)
+Current active mode: Manager/Reviewer (Core Frozen)
 
 ---
 
