@@ -98,7 +98,7 @@ Every provisional mapping is explicitly documented and tracked at runtime:
 | `dʱ` | `dʱ` | `PROVISIONAL_ACOUSTIC_MAPPING` | Voiced dental/alveolar aspirate for eSpeak-ng; historical realization in spoken Kawi remains uncertain (RES-004). |
 | `gʱ` | `gʱ` | `PROVISIONAL_ACOUSTIC_MAPPING` | Voiced velar aspirate for eSpeak-ng; historical realization in spoken Kawi remains uncertain (RES-004). |
 | `ɟʱ` | `ɟʱ` | `PROVISIONAL_ACOUSTIC_MAPPING` | Voiced palatal aspirate for eSpeak-ng; historical realization in spoken Kawi remains uncertain (RES-004). |
-| `ɖʱ` | `ɖʱ` | `PROVISIONAL_ACOUSTIC_MAPPING` | Voiced retroflex aspirate for eSpeak-ng; historical realization in spoken Kawi remains uncertain (RES-004). |
+| `ḍʱ` | `ḍʱ` | `PROVISIONAL_ACOUSTIC_MAPPING` | Voiced retroflex aspirate for eSpeak-ng; historical realization in spoken Kawi remains uncertain (RES-004). |
 | `r̩` | `r̩` | `PROVISIONAL_ACOUSTIC_MAPPING` | Syllabic rhotic liquid for eSpeak-ng; historical phonetic realization remains uncertain (P3-003A). |
 | `l̩` | `l̩` | `PROVISIONAL_ACOUSTIC_MAPPING` | Syllabic lateral liquid for eSpeak-ng; historical phonetic realization remains uncertain (P3-003A). |
 | `r̩ː` | `r̩ː` | `PROVISIONAL_ACOUSTIC_MAPPING` | Long syllabic rhotic liquid for eSpeak-ng. |

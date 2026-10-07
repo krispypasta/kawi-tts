@@ -36,11 +36,16 @@ Phase 3 is 100% complete:
 
 ## Completed Milestones
 
+### Phase 4 — V1 Integration & Evaluation (In Progress)
+
+- Completed P4-002: Executed high-throughput G2P lexical evaluation against all 4,192 unique lexical forms of the Old Javanese Wordnet (`docs/P4_002_OJW_EVALUATION.md`, `data/processed/ojw_coverage_report.json`). Achieved 99.90% full representation coverage with zero runtime crashes or silent information collapse. 79 automated tests pass.
+- Completed P4-001: Executed formal end-to-end V1 integration test suite across all 5 decoupled stages (`docs/P4_001_INTEGRATION.md`). Verified input contracts, information preservation invariants, error handling for empty/punctuation/unsupported inputs, and dry-run execution. 76 unit and integration tests pass.
+
 ### Phase 3 — Prototype Pipeline (completed 2026-10-07)
 
 - Completed P3-007: Conducted comprehensive end-to-end evidence-based validation on 26 real Old Javanese source citations across 13 linguistic categories (`docs/P3_007_VALIDATION.md`). Fixed capitalization bug in G2P word parser. 66 unit tests pass.
 - Completed P3-006: Implemented Acoustic Mapper (`src/acoustic/mapper.py`), eSpeak-ng backend interface (`src/acoustic/espeak_backend.py`), and end-to-end synthesis pipeline (`src/acoustic/pipeline.py`, re-exported in `src/tts`). Explicitly tracks and stamps all provisional mappings. 52 unit tests pass.
-- Completed P3-005: Conducted Acoustic Backend Survey & Decision Gate (`docs/P3_005_ACOUSTIC_BACKEND_SURVEY.md`). Recommended a two-stage hybrid prototype using eSpeak-ng (for lossless acoustic verification) followed by an explicit Acoustic Mapper to a Modern Javanese neural model. Explicitly deferred lossy phonetic mappings.
+- Completed P3-005: Conducted Acoustic Backend Survey & Decision Gate (`docs/P3_005_ACOUSTIC_BACKEND_SURVEY.md`). Recommended a two-stage hybrid prototype using eSpeak-ng (for lossless structural/pipeline verification) followed by an explicit Acoustic Mapper to a Modern Javanese neural model. Explicitly deferred lossy phonetic mappings.
 - Completed P3-004: Implemented deterministic, 100% lossless text-structure / tokenization layer in `src/normalization/tokenizer.py`. Classifies words, punctuation, explicit boundaries (hyphens), elision (apostrophes), line breaks, numbers, and flags unresolved structural ambiguities (such as un-hyphenated ASCII 'sanghyang'). 38 unit tests pass.
 - Completed P3-003C: Conducted G2P Validation & Edge-Case Audit. Confirmed information preservation. Documented edge cases (un-normalized ASCII `sanghyang` false aspirates) requiring boundaries in P3-004.
 - Completed P3-003B: Implemented rule-based lossless G2P engine in `src/g2p/engine.py` mapping normalized orthography to an internal phonological representation preserving all distinctions.
@@ -88,7 +93,7 @@ Key corrections made during Phase 0:
 
 ## Blocked / Waiting
  
-Nothing is currently blocked. Phase 4 (V1 Integration & Evaluation) is ready to begin.
+Nothing is currently blocked. Phase 4 (V1 Integration & Evaluation) is underway (P4-001 and P4-002 completed, P4-003 next).
 
 ---
 
@@ -116,7 +121,7 @@ See docs/AGENT_ROLES.md for full definitions.
 - Engineer/Builder: implements approved findings; writes to src/ and tests/
 - Manager/Reviewer: maintains project state; coordinates roles; updates PROJECT_STATE.md and TODO.md
 
-Current active mode: Manager/Reviewer (Phase 3 Milestone Checkpoint complete; ready for Phase 4)
+Current active mode: Manager/Reviewer (Phase 0 through P4-002 Milestone Checkpoint complete; P4-003 next)
 
 ---
 
@@ -139,14 +144,18 @@ Current active mode: Manager/Reviewer (Phase 3 Milestone Checkpoint complete; re
     |   +-- P3_005_ACOUSTIC_BACKEND_SURVEY.md Acoustic backend survey
     |   +-- P3_006_ACOUSTIC_MAPPER.md Acoustic mapper & eSpeak backend spec
     |   +-- P3_007_VALIDATION.md Evidence-based validation report
+    |   +-- P4_001_INTEGRATION.md End-to-end integration test report
+    |   +-- P4_002_OJW_EVALUATION.md OJW lexical coverage evaluation report
+    |   +-- MILESTONE_PHASE0_P4_002.md Comprehensive milestone snapshot report
     |
     +-- src/
     |   +-- normalization/      Unicode normalization & text tokenization
     |   +-- g2p/                Lossless grapheme-to-phoneme engine
     |   +-- acoustic/           Acoustic mapper & eSpeak-ng backend
+    |   +-- evaluation/         Evaluation harnesses & OJW benchmark
     |   +-- tts/                High-level synthesis API
     |
     +-- data/                   Data directory
-    +-- tests/                  Test suite (66 tests passing)
+    +-- tests/                  Test suite (79 tests passing)
     +-- experiments/            Experiments directory
     +-- notebooks/              Research notebooks (empty)

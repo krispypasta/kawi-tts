@@ -58,6 +58,7 @@ _ENG_TRANSLATION = str.maketrans({"ŋ": "ṅ", "Ŋ": "Ṅ"})
 # Pepet with caron (ě/Ě) commonly typed in error due to keyboard layout limitations,
 # unified to canonical Zoetmulder breve (ĕ/Ĕ).
 _PEPET_CARON_TRANSLATION = str.maketrans({"ě": "ĕ", "Ě": "Ĕ"})
+_ACRI_DAMAIS_TRANSLATION = str.maketrans({"v": "w"})
 
 
 def normalize(
@@ -67,6 +68,7 @@ def normalize(
     canonicalize_eng: bool = True,
     canonicalize_pepet_caron: bool = True,
     canonicalize_apostrophes: bool = True,
+    canonicalize_acri_damais: bool = True,
 ) -> NormalizationResult:
     """Normalize Old Javanese romanized text to canonical Unicode NFC and clean typography.
 
@@ -86,6 +88,7 @@ def normalize(
             (breve) to unify keyboard input variants of the pepet grapheme.
         canonicalize_apostrophes: If True, normalizes curly or modifier apostrophes
             (’, ‘, ʼ) to standard ASCII apostrophe (').
+        canonicalize_acri_damais: If True, normalizes Acri/Damais variant 'v' to 'w'.
 
     Returns:
         NormalizationResult containing original text, normalized text, and recorded steps.
@@ -105,6 +108,12 @@ def normalize(
     if cleaned != current:
         steps.append("removed_invisible_characters")
         current = cleaned
+
+    if canonicalize_acri_damais:
+        acri_cleaned = current.translate(_ACRI_DAMAIS_TRANSLATION)
+        if acri_cleaned != current:
+            steps.append("canonicalized_acri_damais_v_to_w")
+            current = acri_cleaned
 
     # Step 2: Canonicalize typographical apostrophes used in elision/sandhi
     if canonicalize_apostrophes:

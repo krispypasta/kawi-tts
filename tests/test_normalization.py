@@ -10,7 +10,21 @@ from src.normalization import (
 
 
 class TestNormalization(unittest.TestCase):
+
     """Test suite for Unicode and orthographic normalization."""
+
+    def test_canonicalize_acri_damais_v_to_w(self):
+        """Verify Acri/Damais variant 'v' normalizes to 'w', but Roman numeral 'V' is unaffected."""
+        self.assertEqual(normalize("viṣṇu").normalized_text, "wiṣṇu")
+        # Ensure uppercase V is NOT changed
+        self.assertEqual(normalize("Bab V").normalized_text, "Bab V")
+        self.assertEqual(normalize("Vīra").normalized_text, "Vīra")
+
+        # Verify it can be disabled
+        self.assertEqual(
+            normalize("viṣṇu", canonicalize_acri_damais=False).normalized_text,
+            "viṣṇu"
+        )
 
     def test_nfc_nfd_composition(self):
         """Decomposed characters (NFD) must compose to canonical NFC equivalents."""

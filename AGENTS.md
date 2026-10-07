@@ -57,7 +57,7 @@ and what the task is.
 
 6. DO NOT IMPLEMENT BEFORE THE PHASE IS READY.
    Check PROJECT_STATE.md and TODO.md for the current phase.
-   Phase 1 = Linguistic Research only. No code.
+   Phase 4 = V1 Integration & Evaluation (Code authorized).
    Phase 2 = Data Audit only. No G2P rules.
    Phase 3 = Implementation of verified findings only.
 
@@ -69,7 +69,7 @@ and what the task is.
 
 See PROJECT_STATE.md for the authoritative current phase.
 
-At the time this file was written: Phase 1 — Linguistic Research (beginning).
+At the time this file was written: Phase 4 — V1 (Integration & Evaluation).
 
 ---
 

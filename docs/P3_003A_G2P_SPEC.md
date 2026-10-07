@@ -30,11 +30,11 @@ By keeping the internal phonemes distinct, we preserve the ability to swap backe
 | `e` | Both | `/e/` | `[e]`, `[ɛ]` | ESTABLISHED | RES-001 | YES | No |
 | `o` | Both | `/o/` | `[o]`, `[ɔ]` | ESTABLISHED | RES-001 | YES | No |
 | `ĕ` | Native | `/ə/` | `[ə]` | ESTABLISHED | RES-003 | YES | No |
-| `ā`, `ī`, `ū` | Loan | `/aː/`, `/iː/`, `/uː/` | UNCERTAIN | UNCERTAIN | RES-002 | YES (preserve distinct) | **YES**: Does the final TTS backend discard duration, or synthesize it? |
-| `ö` | Orthographic | `/əː/` | UNCERTAIN | UNCERTAIN | RES-002, RES-007 | YES (preserve distinct) | **YES**: Phonetic reality unknown; map to `/ə/` at backend? |
-| `ṛ` | Loan | `/r̩/` | UNCERTAIN | UNCERTAIN | RES-020 | YES (preserve distinct) | **YES**: Should this map to `/rə/` for synthesis? |
-| `ḷ` | Loan | `/l̩/` | UNCERTAIN | UNCERTAIN | RES-020 | YES (preserve distinct) | **YES**: Should this map to `/lə/` for synthesis? |
-| `ṝ`, `ḹ` | Loan | `/r̩ː/`, `/l̩ː/` | UNCERTAIN | UNCERTAIN | RES-020 | YES (preserve distinct) | **YES**: Synthesize as `/rəː/` or `/rə/`? |
+| `ā`, `ī`, `ū` | Loan | `/aː/`, `/iː/`, `/uː/` | UNCERTAIN | UNCERTAIN | RES-002 | YES (preserve distinct) | Backend mapping decision deferred. |
+| `ö` | Orthographic | `/əː/` | UNCERTAIN | UNCERTAIN | RES-002, RES-007 | YES (preserve distinct) | Backend mapping decision deferred. |
+| `ṛ` | Loan | `/r̩/` | UNCERTAIN | UNCERTAIN | RES-020 | YES (preserve distinct) | Backend mapping decision deferred. |
+| `ḷ` | Loan | `/l̩/` | UNCERTAIN | UNCERTAIN | RES-020 | YES (preserve distinct) | Backend mapping decision deferred. |
+| `ṝ`, `ḹ` | Loan | `/r̩ː/`, `/l̩ː/` | UNCERTAIN | UNCERTAIN | RES-020 | YES (preserve distinct) | Backend mapping decision deferred. |
 
 ### Core Consonants (Native & Shared)
 
@@ -45,7 +45,7 @@ By keeping the internal phonemes distinct, we preserve the ability to swap backe
 | `c`, `j` | Both | `/c/`, `/j/` | `[c]`, `[ɟ]` or `[tʃ]`, `[dʒ]` | ESTABLISHED | RES-001 | YES | No |
 | `k`, `g` | Both | `/k/`, `/g/` | `[k]`, `[g]` | ESTABLISHED | RES-001 | YES | No |
 | `m`, `n` | Both | `/m/`, `/n/` | `[m]`, `[n]` | ESTABLISHED | RES-001 | YES | No |
-| `ṅ` / `ng` | Both | `/ŋ/` | `[ŋ]` | ESTABLISHED | RES-007 | YES | No |
+| `ṅ` / `ŋ` | Both | `/ŋ/` | `[ŋ]` | ESTABLISHED | RES-007 | YES | No |
 | `ñ` | Both | `/ɲ/` | `[ɲ]` | ESTABLISHED | RES-001 | YES | No |
 | `s` | Both | `/s/` | `[s]` | ESTABLISHED | RES-006 | YES | No |
 | `h` | Both | `/h/` | `[h]` | ESTABLISHED | RES-001 | YES | No |
@@ -62,9 +62,9 @@ By keeping the internal phonemes distinct, we preserve the ability to swap backe
 
 | Orthographic Input | Native/Loan | Internal Phoneme | Candidate Phonetic Realization | Evidence Status | Supporting RES | Safe to Implement? | Human Decision Required? |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| `ṇ` | Loan | `/ṇ/` | UNCERTAIN (`[ɳ]`, `[n]`) | UNCERTAIN | RES-020 | YES (preserve distinct) | **YES**: Merge to `/n/` at backend? |
-| `ś`, `ṣ` | Loan | `/ś/`, `/ṣ/` | UNCERTAIN (`[ʃ]`, `[ʂ]`) | UNCERTAIN | RES-006 | YES (preserve distinct) | **YES**: Merge to `/s/` at backend? |
-| `bh`, `dh`, `th`, `ph`, `kh`, `gh`, `ch`, `jh`, `ṭh`, `ḍh` | Loan | `/bʱ/`, `/dʱ/`, etc. | UNCERTAIN (`[bʱ]` vs `[b]`) | UNCERTAIN | RES-004 | YES (preserve distinct) | **YES**: Merge to unaspirated at backend? |
+| `ṇ` | Loan | `/ṇ/` | UNCERTAIN (`[ɳ]`, `[n]`) | UNCERTAIN | RES-020 | YES (preserve distinct) | Backend mapping decision deferred. |
+| `ś`, `ṣ` | Loan | `/ś/`, `/ṣ/` | UNCERTAIN (`[ʃ]`, `[ʂ]`) | UNCERTAIN | RES-006 | YES (preserve distinct) | Backend mapping decision deferred. |
+| `bh`, `dh`, `th`, `ph`, `kh`, `gh`, `ch`, `jh`, `ṭh`, `ḍh` | Loan | `/bʱ/`, `/dʱ/`, etc. | UNCERTAIN (`[bʱ]` vs `[b]`) | UNCERTAIN | RES-004 | YES (preserve distinct) | Backend mapping decision deferred. |
 
 ---
 
@@ -87,7 +87,7 @@ This guarantees information preservation. A separate **Acoustic Mapper** (part o
 Before writing the G2P logic, we must write tests verifying:
 1. Native words parse correctly: `sĕkar` → `["s", "ə", "k", "a", "r"]`.
 2. Native retroflexes parse correctly: `ḍaṅ` → `["ḍ", "a", "ŋ"]`.
-3. Digraphs parse as single phonemes: `ng` → `["ŋ"]` (if ASCII conventions are permitted) or `ṅ` → `["ŋ"]`.
+3. Digraphs parse as single phonemes (if explicitly permitted, e.g., `ṅ` → `["ŋ"]`). Note: ASCII `ng` must parse as `["n", "g"]` per information preservation policy.
 4. Sanskrit aspirates parse as distinct single phonemes: `dharmma` → `["dʱ", "a", "r", "m", "m", "a"]`. (They must NOT parse as `["d", "h", ...]`).
 5. Long vowels parse as distinct phonemes: `ā` → `["aː"]`.
 6. Sibilants parse distinctly: `śānti` → `["ś", "aː", "n", "t", "i"]`.

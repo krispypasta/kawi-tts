@@ -226,7 +226,7 @@ any implementation decision is made that depends on it.
 
     Entry ID: RES-010
     Date: 2026-10-07
-    Research question(s) addressed: RQ-022, RQ-023, RQ-024
+    Research question(s) addressed: RQ-014 (Auxiliary Research Finding: Balinese Phonological Mergers)
     Finding: In traditional Balinese *mabasan* performance, Sanskrit aspirates (bh, dh) and palatal/retroflex sibilants (ś, ṣ) are typically merged with unaspirated, dental/alveolar counterparts. Crucially, Balinese merges written Old Javanese retroflex stops (ṭ, ḍ) with dentals because Balinese phonology itself lacks the Javanese dental/alveolar contrast. This merger reflects modern Balinese phonological constraints, not proof that historical Old Javanese merged them.
     Evidence status: ESTABLISHED
     Evidence type: TRADITIONAL / PHONETIC
@@ -238,7 +238,7 @@ any implementation decision is made that depends on it.
 
     Entry ID: RES-011
     Date: 2026-10-07
-    Research question(s) addressed: RQ-025
+    Research question(s) addressed: RQ-014 (Auxiliary Research Finding: Balinese Metrical Realization)
     Finding: There is a strict cascade in *kakawin* performance: orthography defines metrical classification (guru/laghu), which dictates musical realization (duration/melisma). This cascade bypasses historical Javanese spoken phonology entirely and is filtered through modern Balinese phonology.
     Evidence status: ESTABLISHED
     Evidence type: MUSICAL / ORTHOGRAPHIC
@@ -250,7 +250,7 @@ any implementation decision is made that depends on it.
 
     Entry ID: RES-012
     Date: 2026-10-07
-    Research question(s) addressed: RQ-026, RQ-027
+    Research question(s) addressed: RQ-014, RQ-018 (Auxiliary Research Finding: Acoustic Utility of Balinese Recordings)
     Finding: Modern Balinese *kakawin* recordings exist and contain acoustic data for pitch, F0, and syllable duration (e.g., Herbst's Bali 1928 restorations). However, this data cannot be used to reconstruct the historical *spoken* pronunciation of Old Javanese. It serves only as evidence for prosody, rhythm, and the chant structure of the performance tradition.
     Evidence status: ESTABLISHED
     Evidence type: TRADITIONAL / MUSICAL
@@ -284,7 +284,7 @@ any implementation decision is made that depends on it.
       - Survey of public speech datasets (OpenSLR, Mozilla Common Voice, Hugging Face).
     Conflicting evidence: None.
     Open questions remaining: None.
-    TTS implication: It is impossible to train an end-to-end Old Javanese TTS model from scratch for Profile A. The system must use a rule-based G2P pipeline paired with either synthetic rules or cross-lingual acoustic transfer.
+    TTS implication: It is currently infeasible to train an end-to-end Old Javanese TTS model from scratch given available corpora for Profile A. The system must use a rule-based G2P pipeline paired with either synthetic rules or cross-lingual acoustic transfer.
 
     Entry ID: RES-015
     Date: 2026-10-07
@@ -351,11 +351,12 @@ Must be addressed by: RQ-004.
 
 ## Section 4: Dataset Audit Log
 
-No datasets have been audited yet. Phase 2 (Data Audit) follows Phase 1 research.
-
-| Dataset / Source | Type | License | Duration/Size | Quality | Notes |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| (Phase 2 task) | | | | | |
+The Phase 2 Data Audit has been completed.
+Audited resources include:
+- OJW (SEACrowd / Old Javanese Wordnet)
+- GRETIL (Göttingen Register of Electronic Texts in Indian Languages)
+- OpenSLR 41 (Javanese)
+- MMS-TTS-JAV
 
 ---
 
@@ -401,7 +402,7 @@ read and cited in findings are marked [READ] with the entry date.
 
 ---
 
-## Section 6: P1-013 — Pronunciation Inventory & Uncertainty Matrix
+## Section 6: Pronunciation Inventory & Uncertainty Matrix (Phase 1 Research Synthesis)
 
 This matrix synthesizes Phase 1 research findings into a structured map of the relationship between orthography, phonology, and phonetics in Old Javanese.
 
@@ -465,29 +466,11 @@ This matrix synthesizes Phase 1 research findings into a structured map of the r
 
 ---
 
-### Unresolved Project-Level Decisions (Requiring Human Input)
+### Resolved Project-Level Decisions (Target Profile)
 
-The following distinctions cannot be resolved purely by linguistic evidence, because the evidence points to a divergence between *Sanskrit-influenced Orthography* and *Native Spoken Javanese Phonology*. 
-
-Before the Engineer can write G2P rules, Abraham must decide which of the following three **Pronunciation Targets** the V1 TTS system should emulate:
-
-**Target A: Historical Spoken Old Javanese (Conversational / Native-centric)**
-- Merges orthographic long vowels (ā, ī, ū, ö) to short phonemes.
-- Merges Sanskrit aspirates (bh, dh, etc.) to unaspirated equivalents (b, d).
-- Merges Sanskrit sibilants (ś, ṣ) to /s/.
-- Merges Sanskrit retroflex nasal (ṇ) to /n/.
-- *Consequence*: Highly authentic to Austronesian linguistic reality, but destroys the acoustic realization of Sanskrit loans and poetic meter.
-
-**Target B: Scholarly / Artificial Reading (Orthography-centric)**
-- Forces distinct pronunciation of long vowels, aspirates, and sibilants based purely on their presence in the text.
-- *Consequence*: Synthesizes a "perfect" Sanskritized Kawi that perhaps no human actually spoke colloquially, but which maximally preserves textual information in the audio.
-
-**Target C: Traditional Balinese Performance (Chanted / Mabasan)**
-- Merges aspirates, sibilants, and retroflexes due to Balinese phonological constraints.
-- Applies extreme duration to *guru* syllables (long vowels AND short vowels before clusters).
-- *Consequence*: Authentic to modern traditional practice, but produces a singing/chanting rhythm rather than spoken TTS, and introduces modern Balinese phonological mergers.
-
-**Abraham:** Please review these targets and advise which one V1 should pursue. This is a project-design choice, not a linguistic fact to be discovered.
+*Historical Note*: DEC-006 explicitly selected **Profile A (Reconstructed Historical Spoken Old Javanese)** as the V1 target.
+Profiles B (Scholarly Reading) and C (Traditional Balinese Performance) remain future candidates.
+The five downstream acoustic mapper reduction policies (for length, aspirates, sibilants, retroflex nasal, vocalic liquids) remain DEFERRED.
 
 ---
 
@@ -515,7 +498,7 @@ An audit of `src/g2p/engine.py` was conducted against realistic Old Javanese for
 - **Acri/Damais `ə̄`:** The `ə` parses correctly, but the combining macron `\u0304` parses as a standalone unknown token `["\u0304"]`. 
 
 ### D. INFORMATION-LOSS RISKS
-- None within the G2P engine itself. It is perfectly lossless for canonical Zoetmulder input. The only risk is users feeding it un-normalized ASCII.
+- None within the G2P engine itself. It is theoretically lossless for canonical Zoetmulder input. The only risk is users feeding it un-normalized ASCII.
 
 ### E. REQUIRED FIXES
 - No changes required to `src/g2p/engine.py`. The greedy parser operates exactly as specified. The fix for `sanghyang` and boundary issues belongs in the P3-004 Text-Structure layer (e.g., supporting hyphens to block digraph formation: `sang-hyang`).

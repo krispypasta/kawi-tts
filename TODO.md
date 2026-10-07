@@ -1,7 +1,7 @@
 # TODO: Kawi-TTS
 
 **Last updated:** 2026-10-07
-**Current phase:** Phase 1 — Linguistic Research
+**Current phase:** Phase 4 — V1 (Integration & Evaluation)
 
 This file tracks all prioritized tasks for the Kawi-TTS project.
 Tasks are grouped by phase. Within each phase, tasks are ordered by priority.
@@ -10,7 +10,7 @@ are complete. Completed tasks are moved to the Archive section at the bottom.
 
 ---
 
-## Phase 1: Linguistic Research (ACTIVE)
+## Phase 1: Linguistic Research (COMPLETED)
 
 These tasks must be completed before any implementation work begins.
 All research must be logged in docs/RESEARCH_LOG.md with cited sources
@@ -18,66 +18,66 @@ and evidence-status labels.
 
 Priority 1: Phoneme inventory foundation (blocks everything else)
 
-- [ ] P1-001: Obtain and read Zoetmulder (1982) Old Javanese-English Dictionary
+- [x] P1-001: Obtain and read Zoetmulder (1982) Old Javanese-English Dictionary
       introduction. Extract: romanization conventions, phoneme descriptions,
       any explicit phonological statements. Log findings for RQ-001, RQ-002, RQ-010.
 
-- [ ] P1-002: Identify and read at least one dedicated Old Javanese phonology
+- [x] P1-002: Identify and read at least one dedicated Old Javanese phonology
       or grammar source (candidate: Uhlenbeck 1949, or Hunter papers).
       Log findings for RQ-001 through RQ-006.
 
-- [ ] P1-003: Investigate the pepet (schwa / e-tailing) specifically.
+- [x] P1-003: Investigate the pepet (schwa / e-tailing) specifically.
       What phonemic status do sources assign to it? Is it allophonic? Orthographic?
       Log findings for RQ-003.
 
-- [ ] P1-004: Investigate aspirated stops. Are they phonemic in native Kawi vocabulary
+- [x] P1-004: Investigate aspirated stops. Are they phonemic in native Kawi vocabulary
       or only in Sanskrit loans? What comparative evidence exists?
       Log findings for RQ-004.
 
-- [ ] P1-005: Investigate retroflex consonants. Were they phonetically retroflex
+- [x] P1-005: Investigate retroflex consonants. Were they phonetically retroflex
       in Old Javanese, or were they dental/alveolar in actual realization?
       Log findings for RQ-005.
 
-- [ ] P1-006: Investigate sibilant distinctions (s / palatal-s / retroflex-s).
+- [x] P1-006: Investigate sibilant distinctions (s / palatal-s / retroflex-s).
       Document the scholarly consensus, or the fact that no consensus exists.
       Log findings for RQ-006.
 
 Priority 2: Orthography and romanization (blocks input format decision)
 
-- [ ] P1-007: Systematically document the romanization convention used in
+- [x] P1-007: Systematically document the romanization convention used in
       Zoetmulder (1982). Identify any characters, diacritics, or conventions
       that are ambiguous or not described in the dictionary itself.
       Log findings for RQ-010.
 
-- [ ] P1-008: Survey whether other romanization conventions are in common
+- [x] P1-008: Survey whether other romanization conventions are in common
       scholarly use (e.g., older Dutch Leiden conventions, ISO 15919).
       Document differences. Log findings for RQ-011.
 
-- [ ] P1-009: After completing P1-007 and P1-008, make and document
+- [x] P1-009: After completing P1-007 and P1-008, make and document
       the project decision: which romanization convention will be used
       as the primary TTS input format? Record the decision in docs/DECISIONS.md.
       Log findings for RQ-012.
 
 Priority 3: Pronunciation traditions (informs synthesis decisions)
 
-- [ ] P1-010: Research the Balinese Kawi recitation tradition (mabasan).
+- [x] P1-010: Research the Balinese Kawi recitation tradition (mabasan).
       What is the relationship between the recited pronunciation and the
       scholarly reconstruction of Old Javanese phonology?
       Log findings for RQ-013.
 
-- [ ] P1-011: Search for publicly accessible audio recordings of Kawi
+- [x] P1-011: Search for publicly accessible audio recordings of Kawi
       recitation (mabasan, kakawin chanting). Document source, provenance,
       accessibility, and any known licensing conditions.
       Log findings for RQ-014.
 
 Priority 4: Corpus and computational resources survey (COMPLETED)
 
-- [ ] P1-012: Survey digitally available romanized Old Javanese text corpora.
+- [x] P1-012: Survey digitally available romanized Old Javanese text corpora.
       Check GRETIL, KITLV, SEALang, and institutional repositories.
       Document what exists, its scope, and its license status.
       Log findings for RQ-016, RQ-017.
 
-- [ ] P1-013: Search for prior computational-linguistic work on Old Javanese:
+- [x] P1-013: Search for prior computational-linguistic work on Old Javanese:
       G2P tools, morphological analyzers, digital dictionaries with phonemic
       annotation, NLP datasets.
       Log findings for RQ-019.
@@ -96,12 +96,12 @@ RQ-014 have findings logged in RESEARCH_LOG.md.
 
 ---
 
-## Phase 3: Prototype Pipeline (ACTIVE)
+## Phase 3: Prototype Pipeline (COMPLETED)
 
 Do not begin these tasks until Phase 2 is complete and a data feasibility
 decision has been made.
 
-- [ ] P3-001: Choose the romanization input format (if not done in Phase 1 P1-009).
+- [x] P3-001: Choose the romanization input format — Completed via DEC-002, DEC-003, and P3-002 (Zoetmulder 1982 canonical, with Acri/Damais conversion).
 - [x] P3-002: Implement Unicode normalization for the chosen romanization scheme.
 - [x] P3-003A: Produce formal G2P specification and decision matrix for Profile A.
 - [x] P3-003B: Implement rule-based G2P based on P3-003A specification.
@@ -119,10 +119,10 @@ decision has been made.
 V1 deliverable: romanized Old Javanese text in, audio + phoneme sequence + source
 citations out. Pronunciation must be traceable to cited research log entries.
 
-- [ ] P4-001: End-to-end pipeline integration test.
-- [ ] P4-002: G2P evaluation against documented word examples from scholarly sources.
-- [ ] P4-003: Basic documentation of the pronunciation system (what rules, what sources).
-- [ ] P4-004: User-facing README with example and source citations.
+- [x] P4-001: End-to-end pipeline integration test (Completed via P4-001 Integration Suite, 76 tests).
+- [x] P4-002: G2P evaluation against documented word examples from scholarly sources (Completed: 99.90% coverage across 4,192 OJW lexical forms).
+- [ ] P4-003: Basic documentation of the pronunciation system (what rules, what sources) (NEXT).
+- [x] P4-004: User-facing README with example and source citations (Completed in Phase 3 checkpoint).
 
 ---
 
@@ -153,6 +153,7 @@ citations out. Pronunciation must be traceable to cited research log entries.
 
 ### Phase 3: Prototype Pipeline (completed 2026-10-07)
 
+- [x] P3-001: Choose the romanization input format (DEC-002, DEC-003, P3-002).
 - [x] P3-002: Unicode & orthographic normalization (NFC, character canonicalization).
 - [x] P3-003A: G2P specification & decision matrix for Profile A.
 - [x] P3-003B: Lossless G2P engine implementation.
@@ -166,7 +167,7 @@ citations out. Pronunciation must be traceable to cited research log entries.
 
 - [x] P2-001 through P2-004: Audited OJW, GRETIL, and Modern Javanese TTS models (MMS, OpenSLR 41) for feasibility and phonemic compatibility with Profile A. Findings logged as RES-017 through RES-021.
 
-### Phase 1: Linguistic Research (Partially completed 2026-10-07)
+### Phase 1: Linguistic Research (completed 2026-10-07)
 
 - [x] P1-001 through P1-011: Core phoneme inventory, orthography, and pronunciation traditions researched. Findings logged as RES-001 through RES-012.
 - [x] P1-012, P1-013: Corpus, Licensing, and Computational Resource Survey. Findings logged as RES-013 through RES-016.

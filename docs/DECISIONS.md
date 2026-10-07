@@ -145,18 +145,54 @@ Review trigger: None for V1. This is the foundational goal of the first release.
 
 ---
 
+---
+
+### DEC-007: Canonical Romanization Input Format (Zoetmulder 1982 with Acri/Damais Converter)
+
+Date: 2026-10-07
+Status: DECIDED (Resolves PENDING-001)
+Made by: Engineer / Manager roles (P1-009, P3-002)
+Decision: Zoetmulder (1982) *Old Javanese-English Dictionary* orthography (ĕ, ö, w, ṅ) is adopted as the canonical input convention for Kawi-TTS. An explicit converter (`convert_transliteration_convention()`) supports Acri & Griffiths (2014) / Damais (1970) romanization (ə, ə̄, v) without loss of source provenance.
+Rationale: Zoetmulder is the predominant lexicographic reference in Old Javanese philology (DEC-003, RES-007). Supporting Damais/Acri ensures compatibility with modern epigraphic editions without imposing a disruptive forced conversion on dictionary-based tools.
+Alternatives considered:
+- Strict Indic IAST/ISO (Acri & Griffiths) as sole format: rejected because it introduces /v/ which is phonologically inaccurate for Javanese and diverges from standard dictionaries.
+- ASCII-only conversion: rejected because it introduces ambiguities (e.g. 'ngh').
+Dependencies: P3-002 normalizer.
+Review trigger: None for V1.
+
+---
+
+### DEC-008: Lossless Internal G2P Phonological Representation
+
+Date: 2026-10-07
+Status: DECIDED (Resolves PENDING-002)
+Made by: Engineer / Manager roles (P3-003A, P3-003B)
+Decision: The G2P engine will translate normalized orthography into an immutable, 100% lossless internal phonological sequence that preserves all distinctions (vowel length ā/ī/ū/ö, sibilants ś/ṣ/s, retroflex stops and nasal ṭ/ḍ/ṇ, aspirates bh/dh/gh/etc., vocalic liquids ṛ/ḷ). No phonological distinctions may be collapsed at the G2P level.
+Rationale: Information preservation first. Phonological uncertainty regarding historical realization of Sanskrit loanwords must not be prematurely eliminated at the text analysis stage. Any required acoustic adaptation belongs exclusively to the downstream Acoustic Mapper.
+Alternatives considered:
+- Early collapsing of aspirates and vowel length: rejected per core project policy (DEC-006).
+Dependencies: P3-003A specification.
+Review trigger: None for V1.
+
+---
+
+### DEC-009: Two-Stage Hybrid Acoustic Backend (eSpeak-ng Prototype First)
+
+Date: 2026-10-07
+Status: DECIDED (Resolves PENDING-003)
+Made by: Engineer / Manager roles (P3-005, P3-006)
+Decision: The acoustic synthesis architecture adopts a two-stage hybrid approach:
+1. Stage 1 (V1 Prototype): An eSpeak-ng formant synthesis interface receiving direct IPA from the Acoustic Mapper. Enables end-to-end audio generation and testing without requiring neural model training or discarding uncertain phonemes.
+2. Stage 2 (Future Neural Transfer): A cross-lingual neural TTS backend (e.g. Modern Javanese VITS/Piper) with explicit, human-approved acoustic mapping.
+Rationale: No historical-period speech recordings exist (RES-014). eSpeak-ng allows immediate end-to-end pipeline verification without compromising linguistic rigor.
+Alternatives considered:
+- End-to-end neural model trained from scratch: impossible due to zero Kawi speech data.
+- Immediate Modern Javanese neural transfer: deferred because it forces lossy merging of aspirates and length before pipeline validation.
+Dependencies: P3-005 survey, P3-006 implementation.
+Review trigger: Phase 4 completion and subsequent neural modeling milestones.
+
+---
+
 ## Pending Decisions (awaiting research)
 
-These decisions cannot be made until the indicated research questions are resolved.
-
-PENDING-001: Which romanization convention is the primary TTS input format?
-Depends on: RQ-010 (Zoetmulder romanization survey), RQ-011 (alternative conventions).
-To be recorded as a formal DEC entry after P1-009 is complete.
-
-PENDING-002: What is the phoneme inventory for the G2P system?
-Depends on: RQ-001 through RQ-006 (full phoneme inventory research).
-Cannot be decided until Phase 1 is substantially complete.
-
-PENDING-003: What is the TTS synthesis backend for V1?
-Depends on: RQ-018 (audio data availability), RQ-020 (TTS approach evaluation).
-Cannot be decided until Phase 2 data audit is complete.
+None currently pending. All foundational architectural decisions for V1 (DEC-001 through DEC-009) have been resolved. Profile A acoustic mapper collapsing policies remain deferred to Abraham.

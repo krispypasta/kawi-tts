@@ -79,7 +79,6 @@ _MONOGRAPH_MAP = {
     # Additional explicit mapping for Acri/Damais variants if passed through
     # (Though typically normalization should be handled prior)
     "ə": "ə",
-    "v": "w",
 }
 
 
