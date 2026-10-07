@@ -128,12 +128,18 @@ decision has been made.
 - [x] P6-004: Lexical/Etymological Metadata Feasibility Audit. Concluded metadata classifier is blocked by data.
 - [ ] P6-005: [BLOCKED] Etymological Metadata Implementation. Requires provenance-tagged lexicon.
 
-## Phase 7: Acoustic Backend Research & Data Strategy (ACTIVE)
+## Phase 7: Zero-Budget Reassessment & Engine Hardening (ACTIVE)
 
-- [x] P7-001: Data Acquisition & Corpus Design. Design the minimal custom corpus to train/evaluate a future Kawi-TTS neural backend.
-- [ ] P7-002: Pilot Corpus Recording. Record and annotate 50 sentences prioritizing dental/retroflex contrast.
-- [ ] P7-003: Pilot Neural Experiment. Train Piper/VITS on pilot data and evaluate /ṭ/ synthesis.
-- [ ] P7-004: Scale-up Decision. Go/No-go for 1-2 hour corpus recording based on P7-003.
+- [x] P7-001: [DEFERRED/BLOCKED] Data Acquisition & Corpus Design (Superseded by P7-003 constraint).
+- [x] P7-002A: Existing Audio Source Audit (Concluded Path C required, which is now blocked).
+- [ ] P7-002: [BLOCKED] Pilot Corpus Recording. Deferred by zero-budget constraint.
+- [x] P7-003: Zero-Budget Scope Reassessment & Frankenstein Stop. Redefined project to $0 core deliverable.
+
+**Revised Zero-Cost Roadmap:**
+- [ ] P7-B: Linguistic and pronunciation-engine hardening (normalization, G2P rules, ambiguity handling, test coverage).
+- [ ] P7-C: Baseline Acoustic & Evaluation infrastructure (eSpeak backend control, deterministic synthesis, automated tests).
+- [ ] P7-D: Research tooling (bibliography management, evidence-status tracking).
+- [ ] P7-E: [OPTIONAL/FROZEN] Neural Reopening Criteria.
 
 ## Phase 4: V1 (COMPLETED)
 
