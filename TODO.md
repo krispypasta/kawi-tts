@@ -129,7 +129,7 @@ citations out. Pronunciation must be traceable to cited research log entries.
       backend warnings, unsupported/provisional mappings, and human listening results.
       Produce docs/P4_006_V1_EVALUATION.md. State limitations and define exactly what V1 proves
       and does NOT prove. Final release happens only after P4-006 is fully approved.
-- [ ] P4-006F: Fix G2P greedy digraph bug. The `gh` digraph is correctly a voiced aspirate `gʱ` in Sanskrit borrowings, but in unhyphenated `sanghyang`, the `ng` + `h` sequence is falsely merged into `n` + `gʱ`. Implement morphological or sequence-based boundary protection in `src/g2p/engine.py`.
+- [x] P4-006F: Fix G2P greedy digraph bug. The `gh` digraph is correctly a voiced aspirate `gʱ` in Sanskrit borrowings, but in unhyphenated `sanghyang`, the `ng` + `h` sequence is falsely merged into `n` + `gʱ`. Implement morphological or sequence-based boundary protection in `src/g2p/engine.py`.
 
 ---
 

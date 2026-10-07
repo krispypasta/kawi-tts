@@ -103,7 +103,12 @@ def g2p_word(word: str) -> List[str]:
         # Check for digraphs first (greedy match)
         if i < length - 1:
             digraph = word[i:i+2]
-            if digraph in _DIGRAPH_MAP:
+            
+            # P4-006F Fix: Disambiguate "sanghyang" structure
+            # ASCII "ngh" sequence is "ng" + "h", not "n" + "gʱ"
+            if digraph == "gh" and i > 0 and word[i-1] == "n":
+                pass # Fall through to monograph matching
+            elif digraph in _DIGRAPH_MAP:
                 phonemes.append(_DIGRAPH_MAP[digraph])
                 i += 2
                 continue

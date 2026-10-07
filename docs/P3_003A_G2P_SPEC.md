@@ -87,7 +87,7 @@ This guarantees information preservation. A separate **Acoustic Mapper** (part o
 Before writing the G2P logic, we must write tests verifying:
 1. Native words parse correctly: `sĕkar` → `["s", "ə", "k", "a", "r"]`.
 2. Native retroflexes parse correctly: `ḍaṅ` → `["ḍ", "a", "ŋ"]`.
-3. Digraphs parse as single phonemes (if explicitly permitted, e.g., `ṅ` → `["ŋ"]`). Note: ASCII `ng` must parse as `["n", "g"]` per information preservation policy.
+3. Digraphs parse as single phonemes (if explicitly permitted, e.g., `ṅ` → `["ŋ"]`). Note: ASCII `ng` must parse as `["n", "g"]` per information preservation policy, and parser ambiguities such as the greedy digraph conflict in `ngh` (e.g., `sanghyang`) require explicit disambiguation to prevent false parsing into `["n", "gʱ"]`.
 4. Sanskrit aspirates parse as distinct single phonemes: `dharmma` → `["dʱ", "a", "r", "m", "m", "a"]`. (They must NOT parse as `["d", "h", ...]`).
 5. Long vowels parse as distinct phonemes: `ā` → `["aː"]`.
 6. Sibilants parse distinctly: `śānti` → `["ś", "aː", "n", "t", "i"]`.
