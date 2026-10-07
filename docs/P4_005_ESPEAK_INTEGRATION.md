@@ -59,6 +59,7 @@ python tests/generate_matrix.py
 ```
 
 ### Limitations
-- The fallback `id` voice is an acoustic approximation.
+- The fallback `id` voice is an acoustic approximation required because the target `jv` (Javanese) voice does not exist in the host eSpeak-NG environment.
+- The term "lossless" as applied to the G2P engine refers *only* to the preservation of internal symbolic structure through the pipeline contract (preventing silent merges of uncertain orthographic features); it does **not** imply historical acoustic correctness. 
 - A human evaluation test is required to determine the exact audible qualities of the generated IPA strings using this fallback voice. Currently, the generated audio has been validated mechanically (file exists, size > 0, valid WAV header).
 - **Explicit Statement:** eSpeak output is an engineering prototype and does not constitute evidence of historically verified Old Javanese pronunciation.

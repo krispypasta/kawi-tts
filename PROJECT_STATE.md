@@ -39,6 +39,7 @@ Phase 3 is 100% complete:
 ### Phase 4 — V1 Integration & Evaluation (In Progress)
 
 - Completed P4-005: Real eSpeak Integration (`docs/P4_005_ESPEAK_INTEGRATION.md`). Verified executable pipeline, `id` fallback voice selection, and successful generation of representative Kawi matrix without information collapse. 80 automated tests pass.
+- Completed P4-006E: Neural Backend Evaluation & Candidate Decision. Formally evaluated the Piper id_ID model against objective measurements and human perceptual reports. The model was rejected as the primary V1 backend due to catastrophic acoustic collapse of non-Indonesian consonants (e.g. `sĕkar` perceived as "saa"). Fine-tuning was also rejected due to unknown dataset licensing and baseline failure. Validated the experimental test harness and confirmed that the canonical pipeline successfully preserved all linguistic data up to the failed backend.
 - Completed P4-003: Authored and finalized `docs/PRONUNCIATION_SYSTEM.md` detailing the linguistic rules, sources, and epistemic boundaries of the V1 pipeline.
 - Completed P4-002: Executed high-throughput G2P lexical evaluation against all 4,192 unique lexical forms of the Old Javanese Wordnet (`docs/P4_002_OJW_EVALUATION.md`, `data/processed/ojw_coverage_report.json`). Achieved 99.90% full representation coverage with zero runtime crashes or silent information collapse. 79 automated tests pass.
 - Completed P4-001: Executed formal end-to-end V1 integration test suite across all 5 decoupled stages (`docs/P4_001_INTEGRATION.md`). Verified input contracts, information preservation invariants, error handling for empty/punctuation/unsupported inputs, and dry-run execution. 76 unit and integration tests pass.
@@ -95,20 +96,13 @@ Key corrections made during Phase 0:
 
 ## Blocked / Waiting
  
-Nothing is currently blocked. Phase 4 (V1 Integration & Evaluation) is underway (P4-001 and P4-002 completed, P4-003 next).
+Nothing is currently blocked. Phase 4 (V1 Integration & Evaluation) is underway (P4-001 through P4-005 completed, P4-006 next).
 
 ---
 
 ## Active Assumptions
 
-These are ASSUMPTION-labeled claims being used as working project assumptions
-pending Phase 1 verification. They are tracked formally in docs/RESEARCH_LOG.md
-Section 3.
-
-- ASSUMPTION-003: Zoetmulder (1982) is a primary and reliable orthographic reference.
-- ASSUMPTION-004: Romanized Kawi text is the appropriate primary TTS input format.
-
-*(Note: ASSUMPTION-001 and ASSUMPTION-002 have been addressed via RES-002 and RES-003 and are no longer blind assumptions.)*
+*(All initial Phase 0 blind assumptions have been addressed via formal linguistic research findings or engineering decisions. See `docs/RESEARCH_LOG.md` and `docs/DECISIONS.md` for the established sources.)*
 
 ---
 
@@ -123,7 +117,7 @@ See docs/AGENT_ROLES.md for full definitions.
 - Engineer/Builder: implements approved findings; writes to src/ and tests/
 - Manager/Reviewer: maintains project state; coordinates roles; updates PROJECT_STATE.md and TODO.md
 
-Current active mode: Manager/Reviewer (Phase 0 through P4-002 Milestone Checkpoint complete; P4-003 next)
+Current active mode: Manager/Reviewer (Phase 0 through P4-005 Milestone Checkpoint complete; P4-006 next)
 
 ---
 
@@ -148,6 +142,7 @@ Current active mode: Manager/Reviewer (Phase 0 through P4-002 Milestone Checkpoi
     |   +-- P3_007_VALIDATION.md Evidence-based validation report
     |   +-- P4_001_INTEGRATION.md End-to-end integration test report
     |   +-- P4_002_OJW_EVALUATION.md OJW lexical coverage evaluation report
+    |   +-- P4_005_ESPEAK_INTEGRATION.md Real eSpeak integration test matrix
     |   +-- MILESTONE_PHASE0_P4_002.md Comprehensive milestone snapshot report
     |
     +-- src/
@@ -158,6 +153,6 @@ Current active mode: Manager/Reviewer (Phase 0 through P4-002 Milestone Checkpoi
     |   +-- tts/                High-level synthesis API
     |
     +-- data/                   Data directory
-    +-- tests/                  Test suite (79 tests passing)
+    +-- tests/                  Test suite (80 tests passing)
     +-- experiments/            Experiments directory
     +-- notebooks/              Research notebooks (empty)
