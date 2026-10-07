@@ -6,9 +6,9 @@ and GRETIL digitized texts.
 """
 
 import unittest
-from src.acoustic.mapper import MappingStatus
-from src.acoustic.pipeline import PipelineResult, synthesize
-from src.normalization.tokenizer import TokenType
+from kawi_tts.acoustic.mapper import MappingStatus
+from kawi_tts.acoustic.pipeline import PipelineResult, synthesize
+from kawi_tts.normalization.tokenizer import TokenType
 
 
 class TestEvidenceBasedValidation(unittest.TestCase):

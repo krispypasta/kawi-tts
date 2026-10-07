@@ -75,9 +75,9 @@ mök	m-əː-k	m-ə-k	m-əː-k	o-umlaut / long schwa
 śrī	ś-r-iː	s-r-i	ś-r-iː	i macron stripping
 dānawā	d-aː-n-a-w-aː	d-a-n-a-w-a	d-aː-n-a-w-aː	Multiple a macrons
 kṛta	k-r̩-t-a	k-rə-t-a	k-r̩-t-a	Short vocalic r
-kṝta	k-r̩ː-t-a	k-r̩ː-t-a	k-r̩ː-t-a	Long vocalic r (P6-003R boundary)
+kṝta	k-r̩ː-t-a	k-rəː-t-a	k-r̩ː-t-a	Long vocalic r (P6-003R boundary)
 kḷpta	k-l̩-p-t-a	k-lə-p-t-a	k-l̩-p-t-a	Short vocalic l
-kḹpta	k-l̩ː-p-t-a	k-l̩ː-p-t-a	k-l̩ː-p-t-a	Long vocalic l
+kḹpta	k-l̩ː-p-t-a	k-ləː-p-t-a	k-l̩ː-p-t-a	Long vocalic l
 wṛddhi	w-r̩-d-dʱ-i	w-rə-d-d-i	w-r̩-d-dʱ-i	Short vocalic r + aspirate
 sang-hyang	s-a-n-g-h-j-a-n-g	s-a-n-g-h-j-a-n-g	s-a-n-g-h-j-a-n-g	Hyphen prevents g+h aspirate
 sanghyang	AMBIGUOUS	AMBIGUOUS	AMBIGUOUS	Un-hyphenated form blocked by Tokenizer

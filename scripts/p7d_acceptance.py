@@ -1,5 +1,5 @@
 import json
-from src.acoustic.pipeline import synthesize
+from kawi_tts.acoustic.pipeline import synthesize
 
 acceptance_corpus = [
     {

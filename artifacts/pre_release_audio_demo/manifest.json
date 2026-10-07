@@ -1,0 +1,146 @@
+[
+  {
+    "input": "sĕkar",
+    "profile": "A",
+    "normalized": "sĕkar",
+    "canonical": "s-ə-k-a-r",
+    "target": "s-ə-k-a-r",
+    "espeak_string": "s@kar",
+    "status": "SUCCESS",
+    "wav_path": "artifacts/pre_release_audio_demo/sekar_A.wav"
+  },
+  {
+    "input": "sĕkar",
+    "profile": "B",
+    "normalized": "sĕkar",
+    "canonical": "s-ə-k-a-r",
+    "target": "s-ə-k-a-r",
+    "espeak_string": "s@kar",
+    "status": "SUCCESS",
+    "wav_path": "artifacts/pre_release_audio_demo/sekar_B.wav"
+  },
+  {
+    "input": "BHAṬĀRA",
+    "profile": "A",
+    "normalized": "BHAṬĀRA",
+    "canonical": "bʱ-a-ṭ-aː-r-a",
+    "target": "b-a-ṭ-a-r-a",
+    "espeak_string": "batara",
+    "status": "SUCCESS",
+    "wav_path": "artifacts/pre_release_audio_demo/BHATARA_A.wav"
+  },
+  {
+    "input": "BHAṬĀRA",
+    "profile": "B",
+    "normalized": "BHAṬĀRA",
+    "canonical": "bʱ-a-ṭ-aː-r-a",
+    "target": "bʱ-a-ṭ-aː-r-a",
+    "espeak_string": "bhatara",
+    "status": "SUCCESS",
+    "wav_path": "artifacts/pre_release_audio_demo/BHATARA_B.wav"
+  },
+  {
+    "input": "śānti",
+    "profile": "A",
+    "normalized": "śānti",
+    "canonical": "ś-aː-n-t-i",
+    "target": "s-a-n-t-i",
+    "espeak_string": "santi",
+    "status": "SUCCESS",
+    "wav_path": "artifacts/pre_release_audio_demo/santi_A.wav"
+  },
+  {
+    "input": "śānti",
+    "profile": "B",
+    "normalized": "śānti",
+    "canonical": "ś-aː-n-t-i",
+    "target": "ś-aː-n-t-i",
+    "espeak_string": "santi",
+    "status": "SUCCESS",
+    "wav_path": "artifacts/pre_release_audio_demo/santi_B.wav"
+  },
+  {
+    "input": "kṝta",
+    "profile": "A",
+    "normalized": "kṝta",
+    "canonical": "k-r̩ː-t-a",
+    "target": "k-r̩ː-t-a",
+    "espeak_string": "kr@ta",
+    "status": "SUCCESS",
+    "wav_path": "artifacts/pre_release_audio_demo/krta_A.wav"
+  },
+  {
+    "input": "kṝta",
+    "profile": "B",
+    "normalized": "kṝta",
+    "canonical": "k-r̩ː-t-a",
+    "target": "k-r̩ː-t-a",
+    "espeak_string": "kr@ta",
+    "status": "SUCCESS",
+    "wav_path": "artifacts/pre_release_audio_demo/krta_B.wav"
+  },
+  {
+    "input": "sankha",
+    "profile": "A",
+    "normalized": "sankha",
+    "canonical": "s-a-n-kʰ-a",
+    "target": "s-a-n-kʰ-a",
+    "espeak_string": "sankha",
+    "status": "SUCCESS",
+    "wav_path": "artifacts/pre_release_audio_demo/sankha_A.wav"
+  },
+  {
+    "input": "sankha",
+    "profile": "B",
+    "normalized": "sankha",
+    "canonical": "s-a-n-kʰ-a",
+    "target": "s-a-n-kʰ-a",
+    "espeak_string": "sankha",
+    "status": "SUCCESS",
+    "wav_path": "artifacts/pre_release_audio_demo/sankha_B.wav"
+  },
+  {
+    "input": "sang-hyang",
+    "profile": "A",
+    "normalized": "sang-hyang",
+    "canonical": "s-a-n-g | h-j-a-n-g",
+    "target": "s-a-n-g | h-j-a-n-g",
+    "espeak_string": "sang hjang",
+    "status": "SUCCESS",
+    "wav_path": "artifacts/pre_release_audio_demo/sang_hyang_A.wav"
+  },
+  {
+    "input": "sang-hyang",
+    "profile": "B",
+    "normalized": "sang-hyang",
+    "canonical": "s-a-n-g | h-j-a-n-g",
+    "target": "s-a-n-g | h-j-a-n-g",
+    "espeak_string": "sang hjang",
+    "status": "SUCCESS",
+    "wav_path": "artifacts/pre_release_audio_demo/sang_hyang_B.wav"
+  },
+  {
+    "input": "sanghyang",
+    "profile": "A",
+    "status": "EXPECTED BLOCKED",
+    "reason": "Ambiguous cluster 'ngh': conflict between ASCII velar nasal 'ng' and Sanskrit aspirate 'gh' without explicit boundary or canonical 'ṅ'.",
+    "wav_path": null
+  },
+  {
+    "input": "sanghyang",
+    "profile": "B",
+    "status": "EXPECTED BLOCKED",
+    "reason": "Ambiguous cluster 'ngh': conflict between ASCII velar nasal 'ng' and Sanskrit aspirate 'gh' without explicit boundary or canonical 'ṅ'.",
+    "wav_path": null
+  },
+  {
+    "input": "śānti",
+    "profile": "A",
+    "normalized": "śānti",
+    "canonical": "ś-aː-n-t-i",
+    "target": "s-a-n-t-i",
+    "espeak_string": "santi",
+    "status": "SUCCESS",
+    "wav_path": "artifacts/pre_release_audio_demo/santi_A.wav"
+  }
+]

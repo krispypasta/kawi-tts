@@ -1,18 +1,18 @@
 """Basic scaffold sanity tests for Kawi-TTS."""
 
 import unittest
-import src
-import src.g2p
-import src.normalization
-import src.tts
+import kawi_tts
+import kawi_tts.g2p
+import kawi_tts.normalization
+import kawi_tts.tts
 
 
 class TestScaffold(unittest.TestCase):
     def test_package_imports(self):
-        self.assertIsNotNone(src.__version__)
-        self.assertIsNotNone(src.normalization)
-        self.assertIsNotNone(src.g2p)
-        self.assertIsNotNone(src.tts)
+        self.assertIsNotNone(kawi_tts.__version__)
+        self.assertIsNotNone(kawi_tts.normalization)
+        self.assertIsNotNone(kawi_tts.g2p)
+        self.assertIsNotNone(kawi_tts.tts)
 
 
 if __name__ == "__main__":

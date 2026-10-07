@@ -1,7 +1,7 @@
 """Unit tests for Old Javanese Unicode and orthographic normalization."""
 
 import unittest
-from src.normalization import (
+from kawi_tts.normalization import (
     NormalizationResult,
     convert_transliteration_convention,
     normalize,

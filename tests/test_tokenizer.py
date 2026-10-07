@@ -1,7 +1,7 @@
 """Unit tests for the Old Javanese text-structure and tokenization layer."""
 
 import unittest
-from src.normalization import (
+from kawi_tts.normalization import (
     Token,
     TokenType,
     extract_words,
@@ -9,7 +9,7 @@ from src.normalization import (
     normalize_text,
     tokenize,
 )
-from src.g2p import g2p_word
+from kawi_tts.g2p import g2p_word
 
 
 class TestTokenizer(unittest.TestCase):

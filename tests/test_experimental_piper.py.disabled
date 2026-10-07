@@ -1,5 +1,5 @@
 import unittest
-from src.tts.experimental_piper import ExperimentalPiper
+from kawi_tts.tts.experimental_piper import ExperimentalPiper
 import json
 import os
 import pytest

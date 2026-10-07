@@ -15,9 +15,9 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from src.acoustic import ESpeakNotFoundError, MappingStatus
-from src.normalization import TokenType
-from src.tts import PipelineResult, synthesize
+from kawi_tts.acoustic import ESpeakNotFoundError, MappingStatus
+from kawi_tts.normalization import TokenType
+from kawi_tts.tts import PipelineResult, synthesize
 
 
 class TestEndToEndV1Integration(unittest.TestCase):

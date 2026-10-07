@@ -1,8 +1,8 @@
 import os
 import shutil
 from pathlib import Path
-from src.acoustic.pipeline import synthesize
-from src.acoustic.espeak_backend import ESpeakBackend
+from kawi_tts.acoustic.pipeline import synthesize
+from kawi_tts.acoustic.espeak_backend import ESpeakBackend
 
 # 1. Check executable
 executable = shutil.which("espeak-ng")

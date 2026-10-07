@@ -1,5 +1,5 @@
 import unittest
-from src.g2p.engine import g2p_word
+from kawi_tts.g2p.engine import g2p_word
 
 class TestG2P_Sanghyang(unittest.TestCase):
     def test_sanghyang_regression(self):

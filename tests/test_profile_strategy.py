@@ -1,6 +1,6 @@
 import unittest
-from src.acoustic.strategies import get_strategy
-from src.acoustic.strategies.base import PolicyStatus
+from kawi_tts.acoustic.strategies import get_strategy
+from kawi_tts.acoustic.strategies.base import PolicyStatus
 
 class TestProfileStrategies(unittest.TestCase):
     def setUp(self):

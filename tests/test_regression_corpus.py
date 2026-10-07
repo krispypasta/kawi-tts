@@ -2,10 +2,10 @@ import csv
 import os
 import unittest
 
-from src.normalization.normalizer import normalize_text
-from src.normalization.tokenizer import tokenize, TokenType
-from src.g2p.engine import g2p_word
-from src.acoustic.strategies import get_strategy
+from kawi_tts.normalization.normalizer import normalize_text
+from kawi_tts.normalization.tokenizer import tokenize, TokenType
+from kawi_tts.g2p.engine import g2p_word
+from kawi_tts.acoustic.strategies import get_strategy
 
 class TestRegressionCorpus(unittest.TestCase):
     

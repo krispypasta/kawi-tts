@@ -1,7 +1,7 @@
 """Unit tests for Old Javanese G2P engine."""
 
 import unittest
-from src.g2p import g2p, g2p_word
+from kawi_tts.g2p import g2p, g2p_word
 
 
 class TestG2P(unittest.TestCase):

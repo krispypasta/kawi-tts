@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kawi-tts"
+version = "1.0.0"
+description = "Deterministic pronunciation and reconstruction engine for Old Javanese/Kawi."
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [
+  { name = "Project-TTS-Kawi" }
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Topic :: Multimedia :: Sound/Audio :: Speech",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-cov",
+]
+
+[project.scripts]
+kawi-trace = "kawi_tts.cli.kawi_trace:main"
+
+[tool.setuptools]
+packages = ["kawi_tts", "kawi_tts.acoustic", "kawi_tts.acoustic.strategies", "kawi_tts.cli", "kawi_tts.evaluation", "kawi_tts.g2p", "kawi_tts.normalization", "kawi_tts.tts"]

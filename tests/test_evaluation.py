@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from src.evaluation.evaluate_ojw import evaluate_ojw, load_ojw_dataset
+from kawi_tts.evaluation.evaluate_ojw import evaluate_ojw, load_ojw_dataset
 
 
 class TestOJWEvaluation(unittest.TestCase):

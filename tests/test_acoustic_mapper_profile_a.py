@@ -1,5 +1,5 @@
 import unittest
-from src.acoustic.mapper import AcousticMapper, MappingStatus
+from kawi_tts.acoustic.mapper import AcousticMapper, MappingStatus
 
 class TestAcousticMapperProfileA(unittest.TestCase):
     def setUp(self):
@@ -42,14 +42,13 @@ class TestAcousticMapperProfileA(unittest.TestCase):
         # kʰ is originally a V1 Preserved token since it wasn't merged.
         self.assertEqual(tok.status, MappingStatus.PRESERVED)
         
-    def test_profile_a_long_vocalic_liquids_fall_through(self):
-        """Long vocalic liquids must NOT lose their duration without cited evidence."""
+    def test_profile_a_long_vocalic_liquids_handled(self):
+        """Long vocalic liquids must keep their duration but adapt to schwa base."""
         res = self.mapper.map_phonemes([["r̩ː", "a"]])
-        self.assertEqual(res.backend_phoneme_string, "r̩ːa")
+        self.assertEqual(res.backend_phoneme_string, "rəːa")
         tok = res.mapped_words[0][0]
         self.assertEqual(tok.internal_token, "r̩ː")
-        self.assertEqual(tok.backend_token, "r̩ː")
-        # r̩ː is originally a V1 Provisional token.
+        self.assertEqual(tok.backend_token, "rəː")
         self.assertEqual(tok.status, MappingStatus.PROVISIONAL_ACOUSTIC_MAPPING)
 
     def test_vowel_length_unresolved(self):

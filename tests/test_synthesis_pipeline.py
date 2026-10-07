@@ -6,14 +6,14 @@ import unittest
 from unittest.mock import patch
 from pathlib import Path
 
-from src.acoustic.espeak_backend import (
+from kawi_tts.acoustic.espeak_backend import (
     ESpeakBackend,
     ESpeakNotFoundError,
     SynthesisResult,
     create_minimal_wav_header,
 )
-from src.acoustic.mapper import MappingStatus
-from src.acoustic.pipeline import PipelineResult, synthesize
+from kawi_tts.acoustic.mapper import MappingStatus
+from kawi_tts.acoustic.pipeline import PipelineResult, synthesize
 
 
 class TestSynthesisPipeline(unittest.TestCase):

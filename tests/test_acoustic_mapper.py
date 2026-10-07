@@ -1,7 +1,7 @@
 """Unit tests for the Kawi-TTS Acoustic Mapper."""
 
 import unittest
-from src.acoustic.mapper import (
+from kawi_tts.acoustic.mapper import (
     AcousticMapper,
     AcousticMappingResult,
     MappedToken,
