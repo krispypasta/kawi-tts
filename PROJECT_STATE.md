@@ -38,6 +38,8 @@ Phase 3 is 100% complete:
 
 ### Phase 4 — V1 Integration & Evaluation (In Progress)
 
+- Completed P4-005: Real eSpeak Integration (`docs/P4_005_ESPEAK_INTEGRATION.md`). Verified executable pipeline, `id` fallback voice selection, and successful generation of representative Kawi matrix without information collapse. 80 automated tests pass.
+- Completed P4-003: Authored and finalized `docs/PRONUNCIATION_SYSTEM.md` detailing the linguistic rules, sources, and epistemic boundaries of the V1 pipeline.
 - Completed P4-002: Executed high-throughput G2P lexical evaluation against all 4,192 unique lexical forms of the Old Javanese Wordnet (`docs/P4_002_OJW_EVALUATION.md`, `data/processed/ojw_coverage_report.json`). Achieved 99.90% full representation coverage with zero runtime crashes or silent information collapse. 79 automated tests pass.
 - Completed P4-001: Executed formal end-to-end V1 integration test suite across all 5 decoupled stages (`docs/P4_001_INTEGRATION.md`). Verified input contracts, information preservation invariants, error handling for empty/punctuation/unsupported inputs, and dry-run execution. 76 unit and integration tests pass.
 

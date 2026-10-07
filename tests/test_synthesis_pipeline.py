@@ -3,6 +3,7 @@
 import os
 import tempfile
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
 from src.acoustic.espeak_backend import (
@@ -18,7 +19,8 @@ from src.acoustic.pipeline import PipelineResult, synthesize
 class TestSynthesisPipeline(unittest.TestCase):
     """Test suite for the end-to-end Kawi-TTS synthesis pipeline and backend."""
 
-    def test_espeak_backend_availability_and_dry_run(self):
+    @patch('shutil.which', return_value=None)
+    def test_espeak_backend_availability_and_dry_run(self, mock_which):
         """Backend must support dry_run without requiring eSpeak installed."""
         backend = ESpeakBackend()
         # On this environment, eSpeak is not installed

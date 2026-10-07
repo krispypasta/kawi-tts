@@ -121,8 +121,10 @@ citations out. Pronunciation must be traceable to cited research log entries.
 
 - [x] P4-001: End-to-end pipeline integration test (Completed via P4-001 Integration Suite, 76 tests).
 - [x] P4-002: G2P evaluation against documented word examples from scholarly sources (Completed: 99.90% coverage across 4,192 OJW lexical forms).
-- [ ] P4-003: Basic documentation of the pronunciation system (what rules, what sources) (NEXT).
+- [x] P4-003: Basic documentation of the pronunciation system (what rules, what sources) (Completed: PRONUNCIATION_SYSTEM.md).
 - [x] P4-004: User-facing README with example and source citations (Completed in Phase 3 checkpoint).
+- [x] P4-005: Real eSpeak Integration (Completed: P4_005_ESPEAK_INTEGRATION.md).
+- [ ] P4-006: Final V1 tag release and public artifact generation.
 
 ---
 

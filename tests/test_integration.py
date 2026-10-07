@@ -13,6 +13,7 @@ Raw Kawi text
 import os
 import tempfile
 import unittest
+from unittest.mock import patch
 
 from src.acoustic import ESpeakNotFoundError, MappingStatus
 from src.normalization import TokenType
@@ -189,7 +190,8 @@ class TestEndToEndV1Integration(unittest.TestCase):
         self.assertEqual(unsupported[0].status, MappingStatus.UNSUPPORTED)
         self.assertIn("Unsupported token 'x'", unsupported[0].note or "")
 
-    def test_espeak_unavailable_error_on_real_execution(self):
+    @patch('shutil.which', return_value=None)
+    def test_espeak_unavailable_error_on_real_execution(self, mock_which):
         """Non-dry-run synthesis raises ESpeakNotFoundError with actionable message."""
         with self.assertRaises(ESpeakNotFoundError) as ctx:
             synthesize("om", profile="A", output_path="dummy.wav", dry_run=False)
