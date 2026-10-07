@@ -136,8 +136,8 @@ decision has been made.
 - [x] P7-003: Zero-Budget Scope Reassessment & Frankenstein Stop. Redefined project to $0 core deliverable.
 
 **Revised Zero-Cost Roadmap:**
-- [ ] P7-B: Linguistic and pronunciation-engine hardening (normalization, G2P rules, ambiguity handling, test coverage).
-- [ ] P7-C: Baseline Acoustic & Evaluation infrastructure (eSpeak backend control, deterministic synthesis, automated tests).
+- [x] P7-B: Linguistic and pronunciation-engine hardening (normalization, G2P rules, ambiguity handling, test coverage).
+- [x] P7-C: Baseline Acoustic & Evaluation infrastructure (ACTIVE) (eSpeak backend control, deterministic synthesis, automated tests).
 - [ ] P7-D: Research tooling (bibliography management, evidence-status tracking).
 - [ ] P7-E: [OPTIONAL/FROZEN] Neural Reopening Criteria.
 

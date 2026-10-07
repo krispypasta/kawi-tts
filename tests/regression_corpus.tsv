@@ -1,0 +1,96 @@
+Input	Canonical	ProfileA	ProfileB	Traceability
+sĕkar	s-ə-k-a-r	s-ə-k-a-r	s-ə-k-a-r	Native word baseline
+wong	w-o-n-g	w-o-n-g	w-o-n-g	Native word baseline
+tĕka	t-ə-k-a	t-ə-k-a	t-ə-k-a	Native word baseline
+kayu	k-a-j-u	k-a-j-u	k-a-j-u	Native word baseline
+banyu	b-a-n-j-u	b-a-n-j-u	b-a-n-j-u	Native word baseline
+pisan	p-i-s-a-n	p-i-s-a-n	p-i-s-a-n	Native word baseline
+lima	l-i-m-a	l-i-m-a	l-i-m-a	Native word baseline
+wolu	w-o-l-u	w-o-l-u	w-o-l-u	Native word baseline
+kuning	k-u-n-i-n-g	k-u-n-i-n-g	k-u-n-i-n-g	Native word baseline
+abang	a-b-a-n-g	a-b-a-n-g	a-b-a-n-g	Native word baseline
+putih	p-u-t-i-h	p-u-t-i-h	p-u-t-i-h	Native word baseline
+ireng	i-r-e-n-g	i-r-e-n-g	i-r-e-n-g	Native word baseline
+lanang	l-a-n-a-n-g	l-a-n-a-n-g	l-a-n-a-n-g	Native word baseline
+wadon	w-a-d-o-n	w-a-d-o-n	w-a-d-o-n	Native word baseline
+anak	a-n-a-k	a-n-a-k	a-n-a-k	Native word baseline
+SĔKAR	s-ə-k-a-r	s-ə-k-a-r	s-ə-k-a-r	Uppercase preservation check
+BHAṬĀRA	bʱ-a-ṭ-aː-r-a	b-a-ṭ-a-r-a	bʱ-a-ṭ-aː-r-a	Uppercase complex word
+Śiva	ś-i-w-a	s-i-w-a	ś-i-w-a	Uppercase sibilant
+DHARMA	dʱ-a-r-m-a	d-a-r-m-a	dʱ-a-r-m-a	Uppercase voiced aspirate
+SANKHA	s-a-n-kʰ-a	s-a-n-kʰ-a	s-a-n-kʰ-a	Uppercase voiceless aspirate
+KṚTA	k-r̩-t-a	k-rə-t-a	k-r̩-t-a	Uppercase vocalic liquid
+LÖK	l-əː-k	l-ə-k	l-əː-k	Uppercase umlaut
+ṢAṬ	ṣ-a-ṭ	s-a-ṭ	ṣ-a-ṭ	Uppercase retroflex sibilant
+ÑĀSA	ɲ-aː-s-a	ɲ-a-s-a	ɲ-aː-s-a	Uppercase palatal nasal
+WONG	w-o-n-g	w-o-n-g	w-o-n-g	Uppercase native word
+dharma	dʱ-a-r-m-a	d-a-r-m-a	dʱ-a-r-m-a	Voiced aspirate merger
+bhaṭāra	bʱ-a-ṭ-aː-r-a	b-a-ṭ-a-r-a	bʱ-a-ṭ-aː-r-a	Voiced aspirate merger
+ghoṣa	gʱ-o-ṣ-a	g-o-s-a	gʱ-o-ṣ-a	Voiced aspirate merger
+jhāṣa	ɟʱ-aː-ṣ-a	ɟʱ-a-s-a	ɟʱ-aː-ṣ-a	Voiced aspirate merger
+ḍhakkā	ḍʱ-a-k-k-aː	ḍʱ-a-k-k-a	ḍʱ-a-k-k-aː	Voiced aspirate merger
+bhūmi	bʱ-uː-m-i	b-u-m-i	bʱ-uː-m-i	Voiced aspirate merger
+dhana	dʱ-a-n-a	d-a-n-a	dʱ-a-n-a	Voiced aspirate merger
+ghana	gʱ-a-n-a	g-a-n-a	gʱ-a-n-a	Voiced aspirate merger
+jhaṣa	ɟʱ-a-ṣ-a	ɟʱ-a-s-a	ɟʱ-a-ṣ-a	Voiced aspirate merger
+bhāṣa	bʱ-aː-ṣ-a	b-a-s-a	bʱ-aː-ṣ-a	Voiced aspirate merger
+sankha	s-a-n-kʰ-a	s-a-n-kʰ-a	s-a-n-kʰ-a	Voiceless aspirate fall-through
+phala	pʰ-a-l-a	p-a-l-a	pʰ-a-l-a	Voiceless aspirate fall-through
+katha	k-a-tʰ-a	k-a-tʰ-a	k-a-tʰ-a	Voiceless aspirate fall-through
+chattra	cʰ-a-t-t-r-a	cʰ-a-t-t-r-a	cʰ-a-t-t-r-a	Voiceless aspirate fall-through
+ṭhakkura	ṭʰ-a-k-k-u-r-a	ṭʰ-a-k-k-u-r-a	ṭʰ-a-k-k-u-r-a	Voiceless aspirate fall-through
+khalwa	kʰ-a-l-w-a	kʰ-a-l-w-a	kʰ-a-l-w-a	Voiceless aspirate fall-through
+phalgu	pʰ-a-l-g-u	p-a-l-g-u	pʰ-a-l-g-u	Voiceless aspirate fall-through
+ratha	r-a-tʰ-a	r-a-tʰ-a	r-a-tʰ-a	Voiceless aspirate fall-through
+chala	cʰ-a-l-a	cʰ-a-l-a	cʰ-a-l-a	Voiceless aspirate fall-through
+maṭha	m-a-ṭʰ-a	m-a-ṭʰ-a	m-a-ṭʰ-a	Voiceless aspirate fall-through
+śānti	ś-aː-n-t-i	s-a-n-t-i	ś-aː-n-t-i	Palatal sibilant merger
+ṣaṭ	ṣ-a-ṭ	s-a-ṭ	ṣ-a-ṭ	Retroflex sibilant merger
+suta	s-u-t-a	s-u-t-a	s-u-t-a	Alveolar sibilant
+wiśeṣa	w-i-ś-e-ṣ-a	w-i-s-e-s-a	w-i-ś-e-ṣ-a	Multiple sibilant types
+śūra	ś-uː-r-a	s-u-r-a	ś-uː-r-a	Palatal sibilant merger
+pauruṣa	p-a-u-r-u-ṣ-a	p-a-u-r-u-s-a	p-a-u-r-u-ṣ-a	Retroflex sibilant merger
+sastra	s-a-s-t-r-a	s-a-s-t-r-a	s-a-s-t-r-a	Alveolar sibilant
+śastra	ś-a-s-t-r-a	s-a-s-t-r-a	ś-a-s-t-r-a	Palatal + Alveolar sibilant
+niṣkala	n-i-ṣ-k-a-l-a	n-i-s-k-a-l-a	n-i-ṣ-k-a-l-a	Retroflex sibilant merger
+śiva	ś-i-w-a	s-i-w-a	ś-i-w-a	Palatal sibilant merger
+ḍaṅ	ḍ-a-ŋ	ḍ-a-ŋ	ḍ-a-ŋ	Retroflex plosive
+dan	d-a-n	d-a-n	d-a-n	Dental plosive
+ṭīkā	ṭ-iː-k-aː	ṭ-i-k-a	ṭ-iː-k-aː	Retroflex plosive
+tika	t-i-k-a	t-i-k-a	t-i-k-a	Dental plosive
+kuṇḍa	k-u-ṇ-ḍ-a	k-u-ṇ-ḍ-a	k-u-ṇ-ḍ-a	Retroflex cluster
+kunda	k-u-n-d-a	k-u-n-d-a	k-u-n-d-a	Dental cluster
+aṇḍa	a-ṇ-ḍ-a	a-ṇ-ḍ-a	a-ṇ-ḍ-a	Retroflex cluster
+anda	a-n-d-a	a-n-d-a	a-n-d-a	Dental cluster
+paṭha	p-a-ṭʰ-a	p-a-ṭʰ-a	p-a-ṭʰ-a	Retroflex aspirate (fall-through)
+patha	p-a-tʰ-a	p-a-tʰ-a	p-a-tʰ-a	Dental aspirate (fall-through)
+rāma	r-aː-m-a	r-a-m-a	r-aː-m-a	a macron stripping
+sītā	s-iː-t-aː	s-i-t-a	s-iː-t-aː	i and a macron stripping
+pūjā	p-uː-ɟ-aː	p-u-ɟ-a	p-uː-ɟ-aː	u and a macron stripping
+lök	l-əː-k	l-ə-k	l-əː-k	o-umlaut / long schwa
+kāla	k-aː-l-a	k-a-l-a	k-aː-l-a	a macron stripping
+nīla	n-iː-l-a	n-i-l-a	n-iː-l-a	i macron stripping
+bhūta	bʱ-uː-t-a	b-u-t-a	bʱ-uː-t-a	u macron stripping
+mök	m-əː-k	m-ə-k	m-əː-k	o-umlaut / long schwa
+śrī	ś-r-iː	s-r-i	ś-r-iː	i macron stripping
+dānawā	d-aː-n-a-w-aː	d-a-n-a-w-a	d-aː-n-a-w-aː	Multiple a macrons
+kṛta	k-r̩-t-a	k-rə-t-a	k-r̩-t-a	Short vocalic r
+kṝta	k-r̩ː-t-a	k-r̩ː-t-a	k-r̩ː-t-a	Long vocalic r (P6-003R boundary)
+kḷpta	k-l̩-p-t-a	k-lə-p-t-a	k-l̩-p-t-a	Short vocalic l
+kḹpta	k-l̩ː-p-t-a	k-l̩ː-p-t-a	k-l̩ː-p-t-a	Long vocalic l
+wṛddhi	w-r̩-d-dʱ-i	w-rə-d-d-i	w-r̩-d-dʱ-i	Short vocalic r + aspirate
+sang-hyang	s-a-n-g-h-j-a-n-g	s-a-n-g-h-j-a-n-g	s-a-n-g-h-j-a-n-g	Hyphen prevents g+h aspirate
+sanghyang	AMBIGUOUS	AMBIGUOUS	AMBIGUOUS	Un-hyphenated form blocked by Tokenizer
+pang-huwus	p-a-n-g-h-u-w-u-s	p-a-n-g-h-u-w-u-s	p-a-n-g-h-u-w-u-s	Hyphen boundary
+manghan	AMBIGUOUS	AMBIGUOUS	AMBIGUOUS	True ambiguity ngh block
+ang-hiyang	a-n-g-h-i-j-a-n-g	a-n-g-h-i-j-a-n-g	a-n-g-h-i-j-a-n-g	Hyphen boundary
+ñāsa	ɲ-aː-s-a	ɲ-a-s-a	ɲ-aː-s-a	Canonical palatal nasal
+ṅa	ŋ-a	ŋ-a	ŋ-a	Canonical velar nasal
+jñāna	ɟ-ɲ-aː-n-a	ɟ-ɲ-a-n-a	ɟ-ɲ-aː-n-a	Cluster with palatal nasal
+wangba	w-a-n-g-b-a	w-a-n-g-b-a	w-a-n-g-b-a	ng followed by b
+nggwane	n-g-g-w-a-n-e	n-g-g-w-a-n-e	n-g-g-w-a-n-e	Initial ng cluster
+mangke	m-a-n-g-k-e	m-a-n-g-k-e	m-a-n-g-k-e	Medial ng cluster
+māṅ	m-aː-ŋ	m-a-ŋ	m-aː-ŋ	Macron + dot-ṅ
+aṣṭa	a-ṣ-ṭ-a	a-s-ṭ-a	a-ṣ-ṭ-a	Retroflex sibilant + plosive cluster
+prakṛti	p-r-a-k-r̩-t-i	p-r-a-k-rə-t-i	p-r-a-k-r̩-t-i	Cluster + vocalic r
+ājñā	aː-ɟ-ɲ-aː	a-ɟ-ɲ-a	aː-ɟ-ɲ-aː	Macrons + palatal cluster

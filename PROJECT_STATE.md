@@ -21,7 +21,8 @@ Phase 6 implementation is stable and all tests pass (94/94). The project require
 - **FRANKENSTEIN STOP APPLIED**: The project operates on a strictly $0 budget. Neural TTS and paid expert corpora are now DEFERRED / OPTIONAL. 
 - Completed P7-001 & P7-002A: Corpus design and existing audio audits proved a paid/commissioned expert speaker is required. 
 - Completed P7-003: Zero-Budget Scope Reassessment (`docs/P7_003_ZERO_BUDGET_SCOPE_REASSESSMENT.md`). Reoriented project to focus on the core "Kawi Pronunciation & Reconstruction Engine" leveraging local, zero-cost eSpeak synthesis.
-- Pending P7-B: Linguistic and pronunciation-engine hardening.
+- Completed P7-B: Linguistic and pronunciation-engine hardening.
+- Pending P7-C: Evaluation & Diagnostics Infrastructure (Active).
 
 ---
 
