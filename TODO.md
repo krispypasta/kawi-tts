@@ -1,7 +1,7 @@
 # TODO: Kawi-TTS
 
 **Last updated:** 2026-10-07
-**Current phase:** Phase 5 — Post-V1 Research
+**Current phase:** Phase 6 — V2 Profile Implementation
 
 This file tracks all prioritized tasks for the Kawi-TTS project.
 Tasks are grouped by phase. Within each phase, tasks are ordered by priority.
@@ -114,13 +114,13 @@ decision has been made.
 
 ---
 
-## Phase 5: Post-V1 Research & Architecture (ACTIVE)
+## Phase 5: Post-V1 Research & Architecture (COMPLETED)
 
 - [x] P5-001: Post-V1 Evidence & Feasibility Audit.
 - [x] P5-002: Evidence-Based Acoustic Profile Policy. Formally defined Profile A vs Profile B, and authorized evidence-backed acoustic mergers (aspirates, sibilants) for Profile A while keeping canonical representation distinct.
 - [x] P5-003: Profile Architecture Design & Vowel Length Strategy. Design the software layer separating Profile A and Profile B, and determine etymological/metrical vowel length handling.
 
-## Phase 6: V2 Profile Implementation (COMPLETED)
+## Phase 6: V2 Profile Implementation (ACTIVE)
 
 - [x] P6-001: Implement `ProfileStrategy` abstraction. Extract V1 legacy acoustic mappings into `ProfileBStrategy`.
 - [x] P6-002: Implement `ProfileAStrategy` applying historical mergers with `ProfiledToken` citations.
