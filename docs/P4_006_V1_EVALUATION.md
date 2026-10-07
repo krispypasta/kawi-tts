@@ -18,7 +18,7 @@ V1 success requires a linguistically defensible, evidence-grounded pipeline that
 * **Backend:** eSpeak-ng (v1.52.0) interface using the fallback `id` (Indonesian) voice.
 
 ## 4. Test/Evaluation Methodology
-The evaluation uses a representative matrix of 8 samples exercising native phonology, Sanskrit loans (aspirates, long vowels, vocalic liquids, sibilants), and ASCII orthographic ambiguities (`sanghyang`). The pipeline is verified via 82 automated regression tests and a high-throughput run against 4,192 OJW lexical entries.
+The evaluation uses a representative matrix of 8 samples exercising native phonology, Sanskrit loans (aspirates, long vowels, vocalic liquids, sibilants), and ASCII orthographic ambiguities (`sanghyang`). The pipeline is verified via 85 automated regression tests and a high-throughput run against 4,192 OJW lexical entries.
 
 ## 5. Frontend Coverage
 The frontend normalizes typographic variants (e.g., `ě` → `ĕ`, `v` → `w`) deterministically. Tokenization successfully identifies word boundaries, punctuation, and elision markers while flagging structurally ambiguous ASCII sequences (e.g., `ngh`).

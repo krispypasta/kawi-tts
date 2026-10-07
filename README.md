@@ -65,7 +65,7 @@ The project follows a strict phase-gate progression:
   * Lossless G2P engine (`src/g2p/engine.py`) implemented and audited.
   * Acoustic Mapper & eSpeak-ng backend interface (`src/acoustic/`) implemented.
   * Comprehensive validation audit (`docs/P3_007_VALIDATION.md`) executed on 26 authentic Old Javanese source citations across 13 linguistic categories.
-* **[ ] Phase 4 — V1 Integration & Evaluation (ACTIVE):**
+* **[x] Phase 4 — V1 Integration & Evaluation (COMPLETED):**
   * End-to-end integration and user-facing CLI/API.
   * High-throughput G2P evaluation against the full OJW lexicon.
   * Public release documentation and source traceability.
@@ -75,7 +75,7 @@ The project follows a strict phase-gate progression:
 ## 4. Current Acoustic Backend & Environment Note
 
 - **Current Prototype Backend:** Formant synthesis interface via **eSpeak-ng** using IPA input notation.
-- **Host Installation Status:** `espeak-ng` is **not installed** on the current development machine. The test suite and pipeline execute deterministically via **dry-run / mock simulation mode**, generating canonical 44-byte WAV headers and verified CLI argument arrays.
+- **Host Installation Status:** `espeak-ng` (v1.52.0) is installed. The pipeline targets the `jv` (Javanese) voice but successfully falls back to `id` (Indonesian) to generate end-to-end audio. Dry-run mode is also supported for headless environments.
 - **Real Audio Generation:** To synthesize audible sound, install `espeak-ng` locally (e.g., `winget install eSpeak-ng.eSpeak-ng` on Windows or `sudo apt-get install espeak-ng` on Ubuntu/Debian). The backend automatically discovers the executable in PATH without code modifications.
 - **Neural TTS Status:** No neural model has been trained or fine-tuned. Cross-lingual neural transfer is planned for subsequent milestones.
 
