@@ -23,7 +23,7 @@ Phase 5 is complete:
 ### Phase 6 Active
 P6-001 is complete: Implemented `ProfileStrategy` abstraction.
 P6-002 is complete: Validated Profile A vs Profile B behavior, and applied P5-002A minimal correction to align aspirate mergers strictly with evidence.
-P6-003 is complete: Authored Vowel Length Strategy (`docs/P6_003_VOWEL_LENGTH_STRATEGY.md`), defining etymological constraints, metrical implications, and establishing `UNRESOLVED` as the correct fallback for Profile A pending a future lexical metadata layer.
+P6-003 is complete (Reconciled via P6-003R): Authored Vowel Length Strategy (`docs/P6_003_VOWEL_LENGTH_STRATEGY.md`). Profile A explicitly drops the `ː` duration marker as an engineering fallback to prevent the backend from silently synthesizing an unsupported historical long vowel, while tagging it `UNRESOLVED`.
 
 ---
 

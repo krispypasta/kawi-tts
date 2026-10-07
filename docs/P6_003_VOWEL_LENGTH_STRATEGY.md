@@ -48,13 +48,13 @@ Canonical G2P must remain strictly lossless. `ā` remains `aː`. No acoustic ass
 ## 10. Profile A Behavior (Historical Spoken)
 *   **Known Loan (Future):** Evidence-backed merger/reduction.
 *   **Known Native (Future):** Unresolved or context-specific stress.
-*   **Current/Unknown Provenance:** Map canonical token to target token identically (e.g., `aː` → `aː`) but explicitly flag as `PolicyStatus.UNRESOLVED`. **Do not invent length, do not invent merger.**
+*   **Current/Unknown Provenance:** Profile A preserves the canonical vowel-length distinction in metadata but does not currently claim a historical acoustic duration. As an explicit engineering fallback, the duration marker `ː` is stripped before hitting the backend (`aː` → `a`) to prevent the TTS engine from silently committing to an unverified long-duration feature, while tagging the status as `PolicyStatus.UNRESOLVED`.
 
 ## 11. Profile B Behavior (Scholarly/Recitation)
 *   Preserve explicit phonetic length. Map canonical token `aː` to target token `aː` with `PolicyStatus.PRESERVED` to support recitation and Sanskrit-adherent orthographic reading.
 
 ## 12. Unknown-Provenance Fallback
-For any word where etymology or metrical context cannot be programmatically proven, Profile A must default to `UNRESOLVED` and preserve the canonical length token to prevent destructive assumptions.
+For any word where etymology or metrical context cannot be programmatically proven, Profile A must default to `UNRESOLVED`. To satisfy backend execution without making a false historical claim, Profile A strips the acoustic duration marker. This is strictly an engineering fallback, not a claim that all vowels were short.
 
 ## 13. Required Future Metadata
 To safely unblock etymological vowel-length routing, the following architecture is required:
@@ -67,7 +67,7 @@ To safely unblock etymological vowel-length routing, the following architecture 
 *   How should the acoustic backend ultimately synthesize `UNRESOLVED` tokens to reflect epistemic uncertainty without breaking audio generation?
 
 ## 15. Implementation Implications
-No changes to `src/acoustic/strategies/` are required at this time. The current fallback behavior in `ProfileAStrategy` (returning `UNRESOLVED` for `aː`, `iː`, `uː`, `əː`) already correctly implements this policy.
+During P6-003R, `src/acoustic/strategies/profile_a.py` was updated so that unresolved macrons (`aː`, `iː`, `uː`, `əː`) drop the `ː` in their `target_token` to avoid silently committing to a long vowel at the acoustic backend. `AcousticMapper` was also updated to truly propagate `MappingStatus.UNRESOLVED` rather than concealing it.
 
 ## 16. Stop Conditions
 This strategy is fully defined. Do not implement the lexical metadata system during this phase. Do not generate V2 audio.

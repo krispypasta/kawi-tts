@@ -32,5 +32,14 @@ class TestAcousticMapperProfileA(unittest.TestCase):
         self.assertEqual(tok.backend_token, "rə")
         self.assertEqual(tok.status, MappingStatus.PROVISIONAL_ACOUSTIC_MAPPING)
 
+    def test_vowel_length_unresolved(self):
+        res = self.mapper.map_phonemes([["aː"]])
+        self.assertEqual(res.backend_phoneme_string, "a")
+        tok = res.mapped_words[0][0]
+        self.assertEqual(tok.internal_token, "aː")
+        self.assertEqual(tok.backend_token, "a")
+        self.assertEqual(tok.status, MappingStatus.UNRESOLVED)
+        self.assertEqual(tok.note, "P6-003R / unresolved duration engineering fallback")
+
 if __name__ == "__main__":
     unittest.main()

@@ -62,10 +62,10 @@ class ProfileAStrategy(AbstractProfileStrategy):
         if canonical_token in {"aː", "iː", "uː", "əː"}:
             return ProfiledToken(
                 canonical_token=canonical_token,
-                target_token=canonical_token,
+                target_token=canonical_token.replace("ː", ""),
                 profile_name=self.profile_name,
                 status=PolicyStatus.UNRESOLVED,
-                citation="P5-003 / deferred vowel length reduction"
+                citation="P6-003R / unresolved duration engineering fallback"
             )
 
         # Fallback to standard preservation if no historical merger applies

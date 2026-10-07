@@ -78,7 +78,7 @@ def _map_policy_to_legacy_status(policy: PolicyStatus) -> MappingStatus:
     elif policy == PolicyStatus.UNSUPPORTED:
         return MappingStatus.UNSUPPORTED
     elif policy == PolicyStatus.UNRESOLVED:
-        return MappingStatus.PRESERVED # Legacy tests expect aː to be PRESERVED
+        return MappingStatus.UNRESOLVED
     elif policy == PolicyStatus.EVIDENCE_BACKED:
         return MappingStatus.EVIDENCE_BACKED
     return MappingStatus.UNSUPPORTED

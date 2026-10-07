@@ -65,9 +65,9 @@ class TestProfileStrategies(unittest.TestCase):
     def test_vowel_length_behavior(self):
         """Vowel length must remain unresolved but target token is preserved."""
         tok_a = self.strategy_a.apply("aː")
-        self.assertEqual(tok_a.target_token, "aː")
+        self.assertEqual(tok_a.target_token, "a")
         self.assertEqual(tok_a.status, PolicyStatus.UNRESOLVED)
-        self.assertEqual(tok_a.citation, "P5-003 / deferred vowel length reduction")
+        self.assertEqual(tok_a.citation, "P6-003R / unresolved duration engineering fallback")
 
         tok_b = self.strategy_b.apply("aː")
         self.assertEqual(tok_b.target_token, "aː")
