@@ -14,6 +14,10 @@ class TestG2P(unittest.TestCase):
             ["s", "ə", "k", "a", "r"]
         )
         self.assertEqual(
+            g2p_word("Sĕkar"),
+            ["s", "ə", "k", "a", "r"]
+        )
+        self.assertEqual(
             g2p_word("tangi"),
             ["t", "a", "n", "g", "i"]  # Note: ASCII 'ng' parses as 'n','g'
         )
@@ -30,6 +34,10 @@ class TestG2P(unittest.TestCase):
         )
         self.assertEqual(
             g2p_word("bhaṭāra"),
+            ["bʱ", "a", "ṭ", "aː", "r", "a"]
+        )
+        self.assertEqual(
+            g2p_word("BHAṬĀRA"),
             ["bʱ", "a", "ṭ", "aː", "r", "a"]
         )
 

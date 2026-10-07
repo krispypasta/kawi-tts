@@ -32,6 +32,26 @@ class TestAcousticMapperProfileA(unittest.TestCase):
         self.assertEqual(tok.backend_token, "rə")
         self.assertEqual(tok.status, MappingStatus.PROVISIONAL_ACOUSTIC_MAPPING)
 
+    def test_profile_a_unsupported_aspirates_fall_through(self):
+        """Unsupported aspirates must NOT be merged without cited evidence."""
+        res = self.mapper.map_phonemes([["kʰ", "a"]])
+        self.assertEqual(res.backend_phoneme_string, "kʰa")
+        tok = res.mapped_words[0][0]
+        self.assertEqual(tok.internal_token, "kʰ")
+        self.assertEqual(tok.backend_token, "kʰ")
+        # kʰ is originally a V1 Preserved token since it wasn't merged.
+        self.assertEqual(tok.status, MappingStatus.PRESERVED)
+        
+    def test_profile_a_long_vocalic_liquids_fall_through(self):
+        """Long vocalic liquids must NOT lose their duration without cited evidence."""
+        res = self.mapper.map_phonemes([["r̩ː", "a"]])
+        self.assertEqual(res.backend_phoneme_string, "r̩ːa")
+        tok = res.mapped_words[0][0]
+        self.assertEqual(tok.internal_token, "r̩ː")
+        self.assertEqual(tok.backend_token, "r̩ː")
+        # r̩ː is originally a V1 Provisional token.
+        self.assertEqual(tok.status, MappingStatus.PROVISIONAL_ACOUSTIC_MAPPING)
+
     def test_vowel_length_unresolved(self):
         res = self.mapper.map_phonemes([["aː"]])
         self.assertEqual(res.backend_phoneme_string, "a")

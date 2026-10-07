@@ -73,7 +73,7 @@ def is_elision_codepoint(char: str) -> bool:
 def check_word_ambiguity(word: str) -> tuple[bool, Optional[str]]:
     """Inspect a lexical token for structural ambiguities.
 
-    Specifically flags clusters like 'ngh' or 'nkh' where ASCII digraph representations
+    Specifically flags clusters like 'ngh' where ASCII digraph representations
     (e.g., 'ng' for /ŋ/) conflict with Sanskrit aspirates (e.g., 'gh' for /gʱ/) in the
     absence of explicit boundary markers (hyphens) or canonical orthography ('saṅhyaṅ').
     """
@@ -83,12 +83,6 @@ def check_word_ambiguity(word: str) -> tuple[bool, Optional[str]]:
             True,
             "Ambiguous cluster 'ngh': conflict between ASCII velar nasal 'ng' and "
             "Sanskrit aspirate 'gh' without explicit boundary or canonical 'ṅ'.",
-        )
-    if "nkh" in w_lower:
-        return (
-            True,
-            "Ambiguous cluster 'nkh': conflict between ASCII velar nasal 'nk' and "
-            "Sanskrit aspirate 'kh' without explicit boundary or canonical 'ṅ'.",
         )
     return False, None
 

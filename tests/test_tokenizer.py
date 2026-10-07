@@ -132,6 +132,17 @@ class TestTokenizer(unittest.TestCase):
         self.assertEqual(len(ambiguities), 1)
         self.assertEqual(ambiguities[0].text, "sanghyang")
 
+    def test_sankha_no_false_alarm(self):
+        """'nkh' sequences (like sankha) must not trigger an ambiguity warning.
+        'nk' is not an ASCII digraph for the velar nasal, so 'sankha' (saṅkha)
+        is unambiguously n + kʰ.
+        """
+        text = "sankha"
+        tokens = tokenize(text)
+        self.assertEqual(len(tokens), 1)
+        self.assertEqual(tokens[0].token_type, TokenType.WORD)
+        self.assertFalse(tokens[0].has_ambiguity)
+
     def test_sang_hyang_with_explicit_boundary(self):
         """Explicit boundary 'sang-hyang' cleanly splits the cluster, resolving ambiguity."""
         text = "sang-hyang"
