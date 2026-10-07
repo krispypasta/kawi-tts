@@ -9,24 +9,20 @@ Update it at the start and end of every significant work session.
 
 ---
 
-## Current Phase: CHECKPOINT — Deterministic Core Frozen
+## Current Phase: v1.1.0 Released — Deterministic Core
 
-### What Phase 6 accomplished
-P6-001 through P6-004 implemented the Profile Strategy layer, isolating canonical representation from acoustic profile rules (Profile A vs B). P6-003R secured the vowel-length unresolved fallback. P6-004 evaluated the feasibility of an etymological metadata classifier, concluding it is currently BLOCKED by insufficient dataset provenance.
-
-### Phase 7 Entry Criteria
-Phase 6 implementation is stable and all tests pass (94/94). The project requires a path toward a better acoustic backend (e.g., Piper/VITS) without sacrificing explicit Profile A control.
+### What Phase 7 accomplished
+Phase 7 completed the Zero-Budget Reassessment, hardened the engine against backend fallbacks (eSpeak `id` fallback adapter), and validated the release-candidate constraints. P7-D successfully passed human-review for real audio generation without unsupported linguistic claims (e.g., removing the `r̩ː → rəː` engineering workaround and correctly deferring it to `AcousticMapper`).
 
 ### Core Frozen Status
-- **FRANKENSTEIN STOP APPLIED**: The project operates on a strictly $0 budget. Neural TTS and paid expert corpora are now DEFERRED / OPTIONAL. 
-- Completed P7-001 & P7-002A: Corpus design and existing audio audits proved a paid/commissioned expert speaker is required. 
-Phase 7 is officially closed. The deterministic core is ACCEPTED and currently FROZEN. No further engineering milestones are scheduled.
+- **FRANKENSTEIN STOP APPLIED**: The project operates on a strictly $0 budget. Neural TTS and paid expert corpora are now DEFERRED / OPTIONAL. The deterministic core is ACCEPTED, FROZEN, and PACKAGED. No further engineering milestones or automated Phase 8s are scheduled.
 
-### Phase 7 — Zero-Budget Reassessment & Engine Hardening (Completed)
-- Completed P7-003: Zero-Budget Scope Reassessment.
-- Completed P7-B: Linguistic and pronunciation-engine hardening.
-- Completed P7-C: Evaluation & Diagnostics Infrastructure.
-- Completed P7-D: Core Engine Acceptance Evaluation (`docs/P7_D_CORE_ENGINE_ACCEPTANCE_EVALUATION.md`).
+### Package Release: v1.1.0
+- **Version:** v1.1.0
+- **Release State:** Publicly released deterministic open-source core package (`kawi_tts`).
+- **Release Commit:** 2c16e83b3edacbb77ff835bfd433fac91e2a12e5
+- **Git Tag:** `v1.1.0`
+- **Artifacts:** `kawi_tts-1.1.0-py3-none-any.whl`, `kawi_tts-1.1.0.tar.gz`
 
 ---
 
