@@ -21,7 +21,9 @@ Phase 5 is complete:
 - P5-003: Conceptual software architecture and Vowel Length Strategy defined.
 
 ### Phase 6 Active
-P6-001 is complete: Implemented `ProfileStrategy` abstraction, strictly separating canonical representation from acoustic mapping. Extracted V1 legacy mapping into `ProfileBStrategy` to anchor backwards compatibility. Implemented historical mergers for `ProfileAStrategy` according to P5-002 policy. `AcousticMapper` refactored to delegate linguistic interpretation to strategies. All 94 tests passing.
+P6-001 is complete: Implemented `ProfileStrategy` abstraction.
+P6-002 is complete: Validated Profile A vs Profile B behavior, and applied P5-002A minimal correction to align aspirate mergers strictly with evidence.
+P6-003 is complete: Authored Vowel Length Strategy (`docs/P6_003_VOWEL_LENGTH_STRATEGY.md`), defining etymological constraints, metrical implications, and establishing `UNRESOLVED` as the correct fallback for Profile A pending a future lexical metadata layer.
 
 ---
 
