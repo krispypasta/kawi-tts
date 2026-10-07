@@ -1,7 +1,7 @@
 # Project State: Kawi-TTS
 
 **Last updated:** 2026-10-07
-**Current phase:** Phase 4 — V1 (Integration & Evaluation)
+**Current phase:** Phase 4 — V1 (Integration & Evaluation) - COMPLETED
 **Repository branch:** main
 
 This file is the authoritative summary of the project's current state.
@@ -27,6 +27,10 @@ Phase 3 is 100% complete:
 - Tokenization & Text Structure (P3-004) tested and verified.
 - Acoustic Backend Interface & Mapper (P3-005/P3-006) tested and verified.
 - Evidence-based validation (P3-007) verified on 26 source-cited lexical items. 66 automated tests pass.
+
+### V1 Checkpoint Reached (2026-10-07)
+The V1 Evaluation (P4-006) has been completed. The system satisfies all engineering and epistemic constraints defined in `PROJECT_SPEC.md`. V1 release readiness is formally approved.
+
 
 ### What is blocked until Phase 4 is complete
 

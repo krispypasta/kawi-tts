@@ -124,7 +124,7 @@ citations out. Pronunciation must be traceable to cited research log entries.
 - [x] P4-003: Basic documentation of the pronunciation system (what rules, what sources) (Completed: PRONUNCIATION_SYSTEM.md).
 - [x] P4-004: User-facing README with example and source citations (Completed in Phase 3 checkpoint).
 - [x] P4-005: Real eSpeak Integration (Completed: P4_005_ESPEAK_INTEGRATION.md).
-- [ ] P4-006: V1 Evaluation & Release Readiness
+- [x] P4-006: V1 Evaluation & Release Readiness
       Evaluate symbolic frontend coverage, real backend execution, representative audio results,
       backend warnings, unsupported/provisional mappings, and human listening results.
       Produce docs/P4_006_V1_EVALUATION.md. State limitations and define exactly what V1 proves
