@@ -1,0 +1,60 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Notebooks & Experiments
+.ipynb_checkpoints
+experiments/runs/
+experiments/checkpoints/
+
+# TTS Data & Models (Do not commit large datasets or weights)
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+data/manifests/*.csv
+data/manifests/*.json
+!data/manifests/.gitkeep
+*.wav
+*.mp3
+*.flac
+*.ogg
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+
+# IDE & OS
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
