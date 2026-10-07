@@ -64,7 +64,7 @@ _BACKEND_MAP: Dict[str, str] = {
     # Syllabic liquids (preserved for Profile B)
     "r̩": "r̩", "l̩": "l̩", "r̩ː": "r̩ː", "l̩ː": "l̩ː",
     # Liquid adaptations (Profile A)
-    "rə": "rə", "lə": "lə", "rəː": "rəː", "ləː": "ləː",
+    "rə": "rə", "lə": "lə",
     # Punctuation
     ".": ".", ",": ",", ";": ";", ":": ":", "!": "!", "?": "?", "-": "-", "'": "'",
 }
@@ -82,7 +82,7 @@ _ESPEAK_ID_APPROXIMATION: Dict[str, str] = {
     "tʰ": "th", "pʰ": "ph", "kʰ": "kh", "cʰ": "ch", "ʈʰ": "th",
     "bʱ": "bh", "dʱ": "dh", "gʱ": "gh", "ɟʱ": "dZh", "ḍʱ": "dh",
     "r̩": "r@", "l̩": "l@", "r̩ː": "r@", "l̩ː": "l@",
-    "rə": "r@", "lə": "l@", "rəː": "r@", "ləː": "l@",
+    "rə": "r@", "lə": "l@",
 }
 
 def _map_policy_to_legacy_status(policy: PolicyStatus) -> MappingStatus:

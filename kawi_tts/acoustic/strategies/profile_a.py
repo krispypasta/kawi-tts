@@ -16,8 +16,8 @@ _SIBILANT_MERGERS = {
 _LIQUID_ADAPTATIONS = {
     "r̩": "rə",
     "l̩": "lə",
-    "r̩ː": "rəː",
-    "l̩ː": "ləː",
+    "r̩ː": "rə",
+    "l̩ː": "lə",
 }
 
 class ProfileAStrategy(AbstractProfileStrategy):

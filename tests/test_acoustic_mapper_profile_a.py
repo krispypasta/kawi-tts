@@ -43,12 +43,12 @@ class TestAcousticMapperProfileA(unittest.TestCase):
         self.assertEqual(tok.status, MappingStatus.PRESERVED)
         
     def test_profile_a_long_vocalic_liquids_handled(self):
-        """Long vocalic liquids must keep their duration but adapt to schwa base."""
+        """Long vocalic liquids adapt to schwa base and lose duration."""
         res = self.mapper.map_phonemes([["r̩ː", "a"]])
-        self.assertEqual(res.backend_phoneme_string, "rəːa")
+        self.assertEqual(res.backend_phoneme_string, "rəa")
         tok = res.mapped_words[0][0]
         self.assertEqual(tok.internal_token, "r̩ː")
-        self.assertEqual(tok.backend_token, "rəː")
+        self.assertEqual(tok.backend_token, "rə")
         self.assertEqual(tok.status, MappingStatus.PROVISIONAL_ACOUSTIC_MAPPING)
 
     def test_vowel_length_unresolved(self):
