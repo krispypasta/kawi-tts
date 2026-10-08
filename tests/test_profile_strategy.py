@@ -33,10 +33,15 @@ class TestProfileStrategies(unittest.TestCase):
         self.assertEqual(tok.status, PolicyStatus.EVIDENCE_BACKED)
         self.assertEqual(tok.citation, "P5-002 / aspirate merger")
         
-        # Unsupported aspirates fall back to PROVISIONAL pass-through
+        # Now all aspirates are supported and backed by evidence
         tok = self.strategy_a.apply("ḍʱ")
-        self.assertEqual(tok.target_token, "ḍʱ")
-        self.assertEqual(tok.status, PolicyStatus.PROVISIONAL_RECONSTRUCTION)
+        self.assertEqual(tok.target_token, "ḍ")
+        self.assertEqual(tok.status, PolicyStatus.EVIDENCE_BACKED)
+        
+        # Test retroflex nasal merger
+        tok = self.strategy_a.apply("ṇ")
+        self.assertEqual(tok.target_token, "n")
+        self.assertEqual(tok.status, PolicyStatus.EVIDENCE_BACKED)
 
         # Sibilants merge to native sibilant
         tok = self.strategy_a.apply("ś")

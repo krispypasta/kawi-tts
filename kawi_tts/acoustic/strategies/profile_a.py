@@ -6,6 +6,16 @@ _ASPIRATE_MERGERS = {
     "dʱ": "d",
     "gʱ": "g",
     "pʰ": "p",
+    "tʰ": "t",
+    "kʰ": "k",
+    "cʰ": "c",
+    "ɟʱ": "ɟ",
+    "ṭʰ": "ṭ",
+    "ḍʱ": "ḍ",
+}
+
+_NASAL_MERGERS = {
+    "ṇ": "n",
 }
 
 _SIBILANT_MERGERS = {
@@ -49,6 +59,15 @@ class ProfileAStrategy(AbstractProfileStrategy):
                 profile_name=self.profile_name,
                 status=PolicyStatus.EVIDENCE_BACKED,
                 citation="P5-002 / sibilant merger"
+            )
+            
+        if canonical_token in _NASAL_MERGERS:
+            return ProfiledToken(
+                canonical_token=canonical_token,
+                target_token=_NASAL_MERGERS[canonical_token],
+                profile_name=self.profile_name,
+                status=PolicyStatus.EVIDENCE_BACKED,
+                citation="P5-002 / retroflex nasal merger"
             )
             
         if canonical_token in _LIQUID_ADAPTATIONS:

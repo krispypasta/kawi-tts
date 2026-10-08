@@ -64,7 +64,7 @@ The G2P engine's internal tokens are strictly **phonological and lossless**. It 
 
 ## 10. Acoustic Mapping Status
 The Acoustic Mapper translates the internal lossless tokens to the eSpeak-ng backend format.
-*   **Status:** All five major reduction policies for Sanskrit loans (merging aspirates, merging sibilants, truncating vowel length, mapping vocalic liquids, mapping retroflex nasals) remain **DEFERRED**.
+*   **Status:** Profile A has been updated to fully implement the historical mergers for **all Sanskrit aspirates** and the **retroflex nasal (ṇ)**, alongside existing sibilant mergers. Truncating vowel length and mapping vocalic liquids remain **DEFERRED**.
 *   Mappings for these uncertain tokens are explicitly tagged in the codebase as `PROVISIONAL_ACOUSTIC_MAPPING`.
 
 ## 11. Prosody, Stress, and Sandhi Limitations

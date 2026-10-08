@@ -102,7 +102,7 @@ Key corrections made during Phase 0:
 
 ## Blocked / Waiting
 
-- **Neural TTS & Custom Corpora**: Explicitly BLOCKED/DEFERRED by the zero-budget constraint.
+- **Neural TTS & Custom Corpora**: Neural TTS is currently blocked at the Stage 1 Data Readiness gate.
 - **P6-005**: Etymological Metadata Implementation is explicitly BLOCKED until an etymologically tagged dictionary dataset is obtained or created.
 
 ---

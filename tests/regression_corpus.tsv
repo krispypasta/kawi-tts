@@ -18,7 +18,7 @@ SĔKAR	s-ə-k-a-r	s-ə-k-a-r	s-ə-k-a-r	Uppercase preservation check
 BHAṬĀRA	bʱ-a-ṭ-aː-r-a	b-a-ṭ-a-r-a	bʱ-a-ṭ-aː-r-a	Uppercase complex word
 Śiva	ś-i-w-a	s-i-w-a	ś-i-w-a	Uppercase sibilant
 DHARMA	dʱ-a-r-m-a	d-a-r-m-a	dʱ-a-r-m-a	Uppercase voiced aspirate
-SANKHA	s-a-n-kʰ-a	s-a-n-kʰ-a	s-a-n-kʰ-a	Uppercase voiceless aspirate
+SANKHA	s-a-n-kʰ-a	s-a-n-k-a	s-a-n-kʰ-a	Uppercase voiceless aspirate
 KṚTA	k-r̩-t-a	k-rə-t-a	k-r̩-t-a	Uppercase vocalic liquid
 LÖK	l-əː-k	l-ə-k	l-əː-k	Uppercase umlaut
 ṢAṬ	ṣ-a-ṭ	s-a-ṭ	ṣ-a-ṭ	Uppercase retroflex sibilant
@@ -27,23 +27,23 @@ WONG	w-o-n-g	w-o-n-g	w-o-n-g	Uppercase native word
 dharma	dʱ-a-r-m-a	d-a-r-m-a	dʱ-a-r-m-a	Voiced aspirate merger
 bhaṭāra	bʱ-a-ṭ-aː-r-a	b-a-ṭ-a-r-a	bʱ-a-ṭ-aː-r-a	Voiced aspirate merger
 ghoṣa	gʱ-o-ṣ-a	g-o-s-a	gʱ-o-ṣ-a	Voiced aspirate merger
-jhāṣa	ɟʱ-aː-ṣ-a	ɟʱ-a-s-a	ɟʱ-aː-ṣ-a	Voiced aspirate merger
-ḍhakkā	ḍʱ-a-k-k-aː	ḍʱ-a-k-k-a	ḍʱ-a-k-k-aː	Voiced aspirate merger
+jhāṣa	ɟʱ-aː-ṣ-a	ɟ-a-s-a	ɟʱ-aː-ṣ-a	Voiced aspirate merger
+ḍhakkā	ḍʱ-a-k-k-aː	ḍ-a-k-k-a	ḍʱ-a-k-k-aː	Voiced aspirate merger
 bhūmi	bʱ-uː-m-i	b-u-m-i	bʱ-uː-m-i	Voiced aspirate merger
 dhana	dʱ-a-n-a	d-a-n-a	dʱ-a-n-a	Voiced aspirate merger
 ghana	gʱ-a-n-a	g-a-n-a	gʱ-a-n-a	Voiced aspirate merger
-jhaṣa	ɟʱ-a-ṣ-a	ɟʱ-a-s-a	ɟʱ-a-ṣ-a	Voiced aspirate merger
+jhaṣa	ɟʱ-a-ṣ-a	ɟ-a-s-a	ɟʱ-a-ṣ-a	Voiced aspirate merger
 bhāṣa	bʱ-aː-ṣ-a	b-a-s-a	bʱ-aː-ṣ-a	Voiced aspirate merger
-sankha	s-a-n-kʰ-a	s-a-n-kʰ-a	s-a-n-kʰ-a	Voiceless aspirate fall-through
-phala	pʰ-a-l-a	p-a-l-a	pʰ-a-l-a	Voiceless aspirate fall-through
-katha	k-a-tʰ-a	k-a-tʰ-a	k-a-tʰ-a	Voiceless aspirate fall-through
-chattra	cʰ-a-t-t-r-a	cʰ-a-t-t-r-a	cʰ-a-t-t-r-a	Voiceless aspirate fall-through
-ṭhakkura	ṭʰ-a-k-k-u-r-a	ṭʰ-a-k-k-u-r-a	ṭʰ-a-k-k-u-r-a	Voiceless aspirate fall-through
-khalwa	kʰ-a-l-w-a	kʰ-a-l-w-a	kʰ-a-l-w-a	Voiceless aspirate fall-through
-phalgu	pʰ-a-l-g-u	p-a-l-g-u	pʰ-a-l-g-u	Voiceless aspirate fall-through
-ratha	r-a-tʰ-a	r-a-tʰ-a	r-a-tʰ-a	Voiceless aspirate fall-through
-chala	cʰ-a-l-a	cʰ-a-l-a	cʰ-a-l-a	Voiceless aspirate fall-through
-maṭha	m-a-ṭʰ-a	m-a-ṭʰ-a	m-a-ṭʰ-a	Voiceless aspirate fall-through
+sankha	s-a-n-kʰ-a	s-a-n-k-a	s-a-n-kʰ-a	Voiceless aspirate merger
+phala	pʰ-a-l-a	p-a-l-a	pʰ-a-l-a	Voiceless aspirate merger
+katha	k-a-tʰ-a	k-a-t-a	k-a-tʰ-a	Voiceless aspirate merger
+chattra	cʰ-a-t-t-r-a	c-a-t-t-r-a	cʰ-a-t-t-r-a	Voiceless aspirate merger
+ṭhakkura	ṭʰ-a-k-k-u-r-a	ṭ-a-k-k-u-r-a	ṭʰ-a-k-k-u-r-a	Voiceless aspirate merger
+khalwa	kʰ-a-l-w-a	k-a-l-w-a	kʰ-a-l-w-a	Voiceless aspirate merger
+phalgu	pʰ-a-l-g-u	p-a-l-g-u	pʰ-a-l-g-u	Voiceless aspirate merger
+ratha	r-a-tʰ-a	r-a-t-a	r-a-tʰ-a	Voiceless aspirate merger
+chala	cʰ-a-l-a	c-a-l-a	cʰ-a-l-a	Voiceless aspirate merger
+maṭha	m-a-ṭʰ-a	m-a-ṭ-a	m-a-ṭʰ-a	Voiceless aspirate merger
 śānti	ś-aː-n-t-i	s-a-n-t-i	ś-aː-n-t-i	Palatal sibilant merger
 ṣaṭ	ṣ-a-ṭ	s-a-ṭ	ṣ-a-ṭ	Retroflex sibilant merger
 suta	s-u-t-a	s-u-t-a	s-u-t-a	Alveolar sibilant
@@ -58,12 +58,12 @@ niṣkala	n-i-ṣ-k-a-l-a	n-i-s-k-a-l-a	n-i-ṣ-k-a-l-a	Retroflex sibilant merge
 dan	d-a-n	d-a-n	d-a-n	Dental plosive
 ṭīkā	ṭ-iː-k-aː	ṭ-i-k-a	ṭ-iː-k-aː	Retroflex plosive
 tika	t-i-k-a	t-i-k-a	t-i-k-a	Dental plosive
-kuṇḍa	k-u-ṇ-ḍ-a	k-u-ṇ-ḍ-a	k-u-ṇ-ḍ-a	Retroflex cluster
+kuṇḍa	k-u-ṇ-ḍ-a	k-u-n-ḍ-a	k-u-ṇ-ḍ-a	Retroflex cluster
 kunda	k-u-n-d-a	k-u-n-d-a	k-u-n-d-a	Dental cluster
-aṇḍa	a-ṇ-ḍ-a	a-ṇ-ḍ-a	a-ṇ-ḍ-a	Retroflex cluster
+aṇḍa	a-ṇ-ḍ-a	a-n-ḍ-a	a-ṇ-ḍ-a	Retroflex cluster
 anda	a-n-d-a	a-n-d-a	a-n-d-a	Dental cluster
-paṭha	p-a-ṭʰ-a	p-a-ṭʰ-a	p-a-ṭʰ-a	Retroflex aspirate (fall-through)
-patha	p-a-tʰ-a	p-a-tʰ-a	p-a-tʰ-a	Dental aspirate (fall-through)
+paṭha	p-a-ṭʰ-a	p-a-ṭ-a	p-a-ṭʰ-a	Retroflex aspirate merger
+patha	p-a-tʰ-a	p-a-t-a	p-a-tʰ-a	Dental aspirate merger
 rāma	r-aː-m-a	r-a-m-a	r-aː-m-a	a macron stripping
 sītā	s-iː-t-aː	s-i-t-a	s-iː-t-aː	i and a macron stripping
 pūjā	p-uː-ɟ-aː	p-u-ɟ-a	p-uː-ɟ-aː	u and a macron stripping

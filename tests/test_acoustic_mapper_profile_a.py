@@ -32,15 +32,25 @@ class TestAcousticMapperProfileA(unittest.TestCase):
         self.assertEqual(tok.backend_token, "rə")
         self.assertEqual(tok.status, MappingStatus.PROVISIONAL_ACOUSTIC_MAPPING)
 
-    def test_profile_a_unsupported_aspirates_fall_through(self):
-        """Unsupported aspirates must NOT be merged without cited evidence."""
-        res = self.mapper.map_phonemes([["kʰ", "a"]])
-        self.assertEqual(res.backend_phoneme_string, "kʰa")
+    def test_profile_a_all_aspirates_merged(self):
+        """All Sanskrit aspirates must be merged to plain stops per evidence."""
+        res = self.mapper.map_phonemes([["kʰ"], ["gʱ"], ["cʰ"], ["ɟʱ"], ["tʰ"], ["dʱ"], ["ṭʰ"], ["ḍʱ"], ["pʰ"], ["bʱ"]])
+        self.assertEqual(res.backend_phoneme_string, "k g c ɟ t d ʈ ɖ p b")
+        for i, internal in enumerate(["kʰ", "gʱ", "cʰ", "ɟʱ", "tʰ", "dʱ", "ṭʰ", "ḍʱ", "pʰ", "bʱ"]):
+            tok = res.mapped_words[i][0]
+            self.assertEqual(tok.internal_token, internal)
+            self.assertEqual(tok.status, MappingStatus.EVIDENCE_BACKED)
+            self.assertEqual(tok.note, "P5-002 / aspirate merger")
+
+    def test_profile_a_retroflex_nasal(self):
+        """Retroflex nasal must be merged to n per evidence."""
+        res = self.mapper.map_phonemes([["ṇ", "a"]])
+        self.assertEqual(res.backend_phoneme_string, "na")
         tok = res.mapped_words[0][0]
-        self.assertEqual(tok.internal_token, "kʰ")
-        self.assertEqual(tok.backend_token, "kʰ")
-        # kʰ is originally a V1 Preserved token since it wasn't merged.
-        self.assertEqual(tok.status, MappingStatus.PRESERVED)
+        self.assertEqual(tok.internal_token, "ṇ")
+        self.assertEqual(tok.backend_token, "n")
+        self.assertEqual(tok.status, MappingStatus.EVIDENCE_BACKED)
+        self.assertEqual(tok.note, "P5-002 / retroflex nasal merger")
         
     def test_profile_a_long_vocalic_liquids_handled(self):
         """Long vocalic liquids adapt to schwa base and lose duration."""
