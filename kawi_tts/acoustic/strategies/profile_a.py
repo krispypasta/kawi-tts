@@ -71,22 +71,28 @@ class ProfileAStrategy(AbstractProfileStrategy):
             )
             
         if canonical_token in _LIQUID_ADAPTATIONS:
+            if "ː" in canonical_token:
+                status = PolicyStatus.SCHOLARLY_RECONSTRUCTION
+                citation = "P5-002B / scholarly reconstruction of long syllabic-liquid adaptation"
+            else:
+                status = PolicyStatus.EVIDENCE_BACKED
+                citation = "P5-002A / evidence-backed short syllabic-liquid adaptation"
             return ProfiledToken(
                 canonical_token=canonical_token,
                 target_token=_LIQUID_ADAPTATIONS[canonical_token],
                 profile_name=self.profile_name,
-                status=PolicyStatus.PROVISIONAL_RECONSTRUCTION,
-                citation="P5-002 / syllabic-liquid adaptation"
+                status=status,
+                citation=citation
             )
             
-        # Vowel length is structurally deferred (UNRESOLVED policy, but target token remains)
+        # Vowel length neutralization (Scholarly Reconstruction Grade B)
         if canonical_token in {"aː", "iː", "uː", "əː"}:
             return ProfiledToken(
                 canonical_token=canonical_token,
                 target_token=canonical_token.replace("ː", ""),
                 profile_name=self.profile_name,
-                status=PolicyStatus.UNRESOLVED,
-                citation="P6-003R / unresolved duration engineering fallback"
+                status=PolicyStatus.SCHOLARLY_RECONSTRUCTION,
+                citation="P6-003R / scholarly reconstruction of duration neutralization"
             )
 
         # Fallback to standard preservation if no historical merger applies

@@ -52,8 +52,8 @@ class TestProfileStrategies(unittest.TestCase):
         # Syllabic liquids adapt provisionally
         tok = self.strategy_a.apply("r̩")
         self.assertEqual(tok.target_token, "rə")
-        self.assertEqual(tok.status, PolicyStatus.PROVISIONAL_RECONSTRUCTION)
-        self.assertEqual(tok.citation, "P5-002 / syllabic-liquid adaptation")
+        self.assertEqual(tok.status, PolicyStatus.EVIDENCE_BACKED)
+        self.assertEqual(tok.citation, "P5-002A / evidence-backed short syllabic-liquid adaptation")
 
     def test_dental_retroflex_preserved(self):
         """Both profiles must preserve dental vs retroflex distinction."""
@@ -71,8 +71,8 @@ class TestProfileStrategies(unittest.TestCase):
         """Vowel length must remain unresolved but target token is preserved."""
         tok_a = self.strategy_a.apply("aː")
         self.assertEqual(tok_a.target_token, "a")
-        self.assertEqual(tok_a.status, PolicyStatus.UNRESOLVED)
-        self.assertEqual(tok_a.citation, "P6-003R / unresolved duration engineering fallback")
+        self.assertEqual(tok_a.status, PolicyStatus.SCHOLARLY_RECONSTRUCTION)
+        self.assertEqual(tok_a.citation, "P6-003R / scholarly reconstruction of duration neutralization")
 
         tok_b = self.strategy_b.apply("aː")
         self.assertEqual(tok_b.target_token, "aː")

@@ -19,6 +19,7 @@ class MappingStatus(Enum):
     Kept backward compatible for V1 tests."""
     PRESERVED = "PRESERVED"
     PROVISIONAL_ACOUSTIC_MAPPING = "PROVISIONAL_ACOUSTIC_MAPPING"
+    SCHOLARLY_RECONSTRUCTION = "SCHOLARLY_RECONSTRUCTION"
     UNSUPPORTED = "UNSUPPORTED"
     UNRESOLVED = "UNRESOLVED"
     EVIDENCE_BACKED = "EVIDENCE_BACKED"
@@ -91,6 +92,8 @@ def _map_policy_to_legacy_status(policy: PolicyStatus) -> MappingStatus:
         return MappingStatus.PRESERVED
     elif policy == PolicyStatus.PROVISIONAL_RECONSTRUCTION:
         return MappingStatus.PROVISIONAL_ACOUSTIC_MAPPING
+    elif policy == PolicyStatus.SCHOLARLY_RECONSTRUCTION:
+        return MappingStatus.SCHOLARLY_RECONSTRUCTION
     elif policy == PolicyStatus.UNSUPPORTED:
         return MappingStatus.UNSUPPORTED
     elif policy == PolicyStatus.UNRESOLVED:

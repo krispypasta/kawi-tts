@@ -30,7 +30,7 @@ class TestAcousticMapperProfileA(unittest.TestCase):
         self.assertEqual(res.backend_phoneme_string, "rəa")
         tok = res.mapped_words[0][0]
         self.assertEqual(tok.backend_token, "rə")
-        self.assertEqual(tok.status, MappingStatus.PROVISIONAL_ACOUSTIC_MAPPING)
+        self.assertEqual(tok.status, MappingStatus.EVIDENCE_BACKED)
 
     def test_profile_a_all_aspirates_merged(self):
         """All Sanskrit aspirates must be merged to plain stops per evidence."""
@@ -59,16 +59,16 @@ class TestAcousticMapperProfileA(unittest.TestCase):
         tok = res.mapped_words[0][0]
         self.assertEqual(tok.internal_token, "r̩ː")
         self.assertEqual(tok.backend_token, "rə")
-        self.assertEqual(tok.status, MappingStatus.PROVISIONAL_ACOUSTIC_MAPPING)
+        self.assertEqual(tok.status, MappingStatus.SCHOLARLY_RECONSTRUCTION)
 
-    def test_vowel_length_unresolved(self):
+    def test_vowel_length_neutralization(self):
         res = self.mapper.map_phonemes([["aː"]])
         self.assertEqual(res.backend_phoneme_string, "a")
         tok = res.mapped_words[0][0]
         self.assertEqual(tok.internal_token, "aː")
         self.assertEqual(tok.backend_token, "a")
-        self.assertEqual(tok.status, MappingStatus.UNRESOLVED)
-        self.assertEqual(tok.note, "P6-003R / unresolved duration engineering fallback")
+        self.assertEqual(tok.status, MappingStatus.SCHOLARLY_RECONSTRUCTION)
+        self.assertEqual(tok.note, "P6-003R / scholarly reconstruction of duration neutralization")
 
 if __name__ == "__main__":
     unittest.main()
