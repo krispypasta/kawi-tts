@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-eval' https://cdn.jsdelivr.net; connect-src 'self' https://cdn.jsdelivr.net https://pypi.org https://files.pythonhosted.org; worker-src 'self'; style-src 'self' 'unsafe-inline';">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kawi-TTS Research Workbench</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Kawi-TTS Research Workbench</h1>
+        <p class="subtitle">Linguistic inspection for Old Javanese pronunciation reconstruction.</p>
+    </header>
+
+    <main>
+        <div id="status-container" class="status-loading" aria-live="polite" role="status">
+            <span id="status-text">Booting Web Worker...</span>
+        </div>
+
+        <section class="panel" aria-labelledby="input-label">
+            <label id="input-label" for="kawi-input">Enter Old Javanese Text (Zoetmulder or Damais convention)</label>
+            <textarea id="kawi-input" placeholder="e.g. om awighnam astu namas sidham" aria-describedby="example-desc"></textarea>
+            
+            <div class="controls">
+                <button id="analyze-btn" disabled>Analyze</button>
+                <button id="clear-btn" class="secondary">Clear</button>
+            </div>
+
+            <div class="examples" id="example-desc">
+                <span>Examples:</span>
+                <button class="example-btn" data-text="sĕkar">sĕkar</button>
+                <button class="example-btn" data-text="BHAṬĀRA">BHAṬĀRA</button>
+                <button class="example-btn" data-text="śānti">śānti</button>
+                <button class="example-btn" data-text="kṝta">kṝta</button>
+                <button class="example-btn" data-text="sang-hyang kamahāyānikan">sang-hyang</button>
+                <button class="example-btn" data-text="sanghyang">sanghyang (ambiguous)</button>
+            </div>
+        </section>
+
+        <div id="error-box" class="error-box hidden" role="alert">
+            <strong>Error:</strong> <span id="error-text"></span>
+        </div>
+
+        <div id="ambiguity-box" class="ambiguity-box hidden" role="alert">
+            <strong>Engine Blocked:</strong> Linguistic ambiguity detected. The deterministic core refuses to guess.
+            <p id="ambiguity-text" style="font-family: monospace; margin-top: 0.5rem;"></p>
+        </div>
+
+        <section id="results-panel" class="panel hidden" aria-live="polite">
+            <h2>Linguistic Trace</h2>
+
+            <div class="trace-section">
+                <div class="trace-stage">
+                    <h3>1. Normalized Text</h3>
+                    <p class="trace-value" id="res-norm"></p>
+                </div>
+                
+                <div class="trace-stage">
+                    <h3>2. Tokenization</h3>
+                    <p class="trace-value" id="res-tok" style="font-size: 1rem; color: var(--muted-text);"></p>
+                </div>
+                
+                <div class="trace-stage">
+                    <h3>3. Canonical G2P</h3>
+                    <p class="trace-value" id="res-canon"></p>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 2rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border-color);">4 & 5. Target Epistemic Profiles & Acoustic Mappings</h3>
+            
+            <div class="profile-comparison">
+                <!-- Profile A -->
+                <div class="profile-box">
+                    <h4>Profile A: Reconstructed Historical Spoken</h4>
+                    <p class="profile-desc">Reflects historical Old Javanese spoken mergers (e.g., aspirates neutralized). Does NOT reflect modern Balinese chanting.</p>
+                    
+                    <div style="margin-bottom: 1rem;">
+                        <h5 style="margin: 0 0 0.25rem 0; font-size: 0.85rem; color: var(--muted-text);">Target Phonemes</h5>
+                        <p class="trace-value" id="res-prof-a"></p>
+                    </div>
+                    
+                    <div>
+                        <h5 style="margin: 0 0 0.25rem 0; font-size: 0.85rem; color: var(--muted-text);">Backend Acoustic Approximation (eSpeak)</h5>
+                        <p class="trace-value" id="res-acous-a" style="color: var(--primary-color); font-weight: bold;"></p>
+                    </div>
+
+                    <ul class="provenance-list" id="prov-a"></ul>
+                </div>
+
+                <!-- Profile B -->
+                <div class="profile-box">
+                    <h4>Profile B: Scholarly Orthographic Reading</h4>
+                    <p class="profile-desc">Artificially preserves Sanskrit written distinctions (aspirates, length) for philological recitation.</p>
+                    
+                    <div style="margin-bottom: 1rem;">
+                        <h5 style="margin: 0 0 0.25rem 0; font-size: 0.85rem; color: var(--muted-text);">Target Phonemes</h5>
+                        <p class="trace-value" id="res-prof-b"></p>
+                    </div>
+                    
+                    <div>
+                        <h5 style="margin: 0 0 0.25rem 0; font-size: 0.85rem; color: var(--muted-text);">Backend Acoustic Approximation (eSpeak)</h5>
+                        <p class="trace-value" id="res-acous-b" style="color: var(--primary-color); font-weight: bold;"></p>
+                    </div>
+
+                    <ul class="provenance-list" id="prov-b"></ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer style="margin-top: 3rem; text-align: center; color: var(--muted-text); font-size: 0.85rem;">
+        Powered by <a href="https://pypi.org/project/kawi-tts/" target="_blank" style="color: var(--primary-color);">kawi-tts==1.1.2</a> and Pyodide. Runs 100% locally in your browser.
+    </footer>
+    <script src="app.js"></script>
+</body>
+</html>
