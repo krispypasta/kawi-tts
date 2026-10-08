@@ -142,7 +142,7 @@ class TestEvidenceBasedValidation(unittest.TestCase):
     def test_ascii_ambiguity_sanghyang(self):
         """ASCII sanghyang triggers UNRESOLVED, while sang-hyang and saṅhyaṅ resolve cleanly."""
         # Un-hyphenated ASCII sanghyang: flagged as UNRESOLVED
-        res_raw = synthesize("sanghyang", profile="B", dry_run=True)
+        res_raw = synthesize("sanghyang", profile="B", dry_run=True, strict=False)
         self.assertEqual(res_raw.tokens[0].token_type, TokenType.UNRESOLVED)
         self.assertTrue(res_raw.tokens[0].has_ambiguity)
 

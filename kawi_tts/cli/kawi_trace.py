@@ -58,8 +58,8 @@ def run_trace(word_in: str):
     print(f"[4] Profile B   : {' | '.join(prof_b_str_list)}")
     
     # 5. Acoustic Mapper
-    map_a = AcousticMapper("A", adapt_for_espeak_id=True)
-    map_b = AcousticMapper("B", adapt_for_espeak_id=True)
+    map_a = AcousticMapper("A")
+    map_b = AcousticMapper("B")
     
     res_a = map_a.map_phonemes(canon_list)
     res_b = map_b.map_phonemes(canon_list)
@@ -67,14 +67,14 @@ def run_trace(word_in: str):
     print(f"[5] Acoustic A  : '{res_a.backend_phoneme_string}'")
     for w in res_a.mapped_words:
         for t in w:
-            if t.status.name == "BACKEND_APPROXIMATION" and t.profiled_token:
-                print(f"    - {t.profiled_token.target_token} -> {t.backend_token} (BACKEND_APPROXIMATION: {t.note})")
+            if t.status.name not in ("PRESERVED", "EVIDENCE_BACKED") and t.profiled_token:
+                print(f"    - {t.internal_token} -> {t.backend_token} ({t.status.name}: {t.note})")
 
     print(f"[5] Acoustic B  : '{res_b.backend_phoneme_string}'")
     for w in res_b.mapped_words:
         for t in w:
-            if t.status.name == "BACKEND_APPROXIMATION" and t.profiled_token:
-                print(f"    - {t.profiled_token.target_token} -> {t.backend_token} (BACKEND_APPROXIMATION: {t.note})")
+            if t.status.name not in ("PRESERVED", "EVIDENCE_BACKED") and t.profiled_token:
+                print(f"    - {t.internal_token} -> {t.backend_token} ({t.status.name}: {t.note})")
 
     print(f"{'='*60}\n")
 

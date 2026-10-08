@@ -143,8 +143,8 @@ class TestEndToEndV1Integration(unittest.TestCase):
 
     def test_ascii_ambiguity_sanghyang_contrast(self):
         """Verifies integration behavior for ASCII sanghyang vs sang-hyang vs saṅhyaṅ."""
-        # 1. Un-hyphenated ASCII: token flagged UNRESOLVED
-        res_raw = synthesize("sanghyang", profile="B", dry_run=True)
+        # Ambiguous raw ASCII
+        res_raw = synthesize("sanghyang", profile="B", dry_run=True, strict=False)
         self.assertEqual(res_raw.tokens[0].token_type, TokenType.UNRESOLVED)
         self.assertTrue(res_raw.tokens[0].has_ambiguity)
         self.assertIn("ngh", res_raw.tokens[0].ambiguity_reason or "")

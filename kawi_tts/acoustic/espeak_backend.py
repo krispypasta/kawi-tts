@@ -29,8 +29,9 @@ class SynthesisResult:
         output_path: Target path for the output WAV file.
         command: Full CLI argument list constructed for eSpeak-ng.
         dry_run: Whether synthesis was executed in dry-run/mock mode.
-        audio_generated: Whether a valid WAV file was produced on disk.
+        audio_generated: Whether a valid WAV file was produced on disk or in memory.
         bytes_written: Number of bytes written to output_path.
+        audio_bytes: Raw WAV bytes if output_path is None.
     """
 
     phoneme_input: str
@@ -40,6 +41,7 @@ class SynthesisResult:
     dry_run: bool
     audio_generated: bool
     bytes_written: int = 0
+    audio_bytes: Optional[bytes] = None
 
 
 def create_minimal_wav_header(sample_rate: int = 22050) -> bytes:
@@ -70,6 +72,18 @@ def create_minimal_wav_header(sample_rate: int = 22050) -> bytes:
 
 class ESpeakBackend:
     """Wrapper around the eSpeak-ng command-line phoneme synthesis engine."""
+
+    _ESPEAK_ID_APPROXIMATION = {
+        "ə": "@", "əː": "@",
+        "ŋ": "N", "ɲ": "n^", "ɟ": "dZ",
+        "aː": "a", "iː": "i", "uː": "u",
+        "ʈ": "t", "ɖ": "d", "ɳ": "n",
+        "ʃ": "s", "ʂ": "s",
+        "tʰ": "th", "pʰ": "ph", "kʰ": "kh", "cʰ": "ch", "ʈʰ": "th",
+        "bʱ": "bh", "dʱ": "dh", "gʱ": "gh", "ɟʱ": "dZh", "ḍʱ": "dh",
+        "r̩": "r@", "l̩": "l@", "r̩ː": "r@", "l̩ː": "l@",
+        "rə": "r@", "lə": "l@",
+    }
 
     def __init__(self, executable: Optional[str] = None, voice: str = "jv"):
         """Initialize the eSpeak backend interface.
@@ -103,7 +117,7 @@ class ESpeakBackend:
 
         Args:
             phoneme_str: Space-separated backend-ready phoneme string.
-            output_path: File path to save output WAV file. If None and not dry_run, an error is raised.
+            output_path: File path to save output WAV file. If None, audio is returned in memory.
             dry_run: If True, simulates execution without invoking the real binary.
             create_dummy_wav: If True in dry_run mode, writes a minimal 44-byte WAV header
                 to output_path to test file generation workflows.
@@ -113,12 +127,20 @@ class ESpeakBackend:
 
         Raises:
             ESpeakNotFoundError: If dry_run is False but eSpeak-ng is not installed.
-            ValueError: If output_path is not provided when real synthesis is requested.
             subprocess.CalledProcessError: If eSpeak-ng execution fails.
         """
         target_path = str(output_path) if output_path else None
+        
+        # Apply backend-specific phonetic approximations if using Indonesian voice
+        final_phoneme_str = phoneme_str
+        if self.voice == "id":
+            # Sort replacements by length descending to prevent substring collisions
+            sorted_replacements = sorted(self._ESPEAK_ID_APPROXIMATION.items(), key=lambda x: len(x[0]), reverse=True)
+            for k, v in sorted_replacements:
+                final_phoneme_str = final_phoneme_str.replace(k, v)
+        
         # Format input phoneme string inside eSpeak [[...]] brackets
-        phoneme_bracketed = f"[[{phoneme_str}]]"
+        phoneme_bracketed = f"[[{final_phoneme_str}]]"
 
         exec_cmd = [
             self.executable_path or "espeak-ng",
@@ -127,25 +149,29 @@ class ESpeakBackend:
         ]
         if target_path:
             exec_cmd.extend(["-w", target_path])
+        else:
+            exec_cmd.append("--stdout")
+            
         exec_cmd.append(phoneme_bracketed)
 
         if dry_run:
             bytes_written = 0
-            if target_path and create_dummy_wav:
-                wav_bytes = create_minimal_wav_header()
+            wav_bytes = create_minimal_wav_header() if create_dummy_wav else None
+            if target_path and wav_bytes:
                 Path(target_path).parent.mkdir(parents=True, exist_ok=True)
                 with open(target_path, "wb") as f:
                     f.write(wav_bytes)
                 bytes_written = len(wav_bytes)
 
             return SynthesisResult(
-                phoneme_input=phoneme_str,
+                phoneme_input=final_phoneme_str,
                 voice=self.voice,
                 output_path=target_path,
                 command=exec_cmd,
                 dry_run=True,
-                audio_generated=(bytes_written > 0),
+                audio_generated=(create_dummy_wav),
                 bytes_written=bytes_written,
+                audio_bytes=wav_bytes if not target_path else None,
             )
 
         # Real execution requested
@@ -158,24 +184,30 @@ class ESpeakBackend:
                 "Alternatively, specify dry_run=True to verify pipeline data flow without generating audio."
             )
 
-        if not target_path:
-            raise ValueError("output_path must be provided for non-dry-run synthesis.")
-
-        Path(target_path).parent.mkdir(parents=True, exist_ok=True)
-        subprocess.run(
+        if target_path:
+            Path(target_path).parent.mkdir(parents=True, exist_ok=True)
+            
+        result = subprocess.run(
             exec_cmd,
             check=True,
             capture_output=True,
-            text=True,
         )
 
-        file_size = Path(target_path).stat().st_size if Path(target_path).exists() else 0
+        audio_bytes = None
+        file_size = 0
+        if target_path:
+            file_size = Path(target_path).stat().st_size if Path(target_path).exists() else 0
+        else:
+            audio_bytes = result.stdout
+            file_size = len(audio_bytes)
+
         return SynthesisResult(
-            phoneme_input=phoneme_str,
+            phoneme_input=final_phoneme_str,
             voice=self.voice,
             output_path=target_path,
             command=exec_cmd,
             dry_run=False,
             audio_generated=(file_size > 0),
             bytes_written=file_size,
+            audio_bytes=audio_bytes,
         )

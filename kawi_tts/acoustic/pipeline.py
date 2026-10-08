@@ -22,6 +22,9 @@ from kawi_tts.normalization.normalizer import NormalizationResult, normalize
 from kawi_tts.normalization.tokenizer import Token, TokenType, extract_words, tokenize
 
 
+class AmbiguousTokenError(ValueError):
+    """Raised when strict=True and unresolved tokens are present."""
+
 @dataclass(frozen=True)
 class PipelineResult:
     """Complete provenance and execution log of an end-to-end synthesis invocation.
@@ -54,27 +57,37 @@ def synthesize(
     dry_run: bool = False,
     create_dummy_wav: bool = False,
     executable: Optional[str] = None,
+    strict: bool = True,
 ) -> PipelineResult:
     """Execute the complete end-to-end Kawi-TTS synthesis pipeline.
 
     Args:
         text: Raw Kawi text input.
         profile: Pronunciation profile identifier (default 'A' for Historical Spoken).
-        output_path: Target path for output WAV file.
+        output_path: Target path for output WAV file. If None, audio is stored in memory.
         voice: Voice code for eSpeak-ng (default 'jv' for Javanese).
         dry_run: If True, simulates execution without invoking the real eSpeak-ng binary.
         create_dummy_wav: If True and dry_run=True, writes a minimal 44-byte WAV header
             to output_path for testing file creation workflows.
         executable: Optional custom path to eSpeak-ng binary.
+        strict: If True, raises AmbiguousTokenError for unresolved tokens.
 
     Returns:
         PipelineResult containing outputs from all intermediate layers and synthesis.
+        
+    Raises:
+        AmbiguousTokenError: If strict is True and an unresolved token is present.
     """
     # 1. Unicode & Orthographic Normalization
     norm_res = normalize(text)
 
     # 2. Text Structure & Tokenization
     tokens = tokenize(norm_res.normalized_text)
+    if strict:
+        for t in tokens:
+            if t.token_type == TokenType.UNRESOLVED:
+                raise AmbiguousTokenError(f"Ambiguous/Unresolved token detected in strict mode: '{t.text}'")
+
     valid_types = {TokenType.WORD, TokenType.UNRESOLVED, TokenType.PUNCTUATION}
     synthesis_chunks = [t.text for t in tokens if t.token_type in valid_types]
 
@@ -82,8 +95,8 @@ def synthesize(
     g2p_phonemes = [g2p_word(w) for w in synthesis_chunks]
 
     # 4. Explicit Acoustic Mapping (Profile A)
-    adapt_espeak = (voice == "id")
-    mapper = AcousticMapper(profile=profile, adapt_for_espeak_id=adapt_espeak)
+    # The AcousticMapper no longer handles espeak-id fallback; it maps to pure IPA.
+    mapper = AcousticMapper(profile=profile)
     mapping_res = mapper.map_phonemes(g2p_phonemes)
 
     # 5. Acoustic Backend Synthesis (eSpeak-ng)
