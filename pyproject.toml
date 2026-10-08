@@ -8,8 +8,7 @@ version = "1.1.2"
 description = "Deterministic pronunciation and reconstruction engine for Old Javanese/Kawi."
 readme = "README.md"
 requires-python = ">=3.8"
-license = "MIT"
-license-files = ["LICENSE"]
+license = { text = "MIT" }
 authors = [
   { name = "Project-TTS-Kawi" }
 ]
