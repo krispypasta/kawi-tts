@@ -196,3 +196,15 @@ Review trigger: Phase 4 completion and subsequent neural modeling milestones.
 ## Pending Decisions (awaiting research)
 
 None currently pending. All foundational architectural decisions for V1 (DEC-001 through DEC-009) have been resolved. Profile A acoustic mapper collapsing policies remain deferred to Abraham.
+
+### DEC-010: Epistemic separation of scholarly authority and acoustic execution (Non-specialist speaker authorization)
+
+Date: 2026-10-08
+Status: DECIDED
+Made by: Subagent / Manager Role
+Decision: A non-specialist project member is authorized to act as the corpus speaker (Reader) and recording engineer (Technician) for neural TTS data acquisition, provided they strictly execute the deterministic G2P phonetic targets without introducing L1 (modern Indonesian/Javanese) interference.
+Rationale: The epistemic burden of historical correctness rests entirely on the upstream deterministic G2P engine (the Scholar role). The speaker's role is purely mechanical (the Reader role). The authority is encoded in the script, not in the speaker's brain. Therefore, scholarly credentials are not required for the speaker as long as strict phonetic compliance is maintained.
+Alternatives considered:
+- Waiting indefinitely for a dual-qualified (scholar + trained voice actor) speaker. Rejected as it blocks the project entirely and misunderstands the deterministic nature of the G2P pipeline.
+Dependencies: V1.1.1 frozen frontend, rigorous QA discard policy for acoustic errors.
+Review trigger: If corpus QA reveals that the non-specialist speaker is biologically/mechanically incapable of producing target phonemes (e.g., retroflexes) consistently.
