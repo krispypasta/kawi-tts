@@ -41,7 +41,7 @@ class TestEndToEndV1Integration(unittest.TestCase):
             "".join(t.text for t in res.tokens),
             res.normalization.normalized_text,
         )
-        self.assertEqual(res.words, ["Śrī", "bhaṭāra", "śānti"])
+        self.assertEqual(res.synthesis_chunks, ["Śrī", "bhaṭāra", "śānti", "!", "||"])
 
         # 4. G2P contract: case-insensitive phoneme parsing, greedy multigraph match
         self.assertEqual(res.g2p_phonemes[0], ["ś", "r", "iː"])
@@ -49,7 +49,7 @@ class TestEndToEndV1Integration(unittest.TestCase):
         self.assertEqual(res.g2p_phonemes[2], ["ś", "aː", "n", "t", "i"])
 
         # 5. Acoustic Mapper contract: eSpeak IPA mapping, provisional tracking, no G2P mutation
-        self.assertEqual(res.acoustic_mapping.backend_phoneme_string, "ʃriː bʱaʈaːra ʃaːnti")
+        self.assertEqual(res.acoustic_mapping.backend_phoneme_string, "ʃriː bʱaʈaːra ʃaːnti ! ||")
         self.assertEqual(len(res.acoustic_mapping.provisional_mappings), 1)
         self.assertEqual(res.acoustic_mapping.provisional_mappings[0].internal_token, "bʱ")
         self.assertEqual(
@@ -60,7 +60,7 @@ class TestEndToEndV1Integration(unittest.TestCase):
         # 6. Backend contract: deterministic CLI construction, dry-run safety
         self.assertTrue(res.synthesis.dry_run)
         self.assertIn("espeak-ng", res.synthesis.command[0])
-        self.assertIn("[[ʃriː bʱaʈaːra ʃaːnti]]", res.synthesis.command[-1])
+        self.assertIn("[[ʃriː bʱaʈaːra ʃaːnti ! ||]]", res.synthesis.command[-1])
 
     def test_information_preservation_invariants(self):
         """Verifies that internal G2P representations never collapse uncertain distinctions."""
@@ -151,13 +151,13 @@ class TestEndToEndV1Integration(unittest.TestCase):
 
         # 2. Hyphenated: splits boundary, no false aspirate
         res_hyphen = synthesize("sang-hyang", profile="B", dry_run=True)
-        self.assertEqual(res_hyphen.words, ["sang", "hyang"])
+        self.assertEqual(res_hyphen.synthesis_chunks, ["sang", "hyang"])
         self.assertEqual(res_hyphen.acoustic_mapping.backend_phoneme_string, "sang hjang")
         self.assertNotIn("gʱ", res_hyphen.acoustic_mapping.backend_phoneme_string)
 
         # 3. Canonical: saṅhyaṅ
         res_canon = synthesize("saṅhyaṅ", profile="B", dry_run=True)
-        self.assertEqual(res_canon.words, ["saṅhyaṅ"])
+        self.assertEqual(res_canon.synthesis_chunks, ["saṅhyaṅ"])
         self.assertEqual(res_canon.acoustic_mapping.backend_phoneme_string, "saŋhjaŋ")
         self.assertFalse(res_canon.tokens[0].has_ambiguity)
 
@@ -165,7 +165,7 @@ class TestEndToEndV1Integration(unittest.TestCase):
         """Pipeline handles empty and whitespace-only inputs gracefully without crashing."""
         for empty_val in ["", "   ", "\t\t", "\n\r\n"]:
             res = synthesize(empty_val, profile="B", dry_run=True)
-            self.assertEqual(res.words, [])
+            self.assertEqual(res.synthesis_chunks, [])
             self.assertEqual(res.g2p_phonemes, [])
             self.assertEqual(res.acoustic_mapping.backend_phoneme_string, "")
             self.assertEqual(res.synthesis.command[-1], "[[]]")
@@ -173,13 +173,13 @@ class TestEndToEndV1Integration(unittest.TestCase):
     def test_error_handling_punctuation_and_numbers(self):
         """Punctuation-only and number-only inputs produce structured non-lexical tokens."""
         res_punct = synthesize(", . ! ? ||", profile="B", dry_run=True)
-        self.assertEqual(res_punct.words, [])
-        self.assertEqual(res_punct.g2p_phonemes, [])
-        self.assertEqual(res_punct.acoustic_mapping.backend_phoneme_string, "")
+        self.assertEqual(res_punct.synthesis_chunks, [",", ".", "!", "?", "||"])
+        self.assertEqual(res_punct.g2p_phonemes, [[","], ["."], ["!"], ["?"], ["|", "|"]])
+        self.assertEqual(res_punct.acoustic_mapping.backend_phoneme_string, ", . ! ? ||")
 
         res_num = synthesize("183.2", profile="B", dry_run=True)
-        self.assertEqual(res_num.words, [])
-        self.assertEqual(res_num.g2p_phonemes, [])
+        self.assertEqual(res_num.synthesis_chunks, ["."])
+        self.assertEqual(res_num.g2p_phonemes, [["."]])
 
     def test_unsupported_characters_reported_explicitly(self):
         """Unsupported characters within words are reported in unsupported_tokens, not silenced."""

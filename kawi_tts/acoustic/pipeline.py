@@ -19,7 +19,7 @@ from kawi_tts.acoustic.espeak_backend import ESpeakBackend, SynthesisResult
 from kawi_tts.acoustic.mapper import AcousticMapper, AcousticMappingResult
 from kawi_tts.g2p.engine import g2p_word
 from kawi_tts.normalization.normalizer import NormalizationResult, normalize
-from kawi_tts.normalization.tokenizer import Token, extract_words, tokenize
+from kawi_tts.normalization.tokenizer import Token, TokenType, extract_words, tokenize
 
 
 @dataclass(frozen=True)
@@ -39,7 +39,7 @@ class PipelineResult:
     input_text: str
     normalization: NormalizationResult
     tokens: List[Token]
-    words: List[str]
+    synthesis_chunks: List[str]
     g2p_phonemes: List[List[str]]
     acoustic_mapping: AcousticMappingResult
     synthesis: SynthesisResult
@@ -75,10 +75,11 @@ def synthesize(
 
     # 2. Text Structure & Tokenization
     tokens = tokenize(norm_res.normalized_text)
-    words = extract_words(tokens)
+    valid_types = {TokenType.WORD, TokenType.UNRESOLVED, TokenType.PUNCTUATION}
+    synthesis_chunks = [t.text for t in tokens if t.token_type in valid_types]
 
     # 3. Lossless G2P
-    g2p_phonemes = [g2p_word(w) for w in words]
+    g2p_phonemes = [g2p_word(w) for w in synthesis_chunks]
 
     # 4. Explicit Acoustic Mapping (Profile A)
     adapt_espeak = (voice == "id")
@@ -98,7 +99,7 @@ def synthesize(
         input_text=text,
         normalization=norm_res,
         tokens=tokens,
-        words=words,
+        synthesis_chunks=synthesis_chunks,
         g2p_phonemes=g2p_phonemes,
         acoustic_mapping=mapping_res,
         synthesis=synthesis_res,

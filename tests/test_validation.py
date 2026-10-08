@@ -18,7 +18,7 @@ class TestEvidenceBasedValidation(unittest.TestCase):
         """Native Austronesian vocabulary (sĕkar Z1728, wukir Z2322, tumutupi OJW/Z2084)."""
         # sĕkar (flower, Zoetmulder 1982:1728)
         res_sekar = synthesize("sĕkar", profile="B", dry_run=True)
-        self.assertEqual(res_sekar.words, ["sĕkar"])
+        self.assertEqual(res_sekar.synthesis_chunks, ["sĕkar"])
         self.assertEqual(res_sekar.g2p_phonemes[0], ["s", "ə", "k", "a", "r"])
         self.assertEqual(res_sekar.acoustic_mapping.backend_phoneme_string, "səkar")
         self.assertEqual(len(res_sekar.acoustic_mapping.provisional_mappings), 0)
@@ -148,7 +148,7 @@ class TestEvidenceBasedValidation(unittest.TestCase):
 
         # Disambiguated by boundary: sang-hyang
         res_hyphen = synthesize("sang-hyang", profile="B", dry_run=True)
-        self.assertEqual(res_hyphen.words, ["sang", "hyang"])
+        self.assertEqual(res_hyphen.synthesis_chunks, ["sang", "hyang"])
         self.assertEqual(res_hyphen.g2p_phonemes, [["s", "a", "n", "g"], ["h", "j", "a", "n", "g"]])
         self.assertEqual(res_hyphen.acoustic_mapping.backend_phoneme_string, "sang hjang")
         self.assertNotIn("gʱ", res_hyphen.acoustic_mapping.backend_phoneme_string)
@@ -162,7 +162,7 @@ class TestEvidenceBasedValidation(unittest.TestCase):
     def test_reduplication(self):
         """Reduplicated forms with boundary hyphen (gilaṅ-gilaṅ Z525)."""
         res_redup = synthesize("gilaṅ-gilaṅ", profile="B", dry_run=True)
-        self.assertEqual(res_redup.words, ["gilaṅ", "gilaṅ"])
+        self.assertEqual(res_redup.synthesis_chunks, ["gilaṅ", "gilaṅ"])
         self.assertEqual(res_redup.g2p_phonemes, [["g", "i", "l", "a", "ŋ"], ["g", "i", "l", "a", "ŋ"]])
         self.assertEqual(res_redup.acoustic_mapping.backend_phoneme_string, "gilaŋ gilaŋ")
 
@@ -170,13 +170,13 @@ class TestEvidenceBasedValidation(unittest.TestCase):
         """Enclitic connector 'n (lingira'n Z1034) and article 'ng (ri'ng Z1546)."""
         # lingira'n (Zoetmulder 1982:1034)
         res_lingira = synthesize("liṅgira'n", profile="B", dry_run=True)
-        self.assertEqual(res_lingira.words, ["liṅgira", "n"])
+        self.assertEqual(res_lingira.synthesis_chunks, ["liṅgira", "n"])
         self.assertEqual(res_lingira.g2p_phonemes, [["l", "i", "ŋ", "g", "i", "r", "a"], ["n"]])
         self.assertEqual(res_lingira.acoustic_mapping.backend_phoneme_string, "liŋgira n")
 
         # ri'ng (Zoetmulder 1982:1546)
         res_ring = synthesize("ri'ṅ", profile="B", dry_run=True)
-        self.assertEqual(res_ring.words, ["ri", "ṅ"])
+        self.assertEqual(res_ring.synthesis_chunks, ["ri", "ṅ"])
         self.assertEqual(res_ring.g2p_phonemes, [["r", "i"], ["ŋ"]])
         self.assertEqual(res_ring.acoustic_mapping.backend_phoneme_string, "ri ŋ")
 

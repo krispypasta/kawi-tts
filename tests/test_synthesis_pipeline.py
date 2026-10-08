@@ -65,7 +65,7 @@ class TestSynthesisPipeline(unittest.TestCase):
         self.assertEqual(res.input_text, text)
         self.assertEqual(res.normalization.normalized_text, "om awighnam astu")
         self.assertEqual(len(res.tokens), 5)  # om + space + awighnam + space + astu
-        self.assertEqual(res.words, ["om", "awighnam", "astu"])
+        self.assertEqual(res.synthesis_chunks, ["om", "awighnam", "astu"])
 
         # Check G2P phonemes
         self.assertEqual(res.g2p_phonemes[0], ["o", "m"])
@@ -90,7 +90,7 @@ class TestSynthesisPipeline(unittest.TestCase):
         text = "sang-hyang"
         res = synthesize(text, profile="B", dry_run=True)
 
-        self.assertEqual(res.words, ["sang", "hyang"])
+        self.assertEqual(res.synthesis_chunks, ["sang", "hyang"])
         self.assertEqual(res.g2p_phonemes[0], ["s", "a", "n", "g"])
         self.assertEqual(res.g2p_phonemes[1], ["h", "j", "a", "n", "g"])
         # No 'gʱ' aspirate should be created
@@ -102,7 +102,7 @@ class TestSynthesisPipeline(unittest.TestCase):
         text = "bhaṭāra śānti"
         res = synthesize(text, profile="B", dry_run=True)
 
-        self.assertEqual(res.words, ["bhaṭāra", "śānti"])
+        self.assertEqual(res.synthesis_chunks, ["bhaṭāra", "śānti"])
         # G2P output
         self.assertEqual(res.g2p_phonemes[0], ["bʱ", "a", "ṭ", "aː", "r", "a"])
         self.assertEqual(res.g2p_phonemes[1], ["ś", "aː", "n", "t", "i"])
