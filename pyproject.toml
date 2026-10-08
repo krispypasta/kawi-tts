@@ -4,24 +4,48 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "kawi-tts"
-version = "1.1.1"
+version = "1.1.2"
 description = "Deterministic pronunciation and reconstruction engine for Old Javanese/Kawi."
 readme = "README.md"
 requires-python = ">=3.8"
-license = { text = "MIT" }
+license = "MIT"
+license-files = ["LICENSE"]
 authors = [
   { name = "Project-TTS-Kawi" }
+]
+keywords = [
+    "kawi",
+    "old-javanese",
+    "linguistics",
+    "phonology",
+    "g2p",
+    "text-to-speech",
+    "reconstruction",
+    "austronesian",
 ]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Science/Research",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "Topic :: Scientific/Engineering :: Information Analysis",
     "Topic :: Multimedia :: Sound/Audio :: Speech",
+    "Topic :: Text Processing :: Linguistic",
+    "Operating System :: OS Independent",
 ]
 dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/krispypasta/kawi-tts"
+Repository = "https://github.com/krispypasta/kawi-tts"
+"Bug Tracker" = "https://github.com/krispypasta/kawi-tts/issues"
+Documentation = "https://github.com/krispypasta/kawi-tts#readme"
 
 [project.optional-dependencies]
 dev = [
@@ -32,5 +56,7 @@ dev = [
 [project.scripts]
 kawi-trace = "kawi_tts.cli.kawi_trace:main"
 
-[tool.setuptools]
-packages = ["kawi_tts", "kawi_tts.acoustic", "kawi_tts.acoustic.strategies", "kawi_tts.cli", "kawi_tts.evaluation", "kawi_tts.g2p", "kawi_tts.normalization", "kawi_tts.tts"]
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["kawi_tts*"]
+exclude = ["tests*", "scripts*", "experiments*"]
