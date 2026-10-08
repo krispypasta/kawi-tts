@@ -314,6 +314,68 @@ any implementation decision is made that depends on it.
 
 ---
 
+
+    Entry ID: RES-022
+    Date: 2026-10-08
+    Research question(s) addressed: RQ-002
+    Finding: Vowel inventory of Old Javanese universally includes /a/, /i/, /u/, /e/, /o/, and /ə/ (pepet). Short vs. long vowel distinctions (ā, ī, ū, ö) were strictly orthographic or etymological in normal spoken Kawi. Early Javanese epigraphy might have used length marks to denote stress or sliding tonal platforms, but in the classical language, vowel duration was not a phonemic distinction except possibly in unadapted Sanskrit loans or rigid metrical poetry (kakawin).
+    Evidence status: RECONSTRUCTED
+    Sources:
+      - Kullanda, S. (2016). "Accentuation in early Malay and Javanese epigraphy".
+      - Teselkin, A.S. (1972). *Old Javanese (Kawi)*.
+      - Shmelev, A.A. (2002). "Long vowels in Old Javanese: were they phonemic?".
+    Conflicting evidence: None for colloquial speech; orthography maintains the distinction solely for Sanskrit loanwords and metrical conventions.
+    Open questions remaining: None.
+    TTS implication: V1 G2P can safely map long vowels to short phonemes for spoken styles, ignoring orthographic length.
+
+    Entry ID: RES-023
+    Date: 2026-10-08
+    Research question(s) addressed: RQ-003
+    Finding: The "pepet" (ĕ) is definitively a distinct phoneme /ə/. Its realization is universally reconstructed as a mid-central schwa [ə]. It behaves as a distinct vowel in phonotactics and morphology, and historically shifted towards /u/ when followed by a vowel or /e/ when reduced from diphthongs in certain environments, confirming its distinct phonological status.
+    Evidence status: ESTABLISHED
+    Sources:
+      - Teselkin, A.S. (1972).
+      - Esser / Roorda (General Indonesian Linguistics).
+    Conflicting evidence: None.
+    Open questions remaining: None.
+    TTS implication: Must map to IPA [ə].
+
+    Entry ID: RES-024
+    Date: 2026-10-08
+    Research question(s) addressed: RQ-002
+    Finding: Vocalic liquids (ṛ / r̥ and ḷ / l̥) existed as graphemes for Sanskrit loans. In Old Javanese phonology and colloquial speech, these characters were realized as the consonant-vowel combinations /rə/ and /lə/, not as true syllabic liquids. This is evidenced by morphological derivation (e.g., *rngö* > *rinengö* / *rumengö*, implying an underlying root /rəŋə/ rather than syllabic /r/).
+    Evidence status: ESTABLISHED
+    Sources:
+      - Teselkin, A.S. (1972), p. 19.
+      - Unicode Consortium (Javanese script orthography standards: N3319r3, L2/19-004).
+    Conflicting evidence: None.
+    Open questions remaining: None.
+    TTS implication: ṛ and ḷ graphemes should be G2P mapped to /rə/ and /lə/ for historical speech.
+
+    Entry ID: RES-025
+    Date: 2026-10-08
+    Research question(s) addressed: RQ-005, RQ-001 (Dental vs Retroflex Stops)
+    Finding: Dental stops (t, d) and retroflex stops (ṭ, ḍ) were distinctly pronounced in spoken Old Javanese. Unlike other Sanskrit retroflex letters, ṭ and ḍ map to native Javanese contrastive phonemes (dental /t̪, d̪/ versus apical alveolar/retroflex /ʈ, ɖ/). The occurrence of these retroflex consonants represents an independent development within the Austronesian language family (Javanese), which was then used to adapt Sanskrit retroflex loans.
+    Evidence status: ESTABLISHED
+    Sources:
+      - Hoogervorst, T. (2017). "Lexical Influence from South Asia in Maritime Southeast Asia."
+      - General Javanese historical phonology consensus.
+    Conflicting evidence: None.
+    Open questions remaining: None.
+    TTS implication: V1 G2P must preserve the contrast between dental (t/d) and retroflex (ṭ/ḍ) stops.
+
+    Entry ID: RES-026
+    Date: 2026-10-08
+    Research question(s) addressed: RQ-004, RQ-006 (Aspirates, Sibilants, Nasals, Sanskrit Consonants)
+    Finding: Sanskrit-derived consonants that did not map to native Javanese phonemes were collapsed in spoken Old Javanese. Aspirated stops merged with unaspirated stops; palatal and retroflex sibilants (ś, ṣ) merged into the native dental/alveolar sibilant (s); and the retroflex nasal (ṇ) merged into the dental nasal (n). The orthographic distinctions were maintained in writing but ignored in pronunciation, as reflected in Zoetmulder's dictionary treating s/ś/ṣ identically for alphabetical ordering, and textual variants freely dropping aspiration (e.g. bhaṭāra vs baṭara).
+    Evidence status: ESTABLISHED
+    Sources:
+      - Hoogervorst, T. (2017). (Noting modern Malay and Javanese lack aspirated consonants; alien nature of 3-way sibilant distinction).
+      - Zoetmulder, P.J. (1982). Old Javanese-English Dictionary (alphabetical ordering policy for sibilants).
+    Conflicting evidence: None for normal spoken Kawi. Highly artificial learned recitation might have theoretically preserved them, but without native speaker basis.
+    Open questions remaining: None.
+    TTS implication: V1 G2P should implement acoustic mapping reductions: aspirated -> unaspirated, ś/ṣ -> s, ṇ -> n, for historical spoken targets (Profile A).
+
 ## Section 3: Working Hypotheses Inherited From Project Scaffold
 
 The following claims were present in earlier project scaffold files.
